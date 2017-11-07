@@ -9,7 +9,11 @@ ax = plt.subplot(111)
 
 # get the house image
 house = read_png('house.png')
-houseimg = OffsetImage(house, zoom=.1)
+house_img = OffsetImage(house, zoom = .1)
+
+# get the battery image
+battery = read_png('battery.png')
+battery_img = OffsetImage(battery, zoom = .01)
 
 # get the house coordinates
 xy = []
@@ -23,18 +27,27 @@ xy.append([15,8])
 xy.append([19,12])
 xy.append([19,4])
 battery.append([11,8])
-plt.scatter(battery[0][0], battery[0][1])
 
 x_min = 11
 x_max = 11
 
 # add the house image to the coordinates
 for row in xy:
-	ab = AnnotationBbox(houseimg, row,
+	ab = AnnotationBbox(house_img, row,
 		xybox=(0, 0),
 		xycoords='data',
 		boxcoords="offset points")                                  
 	ax.add_artist(ab)
+	
+# add the battery images
+for row in battery:
+	ab = AnnotationBbox(battery_img, row,
+		xybox=(0, 0),
+		xycoords='data',
+		boxcoords="offset points")                                  
+	ax.add_artist(ab)
+
+# create and calculate the lines
 for row in xy:
 	h_x = row[0]
 	h_y = row[1]
