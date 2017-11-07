@@ -41,7 +41,7 @@ for row in xy:
 	b_x = battery[0][0]
 	b_y = battery[0][1]
 	# the Y coordinate line (keeps its x coordinate)
-	plt.plot(h_x, h_y, h_x, b_y)
+	plt.plot([h_x, h_x], [h_y, b_y], color='b', linestyle='-')
 	cable_length += abs(b_y - h_y)
 	# the X coordinate line (keeps its y coordinate)
 	# if the x value is the new x_min
@@ -50,10 +50,10 @@ for row in xy:
 	# else
 	elif (x_max < h_x):
 		x_max = h_x
+		
+# calculate and draw the line X coordinate line
 cable_length += (x_max - x_min)
-plt.plot(x_min, b_y, x_max, b_y, color='green', linestyle='dashed')
-
-print cable_length
+plt.plot([x_min, x_max],[b_y, b_y], color='g', linestyle='-')
 
 # make the major and minor grid
 plt.grid(b=True, which='major', color='k', linestyle='-')
