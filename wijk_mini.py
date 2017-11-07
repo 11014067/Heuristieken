@@ -15,7 +15,6 @@ houseimg = OffsetImage(house, zoom=.1)
 xy = []
 battery = []
 cable_length = 0
-
 xy.append([3,13])
 xy.append([1,7]) 
 xy.append([5,6]) 
@@ -36,26 +35,23 @@ for row in xy:
 		xycoords='data',
 		boxcoords="offset points")                                  
 	ax.add_artist(ab)
-	for row in xy:
-		print row
-		print('enter')
-		h_x = row[0]
-		h_y = row[1]
-		b_x = battery[0][0]
-		b_y = battery[0][1]
-		# the Y coordinate line (keeps its x coordinate)
-		plt.plot(h_x, h_y, h_x, b_y)
-		cable_length += abs(b_y - h_y)
-		print cable_length
-		# the X coordinate line (keeps its y coordinate)
-		# if the x value is the new x_min
-		if (x_min > h_x):
-			x_min = h_x
-		# else
-		elif (x_max < h_x):
-			x_max = h_x
-	cable_length += (x_max - x_min)
-	plt.plot(x_min, b_y, x_max, b_y, color='green', linestyle='dashed')
+for row in xy:
+	h_x = row[0]
+	h_y = row[1]
+	b_x = battery[0][0]
+	b_y = battery[0][1]
+	# the Y coordinate line (keeps its x coordinate)
+	plt.plot(h_x, h_y, h_x, b_y)
+	cable_length += abs(b_y - h_y)
+	# the X coordinate line (keeps its y coordinate)
+	# if the x value is the new x_min
+	if (x_min > h_x):
+		x_min = h_x
+	# else
+	elif (x_max < h_x):
+		x_max = h_x
+cable_length += (x_max - x_min)
+plt.plot(x_min, b_y, x_max, b_y, color='green', linestyle='dashed')
 
 print cable_length
 
