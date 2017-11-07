@@ -44,8 +44,8 @@ with open('wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	for row in reader:
 		if row[0] != "x":
-			xy.append([int(row[0]), int(row[1]))
-			xyvolt.append([int(row[0]), int(row[1]), int(row[2]))
+			xy.append([int(row[0]), int(row[1])])
+			xyvolt.append([int(row[0]), int(row[1]), row[2]])
 
 # function to creat a new class				       
 def fillHouses(xy_house):
