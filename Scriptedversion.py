@@ -132,7 +132,7 @@ for house in houses:
 		xybox=(0, 0),
 		xycoords='data',
 		boxcoords="offset points",
-		bboxprops = dict(ec='b'))                                  
+		bboxprops = dict(ec='black'))                                  
 	ax.add_artist(ab)
 	
 # add the battery images
@@ -141,7 +141,7 @@ for battery in batteries:
 		xybox=(0, 0),
 		xycoords='data',
 		boxcoords="offset points",
-		bboxprops = dict(ec='b'))                                  
+		bboxprops = dict(ec='black'))                                  
 	ax.add_artist(ab)
 	
 cable_length = 0;
