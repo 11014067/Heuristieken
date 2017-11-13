@@ -93,7 +93,15 @@ batteries = []
 for i in range(0, len(raw_battery)):
 	batteries.append(fillBatteries(raw_battery[i]))
 	batteries[i].add_name(i)
+	# print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
+print "Sorting..."
+batteries = sorted(batteries, key=lambda battery: battery.y)
+houses = sorted(houses, key=lambda house: house.y)
+
+#for i in range(0,5):
+#	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))	
+	
 # link houses and batteries
 housenumber = 0
 for house in houses:
@@ -140,8 +148,8 @@ colors = ['b', 'r', 'y', 'c', 'g']
 for house in houses:
 	h_x = house.x
 	h_y = house.y
-	b_x = batteries[house.battery_no].x
-	b_y = batteries[house.battery_no].y
+	b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
+	b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
 
 	# the Y coordinate line (keeps its x coordinate)
 	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
