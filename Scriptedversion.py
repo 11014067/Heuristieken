@@ -112,12 +112,13 @@ house = read_png('house.png')
 house_img = OffsetImage(house, zoom = .1)
 
 # get the battery image
-house = read_png('house.png')
-house_img = OffsetImage(house, zoom = .1)
+battery = read_png('battery.png')
+battery_img = OffsetImage(battery, zoom = .1)
 
 # make a subplot to allow for add_artist
 ax = plt.subplot(111)
 
+# add the house images
 for house in houses:
 	ab = AnnotationBbox(house_img, [house.x, house.y],
 		xybox=(0, 0),
@@ -125,6 +126,33 @@ for house in houses:
 		boxcoords="offset points")                                  
 	ax.add_artist(ab)
 	
+# add the battery images
+for battery in batteries:
+	ab = AnnotationBbox(battery_img, [battery.x, battery.y],
+		xybox=(0, 0),
+		xycoords='data',
+		boxcoords="offset points")                                  
+	ax.add_artist(ab)
+	
+cable_length = 0;
+
+colors = ['b', 'r', 'y', 'c', 'g']
+for house in houses:
+	h_x = house.x
+	h_y = house.y
+	b_x = batteries[house.battery_no].x
+	b_y = batteries[house.battery_no].y
+
+	# the Y coordinate line (keeps its x coordinate)
+	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
+	cable_length += abs(b_y - h_y)
+	
+for battery in batteries:
+	plt.plot([battery.min_x, battery.max_x], [battery.y, battery.y], color=colors[battery.name], linestyle='-')
+	cable_length += abs(battery.max_x - battery.min_x)
+
+print cable_length
+
 # make the major and minor grid
 plt.grid(b=True, which='major', color='k', linestyle='-')
 plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
@@ -133,5 +161,6 @@ plt.axis([0, 50, 0, 50])
 plt.xticks([0, 10, 20, 30, 40, 50])
 plt.yticks([0, 10, 20, 30, 40, 50])
 	
+
 # show the plot
 plt.show()
