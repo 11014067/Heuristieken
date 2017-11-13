@@ -55,7 +55,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('wijk1_huizen.csv', 'rb') as csvfile:
+with open('wijk2_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	for row in reader:
 		if row[0] != "x":
@@ -77,7 +77,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('wijk1_batterijen.txt', 'r')
+file =  open('wijk2_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
