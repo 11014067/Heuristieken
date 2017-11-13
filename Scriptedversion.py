@@ -117,32 +117,14 @@ for house in houses:
 # DRAWING PART
 # get the house image
 house = read_png('house.png')
-house_img = OffsetImage(house, zoom = .1)
+house_img = OffsetImage(house, zoom = .05)
 
 # get the battery image
 battery = read_png('battery.png')
-battery_img = OffsetImage(battery, zoom = .1)
+battery_img = OffsetImage(battery, zoom = .05)
 
 # make a subplot to allow for add_artist
 ax = plt.subplot(111)
-
-# add the house images
-for house in houses:
-	ab = AnnotationBbox(house_img, [house.x, house.y],
-		xybox=(0, 0),
-		xycoords='data',
-		boxcoords="offset points",
-		bboxprops = dict(ec='black'))                                  
-	ax.add_artist(ab)
-	
-# add the battery images
-for battery in batteries:
-	ab = AnnotationBbox(battery_img, [battery.x, battery.y],
-		xybox=(0, 0),
-		xycoords='data',
-		boxcoords="offset points",
-		bboxprops = dict(ec='black'))                                  
-	ax.add_artist(ab)
 	
 cable_length = 0;
 
@@ -152,6 +134,14 @@ for house in houses:
 	h_y = house.y
 	b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
 	b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
+	
+	# give them the img with colored border
+	ab = AnnotationBbox(house_img, [house.x, house.y],
+		xybox=(0, 0),
+		xycoords='data',
+		boxcoords="offset points",
+		bboxprops = dict(ec=colors[house.battery_no]))                                  
+	ax.add_artist(ab)
 
 	# the Y coordinate line (keeps its x coordinate)
 	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
@@ -159,6 +149,16 @@ for house in houses:
 	
 for battery in batteries:
 	plt.plot([battery.min_x, battery.max_x], [battery.y, battery.y], color=colors[battery.name], linestyle='-')
+	
+	# add the battery images
+	for battery in batteries:
+		ab = AnnotationBbox(battery_img, [battery.x, battery.y],
+			xybox=(0, 0),
+			xycoords='data',
+			boxcoords="offset points",
+			bboxprops = dict(ec=colors[battery.name]))                                  
+		ax.add_artist(ab)
+		
 	cable_length += abs(battery.max_x - battery.min_x)
 
 print cable_length
