@@ -131,7 +131,8 @@ for house in houses:
 	ab = AnnotationBbox(house_img, [house.x, house.y],
 		xybox=(0, 0),
 		xycoords='data',
-		boxcoords="offset points")                                  
+		boxcoords="offset points",
+		bboxprops = dict(ec='black'))                                  
 	ax.add_artist(ab)
 	
 # add the battery images
@@ -139,7 +140,8 @@ for battery in batteries:
 	ab = AnnotationBbox(battery_img, [battery.x, battery.y],
 		xybox=(0, 0),
 		xycoords='data',
-		boxcoords="offset points")                                  
+		boxcoords="offset points",
+		bboxprops = dict(ec='black'))                                  
 	ax.add_artist(ab)
 	
 cable_length = 0;

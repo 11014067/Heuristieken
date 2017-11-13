@@ -46,7 +46,8 @@ for row in xy:
 	ab = AnnotationBbox(house_img, row,
 		xybox=(0, 0),
 		xycoords='data',
-		boxcoords="offset points")                                  
+		boxcoords="offset points",
+		bboxprops = dict(ec='r'))                                  
 	ax.add_artist(ab)
 	
 # add the battery images
@@ -54,7 +55,8 @@ for row in battery:
 	ac = AnnotationBbox(battery_img, row,
 		xybox=(0, 0),
 		xycoords='data',
-		boxcoords="offset points")                                  
+		boxcoords="offset points",
+		bboxprops = dict(ec='b'))                                  
 	ax.add_artist(ac)
 	
 # create and calculate the lines
