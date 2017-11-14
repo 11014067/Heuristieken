@@ -146,9 +146,11 @@ for house in houses:
 	# the Y coordinate line (keeps its x coordinate)
 	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
 	cable_length += abs(b_y - h_y)
+		# the X coordinate line
+	plt.plot([h_x, b_x], [b_y, b_y], color = colors[house.battery_no], linestyle='-')
+	cable_length += abs(b_x - h_x)
 	
 for battery in batteries:
-	plt.plot([battery.min_x, battery.max_x], [battery.y, battery.y], color=colors[battery.name], linestyle='-')
 	
 	# add the battery images
 	for battery in batteries:
@@ -159,7 +161,6 @@ for battery in batteries:
 			bboxprops = dict(ec=colors[battery.name]))                                  
 		ax.add_artist(ab)
 		
-	cable_length += abs(battery.max_x - battery.min_x)
 
 print cable_length
 
