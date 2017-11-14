@@ -85,12 +85,8 @@ for line in file:
 		raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1]), float(line.split("\t")[-1].rstrip())])
 
 # stores the data into classes	
-#
-#
-#
-# GROTE BATTERIJEN!!
 def fillBatteries(data_battery):
-	new_battery = Battery(data_battery[0], data_battery[1], 100000)
+	new_battery = Battery(data_battery[0], data_battery[1], data_battery[2])
 	return new_battery
 
 batteries = []
@@ -101,7 +97,7 @@ for i in range(0, len(raw_battery)):
 
 print "Sorting..."
 batteries = sorted(batteries, key=lambda battery: battery.x)
-houses = sorted(houses, key=lambda house: (house.voltage)*-1)
+houses = sorted(houses, key=lambda house: (-house.voltage))
 
 #for i in range(0,5):
 #	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))	
