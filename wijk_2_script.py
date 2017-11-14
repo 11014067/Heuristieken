@@ -55,7 +55,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('wijk2_huizen.csv', 'rb') as csvfile:
+with open('wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	for row in reader:
 		if row[0] != "x":
@@ -77,7 +77,7 @@ for i in range(0, 20):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('wijk2_batterijen.txt', 'r')
+file =  open('wijk1_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -97,7 +97,7 @@ for i in range(0, len(raw_battery)):
 
 print "Sorting..."
 batteries = sorted(batteries, key=lambda battery: battery.x)
-houses = sorted(houses, key=lambda house: house.x)
+houses = sorted(houses, key=lambda house: (house.voltage)*-1)
 
 #for i in range(0,5):
 #	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))	
@@ -108,7 +108,14 @@ for house in houses:
 	unplaced = True
 	i = 0
 	while unplaced:
-		if batteries[i].add_house(house):
+		distanceMin = [10000, 0];
+		for j in range(0, len(batteries)):
+			distance = abs(batteries[j].x - house.x) + abs(batteries[j].y - house.y);
+			
+			if distance < distanceMin[0] and batteries[j].spare_voltage > house.voltage:
+				distanceMin = [distance, j];
+			
+		if batteries[distanceMin[1]].add_house(house):
 			unplaced = False
 			print "House {} is connected to battery {}".format(housenumber, house.battery_no)
 		i+=1

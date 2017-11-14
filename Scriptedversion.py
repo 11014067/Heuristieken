@@ -96,8 +96,8 @@ for i in range(0, len(raw_battery)):
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
 print "Sorting..."
-batteries = sorted(batteries, key=lambda battery: battery.y)
-houses = sorted(houses, key=lambda house: house.y)
+batteries = sorted(batteries, key=lambda battery: battery.x)
+houses = sorted(houses, key=lambda house: house.voltage)
 
 #for i in range(0,5):
 #	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))	
