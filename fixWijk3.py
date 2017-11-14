@@ -96,7 +96,7 @@ for i in range(0, len(raw_battery)):
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
 print "Sorting..."
-batteries = sorted(batteries, key=lambda battery: battery.y)
+batteries = sorted(batteries, key=lambda battery: battery.voltage)
 houses = sorted(houses, key=lambda house: (-house.voltage))
 
 #for i in range(0,5):
@@ -105,15 +105,19 @@ houses = sorted(houses, key=lambda house: (-house.voltage))
 # link houses and batteries
 housenumber = 0
 for house in houses:
-	unplaced = True
+	placed = False
 	i = 0
-	while unplaced:
-		if batteries[i].add_house(house):
-			unplaced = False
-			print "House {} is connected to battery {} voltage {}".format(housenumber, house.battery_no, house.voltage)
-		i+=1
-		if i > 4:
-			break
+	for battery in batteries:
+		if battery.spare_voltage >= (house.voltage * 2) and placed == False:
+			battery.add_house(house)
+			placed = True
+	
+	for battery in batteries:
+		if placed == False:
+			print housenumber
+			if battery.add_house(house):
+				placed == True
+		
 	housenumber+=1
 	
 for i in range(0,5):
