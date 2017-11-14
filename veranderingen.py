@@ -55,11 +55,9 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('wijk3_huizen.csv', 'rb') as csvfile:
-	reader = csv.reader(csvfile, delimiter = ',')
-	for row in reader:
-		if row[0] != "x":
-			xyvolt.append([int(row[0]), int(row[1]), float(row[2])])
+reader =[[1, 8, 10], [9, 4, 10], [5, 6, 10], [6, 3, 10]]
+for row in reader:
+	xyvolt.append([int(row[0]), int(row[1]), float(row[2])])
 
 # stores the data into classes
 def fillHouses(xy_house):
@@ -76,14 +74,8 @@ for i in range(0, len(xyvolt)):
 	
 # BATERY PART
 # download the raw battery data in a list		
-raw_battery = []
-file =  open('wijk3_batterijen.txt', 'r')
-for line in file: 
-	if(line.split("\t")[0] != "pos"):
-		list_string = line.split("\t")[0]
-		list_string = list_string[1:len(list_string)-1]
-		raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1]), float(line.split("\t")[-1].rstrip())])
-
+raw_battery = [[8, 6, 100]]
+	
 # stores the data into classes	
 def fillBatteries(data_battery):
 	new_battery = Battery(data_battery[0], data_battery[1], data_battery[2])
@@ -96,8 +88,8 @@ for i in range(0, len(raw_battery)):
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
 print "Sorting..."
-batteries = sorted(batteries, key=lambda battery: battery.x)
-houses = sorted(houses, key=lambda house: house.x)
+batteries = sorted(batteries, key=lambda battery: battery.y)
+houses = sorted(houses, key=lambda house: house.y)
 
 #for i in range(0,5):
 #	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))	
@@ -143,12 +135,9 @@ for house in houses:
 		bboxprops = dict(ec=colors[house.battery_no]))                                  
 	ax.add_artist(ab)
 
-	# the Y coordinate line (keeps its x coordinate)
-	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
-	cable_length += abs(b_y - h_y)
+
 	
 for battery in batteries:
-	plt.plot([battery.min_x, battery.max_x], [battery.y, battery.y], color=colors[battery.name], linestyle='-')
 	
 	# add the battery images
 	for battery in batteries:
@@ -161,15 +150,26 @@ for battery in batteries:
 		
 	cable_length += abs(battery.max_x - battery.min_x)
 
+plt.plot([1, 8], [8, 8], color=colors[house.battery_no], linestyle='-')
+plt.plot([8, 8], [6, 8], color=colors[house.battery_no], linestyle='-')
+
+plt.plot([5, 8], [6, 6], color=colors[house.battery_no], linestyle='-')
+
+plt.plot([8, 9], [6, 6], color=colors[house.battery_no], linestyle='-')
+plt.plot([9, 9], [4, 6], color=colors[house.battery_no], linestyle='-')
+
+plt.plot([6, 8], [3, 3], color=colors[house.battery_no], linestyle='-')
+plt.plot([8, 8], [3, 6], color=colors[house.battery_no], linestyle='-')
+
 print cable_length
 
 # make the major and minor grid
 plt.grid(b=True, which='major', color='k', linestyle='-')
 plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
 plt.minorticks_on()
-plt.axis([0, 50, 0, 50])
-plt.xticks([0, 10, 20, 30, 40, 50])
-plt.yticks([0, 10, 20, 30, 40, 50])
+plt.axis([0, 10, 0, 10])
+plt.xticks([0, 5, 10])
+plt.yticks([0, 5, 10])
 	
 
 # show the plot
