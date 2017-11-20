@@ -3,7 +3,7 @@ import csv
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
-from .Start_up import classesWijk as classesw
+from classesWijk import House, Battery
 
 # start the cable length
 cable_length = 0
