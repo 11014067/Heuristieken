@@ -1,22 +1,23 @@
+import csv
 from classesWijk import House, Battery
 
-def download_data(x)
+def download_data(x):
 	house_file = 'Wijk_informatie/wijk' + x + '_huizen.csv'
 	battery_file = 'Wijk_informatie/wijk' + x + '_batterijen.txt'
 
 	# download the raw house data in a list	
 	xyvolt= []
-	i = 0
+
 	with open(house_file, 'rb') as csvfile:
 		reader = csv.reader(csvfile, delimiter = ',')
 		for row in reader:
 			if row[0] != "x":
-				xyvolt.append([int(row[0]), int(row[1]), float(row[2]), int(i)])
-		i += 1
+				xyvolt.append([int(row[0]), int(row[1]), float(row[2])])
+		
 	
 	# stores the data into classes
 	def fillHouses(xy_house):
-		new_house = House(xy_house[0], xy_house[1], xy_house[2], xy_house[3])
+		new_house = House(xy_house[0], xy_house[1], xy_house[2])
 		return new_house
 	
 	houses = []
