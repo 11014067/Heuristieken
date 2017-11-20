@@ -15,6 +15,7 @@ batteries = information[0]
 houses = information[1]
 	
 # ALGORITHM
+# chose the sorting method for batteries and houses
 information = sorting_alogrithm(batteries, houses, 'x', 'x')
 batteries = information[0]
 houses = information[1]
@@ -66,7 +67,6 @@ for battery in batteries:
 			bboxprops = dict(ec=colors[battery.name]))                                  
 		ax.add_artist(ab)
 		
-
 print cable_length
 
 # make the major and minor grid
@@ -77,6 +77,5 @@ plt.axis([0, 50, 0, 50])
 plt.xticks([0, 10, 20, 30, 40, 50])
 plt.yticks([0, 10, 20, 30, 40, 50])
 	
-
 # show the plot
 plt.show()
