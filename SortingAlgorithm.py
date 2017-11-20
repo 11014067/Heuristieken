@@ -1,11 +1,11 @@
 
 
-def Sorting(batteries, houses):
+def Sorting(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
 	print "Sorting..."
-	batteries = sorted(batteries, key=lambda battery: battery.y)
-	houses = sorted(houses, key=lambda house: (-house.voltage))
+	batteries = sorted(batteries, key=lambda battery: sort_battery)
+	houses = sorted(houses, key=lambda house: sort_house)
 	
 	# link houses and batteries
 	housenumber = 0
