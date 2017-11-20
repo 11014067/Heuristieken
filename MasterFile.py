@@ -47,7 +47,9 @@ for i in range(0, len(raw_battery)):
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 	
 # ALGORITHM
-Sorting()
+information = Sorting(batteries, houses)
+batteries = information[0]
+houses = information[1]
 	
 # DRAWING PART
 # get the house image
