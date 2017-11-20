@@ -4,8 +4,8 @@ def Sorting(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
 	print "Sorting..."
-	batteries = sorted(batteries, key=lambda battery: sort_battery)
-	houses = sorted(houses, key=lambda house: sort_house)
+	batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
+	houses = sorted(houses, key=lambda house: getattr(house, sort_house))
 	
 	# link houses and batteries
 	housenumber = 0
