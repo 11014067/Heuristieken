@@ -1,0 +1,30 @@
+import classesWijk import House, Battery
+
+def Sorting():
+	
+	#Algorithm
+	print "Sorting..."
+	batteries = sorted(batteries, key=lambda battery: battery.y)
+	houses = sorted(houses, key=lambda house: (-house.voltage))
+	
+	# link houses and batteries
+	housenumber = 0
+	for house in houses:
+		unplaced = True
+		i = 0
+		while unplaced:
+			if batteries[i].add_house(house):
+				unplaced = False
+				print "House {} is connected to battery {} voltage {}".format(housenumber, house.battery_no, house.voltage)
+			i+=1
+			if i > 4:
+				break
+		housenumber+=1
+		
+	for i in range(0,5):
+		print batteries[i].spare_voltage
+	print houses[149].voltage
+	return
+
+if __name__ == "__main__":
+	Sorting()
