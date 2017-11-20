@@ -9,7 +9,7 @@ cable_length = 0
 # define classes
 class House:
 
-	def __init__(self, x, y, voltage):
+	def __init__(self, x, y, voltage, id):
 		self.x = x
 		self.y = y
 		self.voltage = voltage
@@ -20,6 +20,7 @@ class House:
 		self.distance3 = 0
 		self.distance4 = 0
 		self.placed = False
+		self.id = id
 
 	def add_battery(self, battery_no):
 		self.battery_no = battery_no	
@@ -58,18 +59,24 @@ class Battery:
 		else:
 			return False
 
+#
+# voeg ID toe
+#			
+			
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
 with open('wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
+	i = 0
 	for row in reader:
 		if row[0] != "x":
-			xyvolt.append([int(row[0]), int(row[1]), float(row[2])])
+			xyvolt.append([int(row[0]), int(row[1]), float(row[2]), int(i)])
+	i += 1
 
 # stores the data into classes
 def fillHouses(xy_house):
-	new_house = House(xy_house[0], xy_house[1], xy_house[2])
+	new_house = House(xy_house[0], xy_house[1], xy_house[2], xy_house[3])
 	return new_house
 
 houses = []

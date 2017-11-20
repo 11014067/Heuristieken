@@ -9,8 +9,11 @@ from download_data import download_data
 # start the cable length
 cable_length = 0
 
+# Chose naberhood
+wijk = '1'
+
 # DOWNLOAD AND ORDER DATA
-information = download_data()
+information = download_data(wijk)
 batteries = information[0]
 houses = information[1]
 	
