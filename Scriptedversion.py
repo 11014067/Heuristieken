@@ -55,7 +55,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('wijk3_huizen.csv', 'rb') as csvfile:
+with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	for row in reader:
 		if row[0] != "x":
@@ -77,7 +77,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('wijk3_batterijen.txt', 'r')
+file =  open('Wijk_informatie/wijk1_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -122,11 +122,11 @@ print houses[149].voltage
 	
 # DRAWING PART
 # get the house image
-house = read_png('house.png')
+house = read_png('Wijk_informatie/house.png')
 house_img = OffsetImage(house, zoom = .05)
 
 # get the battery image
-battery = read_png('battery.png')
+battery = read_png('Wijk_informatie/battery.png')
 battery_img = OffsetImage(battery, zoom = .05)
 
 # make a subplot to allow for add_artist
