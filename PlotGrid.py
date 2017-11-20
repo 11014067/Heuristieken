@@ -60,8 +60,6 @@ def PlotGrid(houses, batteries):
 	plt.axis([0, 50, 0, 50])
 	plt.xticks([0, 10, 20, 30, 40, 50])
 	plt.yticks([0, 10, 20, 30, 40, 50])
+	plt.text(15, 55, "Cable length is " + str(cable_length))
 	
-	plt.show()
-
-# show the plot
-plt.show()
+	return plt
