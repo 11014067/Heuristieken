@@ -21,3 +21,4 @@ houses = information[1]
 # PLOT
 plot_grid(houses, batteries)
 
+
