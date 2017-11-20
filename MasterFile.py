@@ -9,7 +9,7 @@ from download_data import download_data
 # start the cable length
 cable_length = 0
 
-# Chose naberhood
+# Choose neighboorhood
 wijk = '1'
 
 # DOWNLOAD AND ORDER DATA
@@ -19,7 +19,7 @@ houses = information[1]
 	
 # ALGORITHM
 # chose the sorting method for batteries and houses
-information = sorting_alogrithm(batteries, houses, 'x', 'x')
+information = sorting_algorithm(batteries, houses, 'x', 'x')
 batteries = information[0]
 houses = information[1]
 	
