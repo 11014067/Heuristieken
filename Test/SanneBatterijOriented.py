@@ -123,7 +123,8 @@ for house in houses:
 	house.distance2 = abs(house.x - batteries[2].x) + abs(house.y - batteries[2].y)
 	house.distance3 = abs(house.x - batteries[3].x) + abs(house.y - batteries[3].y)
 	house.distance4 = abs(house.x - batteries[4].x) + abs(house.y - batteries[4].y)
-	distance0list.append([house.distance0, house.id])
+	distance0list["distance"] = house.distance0
+	distance0list["id"] = house.id
 	distance1list.append([house.distance1, house.id])
 	distance2list.append([house.distance2, house.id])
 	distance3list.append([house.distance3, house.id])
@@ -132,11 +133,11 @@ for house in houses:
 def numeric_compare(x, y):
     return x - y
 	
-distance0list = sorted(distance0list, cmp=numeric_compare)
-distance1list = sorted(distance1list, cmp=numeric_compare)
-distance2list = sorted(distance2list, cmp=numeric_compare)
-distance3list = sorted(distance3list, cmp=numeric_compare)
-distance4list = sorted(distance4list, cmp=numeric_compare)
+distance0list = sorted(distance0list, key=lambda distance: distance0list.distance)
+distance1list = sorted(distance1list, key=lambda distance: distance1list[0])
+distance2list = sorted(distance2list, key=lambda distance: distance2list[0])
+distance3list = sorted(distance3list, key=lambda distance: distance3list[0])
+distance4list = sorted(distance4list, key=lambda distance: distance4list[0])
 
 b = [0,0,0,0,0]
 placednum = 0
@@ -151,10 +152,13 @@ while placednum < 150:
 			# place the first posible house
 			placeHouse = False
 			while placeHouse == False:
-				temp = "houses[distance" + j + "list[b[j]][1]]"
+				temp = "houses[distance" + str(j) + "list" + str([b[j]]) + "[1]]"
+				print temp
+				print houses[34].x
+				print distance0list[1].house
 				if b[j] == 150:
 					placeHouse = True
-				elif getattr(temp, place) == False:
+				elif getattr(temp, placed) == False:
 					battery.add_house(getattr(temp))
 					placednum += 1
 					placeHouse = True
