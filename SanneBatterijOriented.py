@@ -66,7 +66,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('wijk1_huizen.csv', 'rb') as csvfile:
+with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
@@ -90,7 +90,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('wijk1_batterijen.txt', 'r')
+file =  open('Wijk_informatie/wijk1_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -109,7 +109,7 @@ for i in range(0, len(raw_battery)):
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
 batteries = sorted(batteries, key=lambda battery: battery.x)
-houses = sorted(houses, key=lambda house: house.x)
+houses = sorted(houses, key=lambda house: house.id)
 
 distance0list = []
 distance1list = []
@@ -123,20 +123,22 @@ for house in houses:
 	house.distance2 = abs(house.x - batteries[2].x) + abs(house.y - batteries[2].y)
 	house.distance3 = abs(house.x - batteries[3].x) + abs(house.y - batteries[3].y)
 	house.distance4 = abs(house.x - batteries[4].x) + abs(house.y - batteries[4].y)
-	distance0list.append(house.distance0)
-	distance1list.append(house.distance1)
-	distance2list.append(house.distance2)
-	distance3list.append(house.distance3)
-	distance4list.append(house.distance4)
+	distance0list.append([house.distance0, house.id])
+	distance1list.append([house.distance1, house.id])
+	distance2list.append([house.distance2, house.id])
+	distance3list.append([house.distance3, house.id])
+	distance4list.append([house.distance4, house.id])
 
 def numeric_compare(x, y):
     return x - y
+	
 distance0list = sorted(distance0list, cmp=numeric_compare)
 distance1list = sorted(distance1list, cmp=numeric_compare)
 distance2list = sorted(distance2list, cmp=numeric_compare)
 distance3list = sorted(distance3list, cmp=numeric_compare)
 distance4list = sorted(distance4list, cmp=numeric_compare)
-	
+
+b = [0,0,0,0,0]
 placednum = 0
 
 # place all the houses
@@ -149,16 +151,16 @@ while placednum < 150:
 			# place the first posible house
 			placeHouse = False
 			while placeHouse == False:
+				temp = "houses[distance" + j + "list[b[j]][1]]"
 				if b[j] == 150:
 					placeHouse = True
-					b[5] += 1
-				elif housesa[j][b[j]].placed == False:
-					battery.add_house(housesa[j][b[j]])
+				elif getattr(temp, place) == False:
+					battery.add_house(getattr(temp))
 					placednum += 1
 					placeHouse = True
 				b[j] += 1
 		j += 1
-	if b[5] == 4:
+	if b[0] == 150 and b[1] == 150 and b[2] == 150 and b[3] == 150 and b[4] == 150:
 		print(" UNSUCCESFULL ")
 		break
 
