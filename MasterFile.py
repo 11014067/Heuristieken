@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
 from classesWijk import House, Battery
-from SortingAlgorithm import Sorting
+from SortingAlgorithm import sorting_algorithm
 from download_data import download_data
 
 # start the cable length
@@ -15,7 +15,7 @@ batteries = information[0]
 houses = information[1]
 	
 # ALGORITHM
-information = Sorting(batteries, houses, 'x', 'x')
+information = sorting_alogrithm(batteries, houses, 'x', 'x')
 batteries = information[0]
 houses = information[1]
 	

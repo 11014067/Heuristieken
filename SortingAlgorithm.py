@@ -1,6 +1,4 @@
-
-
-def Sorting(batteries, houses, sort_battery, sort_house):
+def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
 	print "Sorting..."
@@ -25,6 +23,3 @@ def Sorting(batteries, houses, sort_battery, sort_house):
 		print batteries[i].spare_voltage
 	print houses[149].voltage
 	return [batteries, houses]
-
-if __name__ == "__main__":
-	Sorting()
