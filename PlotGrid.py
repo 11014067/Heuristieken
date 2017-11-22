@@ -57,6 +57,8 @@ def PlotGrid(houses, batteries):
 	plt.grid(b=True, which='major', color='k', linestyle='-')
 	plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
 	plt.minorticks_on()
+	plt.xlabel("x")
+	plt.ylabel("y")
 	plt.axis([0, 50, 0, 50])
 	plt.xticks([0, 10, 20, 30, 40, 50])
 	plt.yticks([0, 10, 20, 30, 40, 50])

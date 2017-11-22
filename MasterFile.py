@@ -7,7 +7,7 @@ from PlotGrid import PlotGrid as plot_grid
 cable_length = 0
 
 # choose the neighboohood number
-wijk = '1'
+wijk = '3'
 
 # choose the sorting method for batteries and houses
 battery_sort = 'y'
