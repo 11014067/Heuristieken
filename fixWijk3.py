@@ -9,11 +9,12 @@ cable_length = 0
 # define classes
 class House:
 
-	def __init__(self, x, y, voltage):
+	def __init__(self, x, y, voltage, housenumber):
 		self.x = x
 		self.y = y
 		self.voltage = voltage
 		self.battery_no = None
+		self.housenumber = housenumber
 
 	def add_battery(self, battery_no):
 		self.battery_no = battery_no	
@@ -55,20 +56,21 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('wijk3_huizen.csv', 'rb') as csvfile:
+with open('wijk_informatie/wijk3_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	for row in reader:
 		if row[0] != "x":
 			xyvolt.append([int(row[0]), int(row[1]), float(row[2])])
 
 # stores the data into classes
-def fillHouses(xy_house):
-	new_house = House(xy_house[0], xy_house[1], xy_house[2])
+def fillHouses(xy_house, housenumber):
+	new_house = House(xy_house[0], xy_house[1], xy_house[2], housenumber)
 	return new_house
 
 houses = []
 for i in range(0, len(xyvolt)):
-	houses.append(fillHouses(xyvolt[i]))
+	housenumber = i
+	houses.append(fillHouses(xyvolt[i]), housenumber)
 
 ## CHECK	
 #for i in range(0, 5):	
@@ -77,7 +79,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('wijk3_batterijen.txt', 'r')
+file =  open('wijk_informatie/wijk3_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -96,8 +98,8 @@ for i in range(0, len(raw_battery)):
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
 print "Sorting..."
-batteries = sorted(batteries, key=lambda battery: battery.voltage)
-houses = sorted(houses, key=lambda house: (-house.voltage))
+batteries = sorted(batteries, key=lambda battery: battery.x)
+houses = sorted(houses, key=lambda house: (house.x))
 
 #for i in range(0,5):
 #	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))	
@@ -126,11 +128,11 @@ print houses[149].voltage
 	
 # DRAWING PART
 # get the house image
-house = read_png('house.png')
+house = read_png('wijk_informatie/house.png')
 house_img = OffsetImage(house, zoom = .05)
 
 # get the battery image
-battery = read_png('battery.png')
+battery = read_png('wijk_informatie/battery.png')
 battery_img = OffsetImage(battery, zoom = .05)
 
 # make a subplot to allow for add_artist
@@ -139,7 +141,10 @@ ax = plt.subplot(111)
 cable_length = 0;
 
 colors = ['b', 'r', 'y', 'c', 'g']
+i = 0
 for house in houses:
+	print i
+	i+=1
 	h_x = house.x
 	h_y = house.y
 	b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
