@@ -14,24 +14,18 @@ class House:
 		self.y = y
 		self.voltage = voltage
 		self.battery_no = None
-		self.distance0 = 0
-		self.distance1 = 0
-		self.distance2 = 0
-		self.distance3 = 0
-		self.distance4 = 0
 		self.placed = False
 		self.id = id
 
 	def add_battery(self, battery_no):
-		self.battery_no = battery_no	
+		self.battery_no = battery_no
+		self.placed = True
 
 class Battery:
 
 	def __init__(self, x, y, voltage):	
 		self.x = x
 		self.y = y
-		self.min_x = x
-		self.max_x = x
 		self.voltage = voltage
 		self.spare_voltage = voltage
 		
@@ -42,37 +36,23 @@ class Battery:
 	def add_house(self, house):
 	
 		if self.spare_voltage > house.voltage:
-			if self.min_x > house.x:
-				self.min_x = house.x
-				house.add_battery(self.name)
-				self.spare_voltage -= house.voltage
-				return True
-			elif self.max_x < house.x:
-				self.max_x = house.x
-				house.add_battery(self.name)
-				self.spare_voltage -= house.voltage
-				return True
-			else:
-				house.add_battery(self.name)
-				self.spare_voltage -= house.voltage
-				return True
+			house.add_battery(self.name)
+			self.spare_voltage -= house.voltage
+			return True
 		else:
 			return False
-
-#
-# voeg ID toe
-#			
+		
 			
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
+with open('Wijk_informatie/wijk2_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
 		if row[0] != "x":
 			xyvolt.append([int(row[0]), int(row[1]), float(row[2]), int(i)])
-	i += 1
+			i += 1
 
 # stores the data into classes
 def fillHouses(xy_house):
@@ -90,7 +70,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('Wijk_informatie/wijk1_batterijen.txt', 'r')
+file =  open('Wijk_informatie/wijk2_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -105,10 +85,10 @@ def fillBatteries(data_battery):
 batteries = []
 for i in range(0, len(raw_battery)):
 	batteries.append(fillBatteries(raw_battery[i]))
-	batteries[i].add_name(i)
+	batteries[i].add_name(i + 1)
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
-batteries = sorted(batteries, key=lambda battery: battery.x)
+batteries = sorted(batteries, key=lambda battery: battery.name)
 houses = sorted(houses, key=lambda house: house.id)
 
 distance0list = []
@@ -118,28 +98,33 @@ distance3list = []
 distance4list = []
 
 for house in houses:
-	house.distance0 = abs(house.x - batteries[0].x) + abs(house.y - batteries[0].y)
-	house.distance1 = abs(house.x - batteries[1].x) + abs(house.y - batteries[1].y)
-	house.distance2 = abs(house.x - batteries[2].x) + abs(house.y - batteries[2].y)
-	house.distance3 = abs(house.x - batteries[3].x) + abs(house.y - batteries[3].y)
-	house.distance4 = abs(house.x - batteries[4].x) + abs(house.y - batteries[4].y)
-	distance0list["distance"] = house.distance0
-	distance0list["id"] = house.id
-	distance1list.append([house.distance1, house.id])
-	distance2list.append([house.distance2, house.id])
-	distance3list.append([house.distance3, house.id])
-	distance4list.append([house.distance4, house.id])
+	print house.id
+	distance0 = abs(house.x - batteries[0].x) + abs(house.y - batteries[0].y)
+	distance1 = abs(house.x - batteries[1].x) + abs(house.y - batteries[1].y)
+	distance2 = abs(house.x - batteries[2].x) + abs(house.y - batteries[2].y)
+	distance3 = abs(house.x - batteries[3].x) + abs(house.y - batteries[3].y)
+	distance4 = abs(house.x - batteries[4].x) + abs(house.y - batteries[4].y)
+	distance0list.append([distance0, house.id])
+	distance1list.append([distance1, house.id])
+	distance2list.append([distance2, house.id])
+	distance3list.append([distance3, house.id])
+	distance4list.append([distance4, house.id])
 
 def numeric_compare(x, y):
     return x - y
 	
-distance0list = sorted(distance0list, key=lambda distance: distance0list.distance)
-distance1list = sorted(distance1list, key=lambda distance: distance1list[0])
-distance2list = sorted(distance2list, key=lambda distance: distance2list[0])
-distance3list = sorted(distance3list, key=lambda distance: distance3list[0])
-distance4list = sorted(distance4list, key=lambda distance: distance4list[0])
+distance0list = sorted(distance0list, key=lambda x: x[0])
+distance1list = sorted(distance1list, key=lambda x: x[0])
+distance2list = sorted(distance2list, key=lambda x: x[0])
+distance3list = sorted(distance3list, key=lambda x: x[0])
+distance4list = sorted(distance4list, key=lambda x: x[0])
 
-b = [0,0,0,0,0]
+for i in range(len(distance2list)):
+	print("list {}".format(distance2list[i]))
+
+distanceslists = [distance0list, distance1list, distance2list, distance3list, distance4list]
+
+b = [0,0,0,0,0,0]
 placednum = 0
 
 # place all the houses
@@ -152,30 +137,37 @@ while placednum < 150:
 			# place the first posible house
 			placeHouse = False
 			while placeHouse == False:
-				temp = "houses[distance" + str(j) + "list" + str([b[j]]) + "[1]]"
-				print temp
-				print houses[34].x
-				print distance0list[1].house
+				print("j = {} , b[j] = {}".format(j, b[j]))
 				if b[j] == 150:
+					b[j] = 149
 					placeHouse = True
-				elif getattr(temp, placed) == False:
-					battery.add_house(getattr(temp))
-					placednum += 1
-					placeHouse = True
+				elif houses[distanceslists[j][b[j]][1]].placed == False:
+					if battery.add_house(houses[distanceslists[j][b[j]][1]]):
+						#house placed op true
+						print ("house {} is gekoppeld".format(distanceslists[j][b[j]][1]))
+						placednum += 1
+						placeHouse = True
 				b[j] += 1
 		j += 1
 	if b[0] == 150 and b[1] == 150 and b[2] == 150 and b[3] == 150 and b[4] == 150:
 		print(" UNSUCCESFULL ")
 		break
-
+		
+for house in houses:
+	if house.battery_no:
+		print("huis {} batterij {}".format(house.id, house.battery_no))
+	else:
+		print house.voltage
+for battery in batteries:
+	print("batterij over {}".format(battery.spare_voltage))
 	
 # DRAWING PART
 # get the house image
-house = read_png('house.png')
+house = read_png('wijk_informatie/house.png')
 house_img = OffsetImage(house, zoom = .05)
 
 # get the battery image
-battery = read_png('battery.png')
+battery = read_png('wijk_informatie/battery.png')
 battery_img = OffsetImage(battery, zoom = .05)
 
 # make a subplot to allow for add_artist
@@ -187,7 +179,6 @@ colors = ['b', 'r', 'y', 'c', 'g']
 for house in houses:
 	h_x = house.x
 	h_y = house.y
-	print (" HERE ")
 	b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
 	b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
 	
