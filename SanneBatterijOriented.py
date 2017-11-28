@@ -168,10 +168,13 @@ battery_img = OffsetImage(battery, zoom = .05)
 
 # make a subplot to allow for add_artist
 ax = plt.subplot(111)
+
+
+#Cable length calculation
+colors = ['b', 'r', 'y', 'c', 'g']
 	
 cable_length = 0;
 
-colors = ['b', 'r', 'y', 'c', 'g']
 for house in houses:
 	h_x = house.x
 	h_y = house.y
