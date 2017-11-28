@@ -7,10 +7,10 @@ from PlotGrid import PlotGrid as plot_grid
 cable_length = 0
 
 # choose the neighboohood number
-wijk = '3'
+wijk = '2'
 
 # choose the sorting method for batteries and houses
-battery_sort = 'y'
+battery_sort = 'x'
 house_sort = 'y'
 
 # DOWNLOAD AND ORDER DATA

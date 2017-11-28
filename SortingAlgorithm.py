@@ -2,8 +2,15 @@ def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
 	print "Sorting..."
-	batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
-	houses = sorted(houses, key=lambda house: getattr(house, sort_house))
+	if (sort_battery != "voltage"):
+		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
+	else:
+		batteries = sorted(batteries, key=lambda battery: -battery.voltage)
+		
+	if (sort_house != "voltage"):
+		houses = sorted(houses, key=lambda house: getattr(house, sort_house))
+	else:
+		houses = sorted(houses, key=lambda house: -house.voltage)
 	
 	# link houses and batteries
 	housenumber = 0

@@ -46,7 +46,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('Wijk_informatie/wijk2_huizen.csv', 'rb') as csvfile:
+with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
@@ -66,7 +66,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('Wijk_informatie/wijk2_batterijen.txt', 'r')
+file =  open('Wijk_informatie/wijk1_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -84,7 +84,7 @@ for i in range(0, len(raw_battery)):
 	batteries[i].add_name(i + 1)
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
-batteries = sorted(batteries, key=lambda battery: battery.name)
+batteries = sorted(batteries, key=lambda battery: battery.x)
 houses = sorted(houses, key=lambda house: house.id)
 
 distance0list = []
