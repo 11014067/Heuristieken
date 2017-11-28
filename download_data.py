@@ -8,7 +8,7 @@ def download_data(x):
 	# download the raw house data in a list	
 	xyvolt= []
 
-	id_counter = 1
+	id_counter = 0
 	with open(house_file, 'rb') as csvfile:
 		reader = csv.reader(csvfile, delimiter = ',')
 		for row in reader:
