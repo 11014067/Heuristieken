@@ -98,7 +98,6 @@ distance3list = []
 distance4list = []
 
 for house in houses:
-	print house.id
 	distance0 = abs(house.x - batteries[0].x) + abs(house.y - batteries[0].y)
 	distance1 = abs(house.x - batteries[1].x) + abs(house.y - batteries[1].y)
 	distance2 = abs(house.x - batteries[2].x) + abs(house.y - batteries[2].y)
@@ -119,9 +118,6 @@ distance2list = sorted(distance2list, key=lambda x: x[0])
 distance3list = sorted(distance3list, key=lambda x: x[0])
 distance4list = sorted(distance4list, key=lambda x: x[0])
 
-for i in range(len(distance2list)):
-	print("list {}".format(distance2list[i]))
-
 distanceslists = [distance0list, distance1list, distance2list, distance3list, distance4list]
 
 b = [0,0,0,0,0,0]
@@ -136,7 +132,7 @@ while placednum < 150:
 		if battery.spare_voltage > 0:
 			# place the first posible house
 			placeHouse = False
-			while placeHouse == False
+			while placeHouse == False:
 				if b[j] == 150:
 					b[j] = 149
 					placeHouse = True
