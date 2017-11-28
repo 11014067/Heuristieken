@@ -47,11 +47,8 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-<<<<<<< HEAD
+
 with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
-=======
-with open('Wijk_informatie/wijk3_huizen.csv', 'rb') as csvfile:
->>>>>>> c23566a68bb4bc864ae5b03f75490dbd57e44745
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
