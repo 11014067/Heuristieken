@@ -151,21 +151,10 @@ for house in houses:
 for battery in batteries:
 	print("batterij over {}".format(battery.spare_voltage))
 	
-# DRAWING PART
-# get the house image
-house = read_png('wijk_informatie/house.png')
-house_img = OffsetImage(house, zoom = .05)
-
-# get the battery image
-battery = read_png('wijk_informatie/battery.png')
-battery_img = OffsetImage(battery, zoom = .05)
-
-# make a subplot to allow for add_artist
-ax = plt.subplot(111)
+#Cable length calculation
 	
 cable_length = 0;
 
-colors = ['b', 'r', 'y', 'c', 'g']
 for house in houses:
 	h_x = house.x
 	h_y = house.y
