@@ -136,8 +136,7 @@ while placednum < 150:
 		if battery.spare_voltage > 0:
 			# place the first posible house
 			placeHouse = False
-			while placeHouse == False:
-				print("j = {} , b[j] = {}".format(j, b[j]))
+			while placeHouse == False
 				if b[j] == 150:
 					b[j] = 149
 					placeHouse = True
