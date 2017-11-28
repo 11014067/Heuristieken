@@ -1,5 +1,6 @@
 from classesWijk import House, Battery
 from SortingAlgorithm import sorting_algorithm
+from DistanceAlgorithm import distanceAlgorithm
 from download_data import download_data
 from PlotGrid import PlotGrid as plot_grid
 
@@ -7,11 +8,11 @@ from PlotGrid import PlotGrid as plot_grid
 cable_length = 0
 
 # choose the neighboohood number
-wijk = '2'
+wijk = '1'
 
-# choose the sorting method for batteries and houses
+# choose the sorting method for batteries and houses (x, y, voltage or distance)
 battery_sort = 'x'
-house_sort = 'y'
+house_sort = 'distance'
 
 # DOWNLOAD AND ORDER DATA
 information = download_data(wijk)
@@ -19,7 +20,10 @@ batteries = information[0]
 houses = information[1]
 	
 # ALGORITHM
-information = sorting_algorithm(batteries, houses, battery_sort, house_sort)
+if (house_sort == "distance"):
+	information = distanceAlgorithm(batteries, houses, battery_sort)
+else:
+	information = sorting_algorithm(batteries, houses, battery_sort, house_sort)
 batteries = information[0]
 houses = information[1]
 

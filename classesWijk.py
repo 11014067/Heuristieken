@@ -2,11 +2,13 @@
 
 class House:
 
-	def __init__(self, x, y, voltage):
+	def __init__(self, x, y, voltage, id):
 		self.x = x
 		self.y = y
 		self.voltage = voltage
+		self.id = id
 		self.battery_no = None
+		self.placed = False
 
 	def add_battery(self, battery_no):
 		self.battery_no = battery_no	

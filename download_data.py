@@ -8,16 +8,18 @@ def download_data(x):
 	# download the raw house data in a list	
 	xyvolt= []
 
+	id_counter = 1
 	with open(house_file, 'rb') as csvfile:
 		reader = csv.reader(csvfile, delimiter = ',')
 		for row in reader:
 			if row[0] != "x":
-				xyvolt.append([int(row[0]), int(row[1]), float(row[2])])
+				xyvolt.append([int(row[0]), int(row[1]), float(row[2]), int(id_counter)])
+				id_counter += 1
 		
 	
 	# stores the data into classes
 	def fillHouses(xy_house):
-		new_house = House(xy_house[0], xy_house[1], xy_house[2])
+		new_house = House(xy_house[0], xy_house[1], xy_house[2], xy_house[3])
 		return new_house
 	
 	houses = []
@@ -41,6 +43,6 @@ def download_data(x):
 	batteries = []
 	for i in range(0, len(raw_battery)):
 		batteries.append(fillBatteries(raw_battery[i]))
-		batteries[i].add_name(i)
+		batteries[i].add_name(i + 1)
 		print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 	return [batteries, houses]

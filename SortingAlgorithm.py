@@ -30,5 +30,5 @@ def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 		
 	for i in range(0,5):
 		print batteries[i].spare_voltage
-	print houses[149].voltage
+
 	return [batteries, houses, solution]
