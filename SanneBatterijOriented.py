@@ -143,7 +143,6 @@ while placednum < 150:
 				elif houses[distanceslists[j][b[j]][1]].placed == False:
 					if battery.add_house(houses[distanceslists[j][b[j]][1]]):
 						#house placed op true
-						print ("house {} is gekoppeld".format(distanceslists[j][b[j]][1]))
 						placednum += 1
 						placeHouse = True
 				b[j] += 1
