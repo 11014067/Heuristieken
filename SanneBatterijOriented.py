@@ -63,10 +63,6 @@ houses = []
 for i in range(0, len(xyvolt)):
 	houses.append(fillHouses(xyvolt[i]))
 
-## CHECK	
-#for i in range(0, 5):	
-#	print("Huis {} heeft x = {} en y = {} en battery = {}".format(i, houses[i].x, houses[i].y, houses[i].battery_no))
-	
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
@@ -173,46 +169,17 @@ colors = ['b', 'r', 'y', 'c', 'g']
 for house in houses:
 	h_x = house.x
 	h_y = house.y
-	b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
-	b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
+	if house.battery_no:
+		b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
+		b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
+	else:
+		b_x = house.x
+		b_y = house.y
 	
-	# give them the img with colored border
-	ab = AnnotationBbox(house_img, [house.x, house.y],
-		xybox=(0, 0),
-		xycoords='data',
-		boxcoords="offset points",
-		bboxprops = dict(ec=colors[house.battery_no]))                                  
-	ax.add_artist(ab)
-
-	# the Y coordinate line (keeps its x coordinate)
-	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
 	cable_length += abs(b_y - h_y)
-		# the X coordinate line
-	plt.plot([h_x, b_x], [b_y, b_y], color = colors[house.battery_no], linestyle='-')
+	
 	cable_length += abs(b_x - h_x)
 	
-for battery in batteries:
-	
-	# add the battery images
-	for battery in batteries:
-		ab = AnnotationBbox(battery_img, [battery.x, battery.y],
-			xybox=(0, 0),
-			xycoords='data',
-			boxcoords="offset points",
-			bboxprops = dict(ec=colors[battery.name]))                                  
-		ax.add_artist(ab)
-		
 
 print cable_length
 
-# make the major and minor grid
-plt.grid(b=True, which='major', color='k', linestyle='-')
-plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
-plt.minorticks_on()
-plt.axis([0, 50, 0, 50])
-plt.xticks([0, 10, 20, 30, 40, 50])
-plt.yticks([0, 10, 20, 30, 40, 50])
-	
-
-# show the plot
-plt.show()
