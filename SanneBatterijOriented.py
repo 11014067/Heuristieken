@@ -71,11 +71,8 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-<<<<<<< HEAD
+
 file =  open('Wijk_informatie/wijk1_batterijen.txt', 'r')
-=======
-file =  open('Wijk_informatie/wijk3_batterijen.txt', 'r')
->>>>>>> c23566a68bb4bc864ae5b03f75490dbd57e44745
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
