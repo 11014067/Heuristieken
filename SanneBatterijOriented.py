@@ -2,6 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
+from switcher import switching_algorithm
 
 # start the cable length
 cable_length = 0
@@ -46,7 +47,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('Wijk_informatie/wijk2_huizen.csv', 'rb') as csvfile:
+with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
@@ -66,7 +67,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('Wijk_informatie/wijk2_batterijen.txt', 'r')
+file =  open('Wijk_informatie/wijk1_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -84,7 +85,7 @@ for i in range(0, len(raw_battery)):
 	batteries[i].add_name(i + 1)
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
-batteries = sorted(batteries, key=lambda battery: battery.name)
+batteries = sorted(batteries, key=lambda battery: battery.y)
 houses = sorted(houses, key=lambda house: house.id)
 
 distance0list = []
@@ -116,7 +117,7 @@ distance4list = sorted(distance4list, key=lambda x: x[0])
 
 distanceslists = [distance0list, distance1list, distance2list, distance3list, distance4list]
 
-b = [0,0,0,0,0,0]
+b = [0,0,0,0,0]
 placednum = 0
 
 # place all the houses
@@ -145,19 +146,24 @@ while placednum < 150:
 		
 for house in houses:
 	if house.battery_no:
-		print("huis {} batterij {}".format(house.id, house.battery_no))
+		print("huis {} batterij {} voltage {}".format(house.id, house.battery_no, house.voltage))
 	else:
 		print house.voltage
 for battery in batteries:
 	print("batterij over {}".format(battery.spare_voltage))
 	
+solution = switching_algorithm(batteries, houses)
+batteries = solution[0]
+houses = solution[1]
+
+
 # DRAWING PART
 # get the house image
-house = read_png('wijk_informatie/house.png')
+house = read_png('Wijk_informatie/house.png')
 house_img = OffsetImage(house, zoom = .05)
 
 # get the battery image
-battery = read_png('wijk_informatie/battery.png')
+battery = read_png('Wijk_informatie/battery.png')
 battery_img = OffsetImage(battery, zoom = .05)
 
 # make a subplot to allow for add_artist
@@ -169,17 +175,46 @@ colors = ['b', 'r', 'y', 'c', 'g']
 for house in houses:
 	h_x = house.x
 	h_y = house.y
-	if house.battery_no:
-		b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
-		b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
-	else:
-		b_x = house.x
-		b_y = house.y
+	b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
+	b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
 	
-	cable_length += abs(b_y - h_y)
-	
-	cable_length += abs(b_x - h_x)
-	
+	# give them the img with colored border
+	ab = AnnotationBbox(house_img, [house.x, house.y],
+	xybox=(0, 0),
+	xycoords='data',
+	boxcoords="offset points",
+	bboxprops = dict(ec=colors[house.battery_no - 1]))                                  
+	ax.add_artist(ab)
 
+	# the Y coordinate line (keeps its x coordinate)
+	plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no - 1], linestyle='-')
+	cable_length += abs(b_y - h_y)
+	# the X coordinate line
+	plt.plot([h_x, b_x], [b_y, b_y], color = colors[house.battery_no - 1], linestyle='-')
+	cable_length += abs(b_x - h_x)
+
+for battery in batteries:
+
+	# add the battery images
+	for battery in batteries:
+		ab = AnnotationBbox(battery_img, [battery.x, battery.y],
+		xybox=(0, 0),
+		xycoords='data',
+		boxcoords="offset points",
+		bboxprops = dict(ec=colors[battery.name - 1]))                                  
+		ax.add_artist(ab)
+	
 print cable_length
 
+# make the major and minor grid
+plt.grid(b=True, which='major', color='k', linestyle='-')
+plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
+plt.minorticks_on()
+plt.xlabel("x")
+plt.ylabel("y")
+plt.axis([0, 50, 0, 50])
+plt.xticks([0, 10, 20, 30, 40, 50])
+plt.yticks([0, 10, 20, 30, 40, 50])
+plt.text(15, 55, "Cable length is " + str(cable_length))
+
+plt.show()
