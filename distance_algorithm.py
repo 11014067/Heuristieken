@@ -5,6 +5,8 @@ def distance_algorithm(batteries, houses, sort_battery):
 	print "Sorting..."
 	if (sort_battery != "voltage"):
 		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
+	elif (sort_battery == "random"):
+		batteries = random.shuffle(batteries)
 	else:
 		batteries = sorted(batteries, key=lambda battery: -battery.voltage)
 	
@@ -47,7 +49,7 @@ def distance_algorithm(batteries, houses, sort_battery):
 	
 	# place all the houses
 	while houses_to_place > 0:
-		for (var j = 0; j < batteries.length; j++):
+		for j in range(0, batteries.length - 1):
 			# only try to add if it has spare voltage
 			if batteries[j].spare_voltage > 0:
 				# place the first posible house

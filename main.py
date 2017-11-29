@@ -10,9 +10,9 @@ cable_length = 0
 # choose the neighboohood number
 wijk = '1'
 
-# choose the sorting method for batteries and houses (x, y, voltage or distance)
+# choose the sorting method for batteries and houses (x, y, voltage, random or distance)
 battery_sort = 'x'
-house_sort = 'distance'
+house_sort = 'x'
 
 # DOWNLOAD AND ORDER DATA
 information = download_data(wijk)
