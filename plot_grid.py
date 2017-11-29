@@ -2,7 +2,7 @@ from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
 import matplotlib.pyplot as plt
 
-def PlotGrid(houses, batteries):
+def plot_grid(houses, batteries):
 
 	# DRAWING PART
 	# get the house image

@@ -1,6 +1,6 @@
 from switcher import switching_algorithm
 
-def distanceAlgorithm(batteries, houses, sort_battery):
+def distance_algorithm(batteries, houses, sort_battery):
 	# Sort the batteries
 	print "Sorting..."
 	if (sort_battery != "voltage"):

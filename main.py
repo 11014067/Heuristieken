@@ -1,8 +1,8 @@
 from classesWijk import House, Battery
-from SortingAlgorithm import sorting_algorithm
-from DistanceAlgorithm import distanceAlgorithm
+from sorting_algorithm import sorting_algorithm
+from distance_algorithm import distance_algorithm
 from download_data import download_data
-from PlotGrid import PlotGrid as plot_grid
+from plot_grid import plot_grid as plot_grid
 
 # start the cable length
 cable_length = 0
@@ -21,7 +21,7 @@ houses = information[1]
 	
 # ALGORITHM
 if (house_sort == "distance"):
-	information = distanceAlgorithm(batteries, houses, battery_sort)
+	information = distance_algorithm(batteries, houses, battery_sort)
 else:
 	information = sorting_algorithm(batteries, houses, battery_sort, house_sort)
 batteries = information[0]
