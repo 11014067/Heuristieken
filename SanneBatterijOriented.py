@@ -1,11 +1,17 @@
 import csv
+import random
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
 from switcher import switching_algorithm
+from random import shuffle
+from ask_nicely import ask_nicely
 
 # start the cable length
 cable_length = 0
+
+ask_nicely()
+
 
 # define classes
 class House:
@@ -47,7 +53,7 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-with open('Wijk_informatie/wijk3_huizen.csv', 'rb') as csvfile:
+with open('Wijk_informatie/wijk2_huizen.csv', 'rb') as csvfile:
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
@@ -67,7 +73,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-file =  open('Wijk_informatie/wijk3_batterijen.txt', 'r')
+file =  open('Wijk_informatie/wijk2_batterijen.txt', 'r')
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
@@ -85,7 +91,7 @@ for i in range(0, len(raw_battery)):
 	batteries[i].add_name(i + 1)
 	print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 
-batteries = sorted(batteries, key=lambda battery: battery.x)
+#batteries = random.shuffle(batteries)
 houses = sorted(houses, key=lambda house: house.id)
 
 distance0list = []
@@ -95,6 +101,7 @@ distance3list = []
 distance4list = []
 
 for house in houses:
+	print batteries[0]
 	distance0 = abs(house.x - batteries[0].x) + abs(house.y - batteries[0].y)
 	distance1 = abs(house.x - batteries[1].x) + abs(house.y - batteries[1].y)
 	distance2 = abs(house.x - batteries[2].x) + abs(house.y - batteries[2].y)
@@ -151,10 +158,11 @@ for house in houses:
 		print house.voltage
 for battery in batteries:
 	print("batterij over {}".format(battery.spare_voltage))
-	
-solution = switching_algorithm(batteries, houses)
-batteries = solution[0]
-houses = solution[1]
+
+
+#solution = switching_algorithm(batteries, houses)
+#batteries = solution[0]
+#houses = solution[1]
 
 
 # DRAWING PART

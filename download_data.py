@@ -16,8 +16,8 @@ def download_data(x):
 		
 	
 	# stores the data into classes
-	def fillHouses(xy_house):
-		new_house = House(xy_house[0], xy_house[1], xy_house[2])
+	def fillHouses(xy_house, i):
+		new_house = House(xy_house[0], xy_house[1], xy_house[2], i)
 		return new_house
 	
 	houses = []
@@ -30,11 +30,11 @@ def download_data(x):
 	for line in file: 
 		if(line.split("\t")[0] != "pos"):
 			list_string = line.split("\t")[0]
-			list_string = list_string[1:len(list_string)-1]
+			list_string = list_string[1:len(list_string) - 1]
 			raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1]), float(line.split("\t")[-1].rstrip())])
 	
 	# stores the data into classes	
-	def fillBatteries(data_battery):
+	def fillBatteries(data_battery, i):
 		new_battery = Battery(data_battery[0], data_battery[1], data_battery[2])
 		return new_battery
 	

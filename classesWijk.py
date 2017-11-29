@@ -2,22 +2,23 @@
 
 class House:
 
-	def __init__(self, x, y, voltage):
+	def __init__(self, x, y, voltage, id):
 		self.x = x
 		self.y = y
 		self.voltage = voltage
 		self.battery_no = None
+		self.placed = False
+		self.id = id
 
 	def add_battery(self, battery_no):
-		self.battery_no = battery_no	
+		self.battery_no = battery_no
+		self.placed = True	
 
 class Battery:
 
 	def __init__(self, x, y, voltage):	
 		self.x = x
 		self.y = y
-		self.min_x = x
-		self.max_x = x
 		self.voltage = voltage
 		self.spare_voltage = voltage
 		
@@ -28,19 +29,9 @@ class Battery:
 	def add_house(self, house):
 	
 		if self.spare_voltage > house.voltage:
-			if self.min_x > house.x:
-				self.min_x = house.x
-				house.add_battery(self.name)
-				self.spare_voltage -= house.voltage
-				return True
-			elif self.max_x < house.x:
-				self.max_x = house.x
-				house.add_battery(self.name)
-				self.spare_voltage -= house.voltage
-				return True
-			else:
-				house.add_battery(self.name)
-				self.spare_voltage -= house.voltage
-				return True
+			house.add_battery(self.name)
+			self.spare_voltage -= house.voltage
+			return True
 		else:
 			return False
+			
