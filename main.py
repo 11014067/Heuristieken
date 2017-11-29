@@ -8,11 +8,11 @@ from plot_grid import plot_grid as plot_grid
 cable_length = 0
 
 # choose the neighboohood number
-wijk = '1'
+wijk = '2'
 
 # choose the sorting method for batteries and houses (x, y, voltage, random or distance)
 battery_sort = 'x'
-house_sort = 'x'
+house_sort = 'voltage'
 
 # DOWNLOAD AND ORDER DATA
 information = download_data(wijk)
