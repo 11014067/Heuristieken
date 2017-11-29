@@ -4,15 +4,15 @@ from distance_algorithm import distance_algorithm
 from download_data import download_data
 from plot_grid import plot_grid as plot_grid
 
-# start the cable length
-cable_length = 0
-
 # choose the neighborhood number
 wijk = '2'
 
 # choose the sorting method for batteries and houses (x, y, voltage, random or distance)
 battery_sort = 'x'
 house_sort = 'voltage'
+
+# start the cable length
+cable_length = 0
 
 # DOWNLOAD AND ORDER DATA
 information = download_data(wijk)
