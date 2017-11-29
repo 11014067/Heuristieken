@@ -2,8 +2,8 @@ import csv
 from classesWijk import House, Battery
 
 def download_data(x):
-	house_file = 'Wijk_informatie/wijk' + x + '_huizen.csv'
-	battery_file = 'Wijk_informatie/wijk' + x + '_batterijen.txt'
+	house_file = 'Information/wijk' + x + '_huizen.csv'
+	battery_file = 'Information/wijk' + x + '_batterijen.txt'
 
 	# download the raw house data in a list	
 	xyvolt= []
