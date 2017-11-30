@@ -9,10 +9,7 @@ class House:
 		self.id = id
 		self.battery_no = None
 		self.placed = False
-<<<<<<< HEAD:classesWijk.py
 		self.id = id
-=======
->>>>>>> fd1b21510a6ebbb69e0353046c08e7968a5ef397:neighborhood_classes.py
 
 	def add_battery(self, battery_no):
 		self.battery_no = battery_no

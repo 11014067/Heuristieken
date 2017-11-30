@@ -2,8 +2,8 @@ import csv
 from classesWijk import House, Battery
 
 def download_data(x):
-	house_file = 'Wijk_informatie/wijk' + x + '_huizen.csv'
-	battery_file = 'Wijk_informatie/wijk' + x + '_batterijen.txt'
+	house_file = 'Information/wijk' + x + '_huizen.csv'
+	battery_file = 'Information/wijk' + x + '_batterijen.txt'
 
 	# download the raw house data in a list	
 	xyvolt= []
@@ -22,7 +22,7 @@ def download_data(x):
 	
 	houses = []
 	for i in range(0, len(xyvolt)):
-		houses.append(fillHouses(xyvolt[i]))
+		houses.append(fillHouses(xyvolt[i], i))
 		
 	# download the raw battery data in a list		
 	raw_battery = []
@@ -34,7 +34,7 @@ def download_data(x):
 			raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1]), float(line.split("\t")[-1].rstrip())])
 	
 	# stores the data into classes	
-	def fillBatteries(data_battery, i):
+	def fillBatteries(data_battery):
 		new_battery = Battery(data_battery[0], data_battery[1], data_battery[2])
 		return new_battery
 	

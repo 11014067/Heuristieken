@@ -6,11 +6,11 @@ def plot_grid(houses, batteries):
 
 	# DRAWING PART
 	# get the house image
-	house = read_png('Wijk_informatie/house.png')
+	house = read_png('Information/house.png')
 	house_img = OffsetImage(house, zoom = .05)
 	
 	# get the battery image
-	battery = read_png('Wijk_informatie/battery.png')
+	battery = read_png('Information/battery.png')
 	battery_img = OffsetImage(battery, zoom = .05)
 	
 	# make a subplot to allow for add_artist
