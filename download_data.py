@@ -1,5 +1,5 @@
 import csv
-from classesWijk import House, Battery
+from neighboorhood_classes import House, Battery
 
 def download_data(x):
 	house_file = 'Information/wijk' + x + '_huizen.csv'
