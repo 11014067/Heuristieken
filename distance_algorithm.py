@@ -45,11 +45,13 @@ def distance_algorithm(batteries, houses, sort_battery):
 	
 	# Save the indexes and how many houses are placed
 	index_list = [0,0,0,0,0]
-	houses_to_place = houses.length
+	houses_to_place = len(houses)
+	print houses_to_place
 	
 	# place all the houses
 	while houses_to_place > 0:
-		for j in range(0, batteries.length - 1):
+		print houses_to_place
+		for j in range(0, len(batteries)):
 			# only try to add if it has spare voltage
 			if batteries[j].spare_voltage > 0:
 				# place the first posible house

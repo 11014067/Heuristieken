@@ -48,9 +48,9 @@ def ask_nicely():
 	
 	if sorting_method != "distance":
 		# ask for the batteries sorting method
-		print "You can sort the batteries on voltage, x, y or random."
+		print "You can sort the houses on voltage, x, y or random."
 		while check4:
-			sorting_houses = raw_input("Please enter a sorting method for the batteries: ")
+			sorting_houses = raw_input("Please enter a sorting method for the houses: ")
 			if sorting_houses in sorting_options:
 				if sorting_options.index(sorting_batteries) > 3:
 					sorting_houses = sorting_options[sorting_options.index(sorting_houses) - 2]
