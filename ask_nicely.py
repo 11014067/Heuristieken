@@ -52,9 +52,9 @@ def ask_nicely():
 		while check4:
 			sorting_houses = raw_input("Please enter a sorting method for the houses: ")
 			if sorting_houses in sorting_options:
-				if sorting_options.index(sorting_batteries) > 3:
+				if sorting_options.index(sorting_houses) > 3:
 					sorting_houses = sorting_options[sorting_options.index(sorting_houses) - 2]
-				print "You entered", sorting_batteries
+				print "You entered", sorting_houses
 				check4 = False
 			else:
 				print "Please choose x, y, voltage or random"
