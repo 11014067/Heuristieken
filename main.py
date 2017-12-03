@@ -8,17 +8,20 @@ from ask_nicely import ask_nicely
 ask_nicely()
 
 # choose the neighborhood number
-wijk = '2'
+wijk = '1'
 
 # choose the sorting method for batteries and houses (x, y, voltage, random or distance)
-battery_sort = 'y'
-house_sort = 'distance'
+battery_sort = 'x'
+house_sort = 'x'
+
+# choose the battery size, standaard bij wijk 1 1507, wijk 2 1508.25 en wijk 3 1506.75
+battery_size = [1507, 1507, 1507, 1507, 1507]
 
 # start the cable length
 cable_length = 0
 
 # DOWNLOAD AND ORDER DATA
-information = download_data(wijk)
+information = download_data(wijk, battery_size)
 batteries = information[0]
 houses = information[1]
 	
