@@ -26,16 +26,16 @@ def switching_algorithm(batteries, houses):
 			print (house.voltage)
 			print (makeroom.spare_voltage)
 			if makeroom.add_house(house):
-				print "HOORAY!"
+				print ("HOORAY!")
 			else:
-				print "Stop me if I go crazy!"
+				print ("Stop me if I go crazy!")
 				switching_algorithm(batteries, houses)
 				
 				
 	return [batteries, houses]
 	
 def pick_a_house(houses, batteries, makeroom, fill, last_try):
-	print last_try
+	print (last_try)
 	
 	big_house = 0
 	for house in houses:
