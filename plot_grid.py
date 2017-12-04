@@ -62,6 +62,6 @@ def plot_grid(houses, batteries, cost_of_neighborhood):
 	plt.xticks([0, 10, 20, 30, 40, 50])
 	plt.yticks([0, 10, 20, 30, 40, 50])
 	plt.text(10, 55, "Cable length is " + str(cable_length))
-	plt.text(35, 55, "Price is " + cost_of_neighborhood)
+	plt.text(35, 55, "Price is " + str(cost_of_neighborhood))
 	
 	return plt

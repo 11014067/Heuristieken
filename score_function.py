@@ -1,8 +1,10 @@
+import math
+
 def score_function(houses, batteries):
 	print("hey")
 	cost_of_neighborhood = 0
 	for house in houses:
-		if (house.battery.name >= 0):
+		if (int(house.battery_no) >= 0):
 			h_x = house.x
 			h_y = house.y
 			b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
