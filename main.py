@@ -33,7 +33,7 @@ houses = information[1]
 
 # PLOT
 plt = plot_grid(houses, batteries)
-plt.savefig("Visual_solutions/fig" + wijk + battery_sort + house_sort + ".png")
+plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + house_sort + ".png")
 plt.show()
 
 

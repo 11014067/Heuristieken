@@ -1,3 +1,5 @@
+from switcher import switching_algorithm
+
 def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
@@ -27,8 +29,12 @@ def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 			if (i > len(batteries) - 1 and house_placed == False):
 				solution = False
 				break
-		
+	
 	for i in range(0, len(batteries) - 1):
 		print (batteries[i].spare_voltage)
+	
+	solution = switching_algorithm(batteries, houses)
+	batteries = solution[0]
+	houses = solution[1]
 
 	return [batteries, houses, solution]
