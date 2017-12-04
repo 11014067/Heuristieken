@@ -5,6 +5,7 @@ from download_data import download_data
 from plot_grid import plot_grid as plot_grid
 from ask_nicely import ask_nicely
 from score_function import score_function
+from switcher import switching_algorithm
 
 # remember the method to use
 method = ask_nicely()
@@ -31,6 +32,11 @@ elif (method[1] == "sorting"):
 	information = sorting_algorithm(batteries, houses, battery_sort, house_sort)
 batteries = information[0]
 houses = information[1]
+
+# SWITCH (and print cables)
+solution = switching_algorithm(batteries, houses)
+batteries = solution[0]
+houses = solution[1]
 
 # SCORE
 cost_of_neighborhood = score_function(houses, batteries)
