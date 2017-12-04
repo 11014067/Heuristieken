@@ -1,7 +1,7 @@
 import csv
-from neighboorhood_classes import House, Battery
+from neighborhood_classes import House, Battery
 
-def download_data(x):
+def download_data(x, battery_size):
 	house_file = 'Information/wijk' + x + '_huizen.csv'
 	battery_file = 'Information/wijk' + x + '_batterijen.txt'
 
@@ -31,16 +31,16 @@ def download_data(x):
 		if(line.split("\t")[0] != "pos"):
 			list_string = line.split("\t")[0]
 			list_string = list_string[1:len(list_string) - 1]
-			raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1]), float(line.split("\t")[-1].rstrip())])
+			raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1])])
 	
-	# stores the data into classes	
-	def fillBatteries(data_battery):
-		new_battery = Battery(data_battery[0], data_battery[1], data_battery[2])
+	# stores the data into classes
+	def fillBatteries(data_battery, i):
+		new_battery = Battery(data_battery[0], data_battery[1], battery_size[i])
 		return new_battery
 	
 	batteries = []
 	for i in range(0, len(raw_battery)):
-		batteries.append(fillBatteries(raw_battery[i]))
+		batteries.append(fillBatteries(raw_battery[i], i))
 		batteries[i].add_name(i)
 		print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
 	return [batteries, houses]

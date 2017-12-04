@@ -5,27 +5,28 @@ from download_data import download_data
 from plot_grid import plot_grid as plot_grid
 from ask_nicely import ask_nicely
 
-ask_nicely()
+# remember the method to use
+method = ask_nicely()
 
 # choose the neighborhood number
-wijk = '2'
+neighborhood = method[0]
 
 # choose the sorting method for batteries and houses (x, y, voltage, random or distance)
-battery_sort = 'y'
-house_sort = 'distance'
+battery_sort = method[2]
+house_sort = method[3]
 
-# start the cable length
-cable_length = 0
+# choose the battery size, standaard bij wijk 1 1507, wijk 2 1508.25 en wijk 3 1506.75
+battery_size = [1507, 1507, 1507, 1507, 1507]
 
 # DOWNLOAD AND ORDER DATA
-information = download_data(wijk)
+information = download_data(neighborhood, battery_size)
 batteries = information[0]
 houses = information[1]
 	
 # ALGORITHM
-if (house_sort == "distance"):
+if (method[1] == "distance"):
 	information = distance_algorithm(batteries, houses, battery_sort)
-else:
+elif (method[1] == "sorting"):
 	information = sorting_algorithm(batteries, houses, battery_sort, house_sort)
 batteries = information[0]
 houses = information[1]
