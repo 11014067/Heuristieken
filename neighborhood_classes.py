@@ -7,7 +7,7 @@ class House:
 		self.y = y
 		self.voltage = voltage
 		self.id = id
-		self.battery_no = None
+		self.battery_no = -1
 		self.placed = False
 		self.id = id
 
