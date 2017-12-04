@@ -1,5 +1,5 @@
 def switching_algorithm(batteries, houses):
-	print "#############################"
+	print ("#############################")
 	
 	makeroom = sorted(batteries, key=lambda battery: battery.spare_voltage)[4]
 	fill = sorted(batteries, key=lambda battery: battery.spare_voltage)[3]
@@ -23,8 +23,8 @@ def switching_algorithm(batteries, houses):
 	
 	for house in houses:
 		if house.placed == False:
-			print house.voltage
-			print makeroom.spare_voltage
+			print (house.voltage)
+			print (makeroom.spare_voltage)
 			if makeroom.add_house(house):
 				print "HOORAY!"
 			else:
@@ -60,7 +60,7 @@ def pick_a_house(houses, batteries, makeroom, fill, last_try):
 				small_house = house
 	
 	if small_house == 999999:
-		print "Let's do this again!"
+		print ("Let's do this again!")
 		picked_houses = pick_a_house(houses, batteries, makeroom, fill, big_house.voltage)
 		small_house = picked_houses[0]
 		big_house = picked_houses[1]
