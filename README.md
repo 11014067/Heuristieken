@@ -4,8 +4,8 @@ In this project there is a hypothetical neighborhood with 150 houses. Each of th
 create electricity through solar panels and need to store that in a battery. These 
 batteries are collective and spread through the neighborhood, connected to the houses
 by electricity cables.
-Given the location of the houses, the goal of this problem is to find the shortest 
-way to connect each house to a battery or the lowest price to connect this neighborhood.
+Given the location of the houses, the goal of this problem is to the lowest price to 
+connect this neighborhood, given certain prices for cable and batteries.
 
 ## Getting Started
 
@@ -47,10 +47,10 @@ There are several sub folders containing functions, algorithms, visualizations a
 to increase conspectus and facilitate reusing certain aspects of the code. A quick summary 
 of all the folder and their containments:
 
-* Deprecated - 
+* Deprecated - Older files that aren't used anymore.
 * Information - Information about the case and the neighborhoods: datasets with coordinates 
 				and computed upper and lower bounds for the solution.
-* Test - Older versions of functions and algorithms, conserved for research purposes only.
+* Test - New versions of functions and algorithms, for research purposes only.
 * Visual_solutions - Visual representations of solutions to the problems. The main.py code is 
 					 designed to save newly created solutions automatically here.
 * ignore - Necessary to ignore *.pyc files, not necessary to run any algorithm.
@@ -59,13 +59,13 @@ of all the folder and their containments:
 
 * **Daphne Box** - *Contributor* 
 * **Sanne Oud** - *Contributor* 
-* **Jasper Steven den Duijf** - *Master Mind* 
+* **Jasper Steven den Duijf** - *Contributor* 
 
 ## Acknowledgments
 
 * This project is still under construction and therefore not every file might be in the 
 proper location. Our apologies for the inconvenience. If the main.py file isn't working,
-try to go back in the branch to get an older version, marked with the comment "Working!".
+try to go back in the branch to get an older version.
 * In case of questions and/or remarks, please contact us on jasperdenduijf@hotmail.com.
 * We are not responsible for any damage done to your machine. Use this algorithm on your own risk.
 
