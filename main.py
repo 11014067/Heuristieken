@@ -4,6 +4,7 @@ from distance_algorithm import distance_algorithm
 from download_data import download_data
 from plot_grid import plot_grid as plot_grid
 from ask_nicely import ask_nicely
+from score_function import score_function
 
 # remember the method to use
 method = ask_nicely()
@@ -31,8 +32,11 @@ elif (method[1] == "sorting"):
 batteries = information[0]
 houses = information[1]
 
+# SCORE
+cost_of_neighborhood = score_function(houses, batteries)
+
 # PLOT
-plt = plot_grid(houses, batteries)
+plt = plot_grid(houses, batteries, cost_of_neighborhood)
 plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + house_sort + ".png")
 plt.show()
 
