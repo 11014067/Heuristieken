@@ -28,10 +28,10 @@ def plot_grid(houses, batteries):
 		
 		# give them the img with colored border
 		ab = AnnotationBbox(house_img, [house.x, house.y],
-		xybox=(0, 0),
-		xycoords='data',
-		boxcoords="offset points",
-		bboxprops = dict(ec=colors[house.battery_no]))                                  
+			xybox=(0, 0),
+			xycoords='data',
+			boxcoords="offset points",
+			bboxprops = dict(ec=colors[house.battery_no]))                                  
 		ax.add_artist(ab)
 
 		# the Y coordinate line (keeps its x coordinate)
@@ -55,8 +55,8 @@ def plot_grid(houses, batteries):
 		# add the battery cost to the cost
 		cost += int((math.log(battery.voltage, math.e)*649.21) - 3066.2)
 	
-	print cable_length
-	print cost
+	print (cable_length)
+	print (cost)
 	
 	# make the major and minor grid
 	plt.grid(b=True, which='major', color='k', linestyle='-')

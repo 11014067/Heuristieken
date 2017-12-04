@@ -2,7 +2,9 @@ def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
 	print "Sorting..."
-	if (sort_battery != "voltage"):
+	if (sort_battery == "random"):
+		#doe 
+	elif (sort_battery != "voltage"):
 		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
 	else:
 		batteries = sorted(batteries, key=lambda battery: -battery.voltage)
@@ -13,22 +15,20 @@ def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 		houses = sorted(houses, key=lambda house: -house.voltage)
 	
 	# link houses and batteries
-	housenumber = 0
 	solution = True
 	for house in houses:
-		unplaced = True
+		house_placed = False
 		i = 0
-		while unplaced:
-			if batteries[i].add_house(house):
-				unplaced = False
-				print "House {} is connected to battery {} voltage {}".format(housenumber, house.battery_no, house.voltage)
+		while (house_placed == False):
+			if (batteries[i].add_house(house)):
+				house_placed = True
+				print ("House {} is connected to battery {} voltage {}".format(house.id, house.battery_no, house.voltage))
 			i+=1
-			if i > 4 and unplaced == True:
+			if (i > len(batteries) - 1 and house_placed == False):
 				solution = False
 				break
-		housenumber+=1
 		
-	for i in range(0,5):
-		print batteries[i].spare_voltage
+	for i in range(0, len(batteries) - 1):
+		print (batteries[i].spare_voltage)
 
 	return [batteries, houses, solution]

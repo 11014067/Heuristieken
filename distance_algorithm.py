@@ -2,11 +2,11 @@ from switcher import switching_algorithm
 
 def distance_algorithm(batteries, houses, sort_battery):
 	# Sort the batteries
-	print "Sorting..."
-	if (sort_battery != "voltage"):
-		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
-	elif (sort_battery == "random"):
+	print ("Sorting...")
+	if (sort_battery == "random"):
 		batteries = random.shuffle(batteries)
+	elif (sort_battery != "voltage"):
+		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
 	else:
 		batteries = sorted(batteries, key=lambda battery: -battery.voltage)
 	
@@ -46,41 +46,41 @@ def distance_algorithm(batteries, houses, sort_battery):
 	# Save the indexes and how many houses are placed
 	index_list = [0,0,0,0,0]
 	houses_to_place = len(houses)
-	print houses_to_place
+	print (houses_to_place)
 	
 	# place all the houses
-	while houses_to_place > 0:
-		print houses_to_place
+	while (houses_to_place > 0):
 		for j in range(0, len(batteries)):
 			# only try to add if it has spare voltage
-			if batteries[j].spare_voltage > 0:
+			if (batteries[j].spare_voltage > 0):
 				# place the first posible house
-				placeHouse = False
-				while placeHouse == False:
-					if index_list[j] == 150:
-						index_list[j] = 149
+				place_house = False
+				while (place_house == False):
+					if (index_list[j] == len(houses)):
+						index_list[j] = len(houses) - 1
 						# if there are no houses left to place, go to the next battery
-						placeHouse = True
-					elif houses[distanceslists[j][index_list[j]][1]].placed == False:
-						if batteries[j].add_house(houses[distanceslists[j][index_list[j]][1]]):
+						place_house = True
+					elif (houses[distanceslists[j][index_list[j]][1]].placed == False):
+						if (batteries[j].add_house(houses[distanceslists[j][index_list[j]][1]])):
 							# house placed op true
 							houses_to_place -= 1
 							# go to the next battery
-							placeHouse = True
+							place_house = True
 					index_list[j] += 1
-		if index_list[0] == 150 and index_list[1] == 150 and index_list[2] == 150 and index_list[3] == 150 and index_list[4] == 150:
+		if (index_list[0] == 150 and index_list[1] == 150 and index_list[2] == 150 and index_list[3] == 150 and index_list[4] == 150):
 			print(" UNSUCCESFULL ")
 			break
 			
 	for house in houses:
-		if house.battery_no:
+		if (house.battery_no):
 			print("huis {} batterij {} voltage {}".format(house.id, house.battery_no, house.voltage))
 		else:
-			print house.voltage
+			print (house.voltage)
+			
 	for battery in batteries:
 		print("batterij over {}".format(battery.spare_voltage))
 		
 	solution = switching_algorithm(batteries, houses)
 	batteries = solution[0]
 	houses = solution[1]
-	return [batteries, houses, solution]
+	return [batteries, houses]
