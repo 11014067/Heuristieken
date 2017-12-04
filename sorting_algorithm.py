@@ -1,7 +1,7 @@
 def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 	
 	#Algorithm
-	print "Sorting..."
+	print ("Sorting...")
 	if (sort_battery == "random"):
 		#doe 
 	elif (sort_battery != "voltage"):
