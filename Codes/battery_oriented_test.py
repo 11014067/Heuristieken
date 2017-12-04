@@ -79,12 +79,7 @@ for i in range(0, len(xyvolt)):
 # BATERY PART
 # download the raw battery data in a list		
 raw_battery = []
-# <<<<<<< HEAD:SanneBatterijOriented.py
-file =  open(os.path.normpath('../../Heuristieken/Information/wijk2_batterijen.txt'), 'r')
-# =======
-
-file =  open(os.path.normpath('../../Heuristieken/Information/wijk1_batterijen.txt'), 'r')
-# >>>>>>> fd1b21510a6ebbb69e0353046c08e7968a5ef397:battery_oriented.py
+file =  open(os.path.normpath('../../Heuristieken/Information/wijk'+neighborhood_number+'_batterijen.txt'), 'r') # regel dit in samenwerking met ask nicely
 for line in file: 
 	if(line.split("\t")[0] != "pos"):
 		list_string = line.split("\t")[0]
