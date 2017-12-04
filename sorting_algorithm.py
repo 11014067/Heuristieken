@@ -3,7 +3,7 @@ def sorting_algorithm(batteries, houses, sort_battery, sort_house):
 	#Algorithm
 	print ("Sorting...")
 	if (sort_battery == "random"):
-		#doe 
+		batteries = random.shuffle(batteries)
 	elif (sort_battery != "voltage"):
 		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
 	else:
