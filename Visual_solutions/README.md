@@ -16,7 +16,7 @@ Every visualization has the following characteristics:
 
 Names are created by "fig" + neighborhoodnumber + "x"/"y"/"voltage" the batteries where sorted on + "x"/"y"/"voltage" the houses are sorted on.
 
-Or the names are "fig" + neigborhoodnumber + "b" for battery oriented + "s" for switch if used + "x"/"y"/"voltage"/"r" for how the batteries are sorted, where r means random.
+Or the names are "fig" + neigborhoodnumber + "x"/"y"/"voltage" for how the batteries are sorted, where r means random.
 
 ### Marks
 
