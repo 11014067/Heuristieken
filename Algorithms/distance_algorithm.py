@@ -1,4 +1,4 @@
-from switcher import switching_algorithm
+from Functions.switcher import switching_algorithm
 
 def distance_algorithm(batteries, houses, sort_battery):
 	# Sort the batteries

@@ -1,11 +1,11 @@
-from neighborhood_classes import House, Battery
-from sorting_algorithm import sorting_algorithm
-from distance_algorithm import distance_algorithm
-from download_data import download_data
-from plot_grid import plot_grid as plot_grid
-from ask_nicely import ask_nicely
-from score_function import score_function
-from switcher import switching_algorithm
+from Classes.neighborhood_classes import House, Battery
+from Algorithms.sorting_algorithm import sorting_algorithm
+from Algorithms.distance_algorithm import distance_algorithm
+from Functions.download_data import download_data
+from Functions.plot_grid import plot_grid as plot_grid
+from Functions.ask_nicely import ask_nicely
+from Functions.score_function import score_function
+from Functions.switcher import switching_algorithm
 
 # remember the method to use
 method = ask_nicely()
@@ -43,7 +43,10 @@ cost_of_neighborhood = score_function(houses, batteries)
 
 # PLOT
 plt = plot_grid(houses, batteries, cost_of_neighborhood)
-plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + house_sort + ".png")
+if (method[1] == "distance"):
+	plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + ".png")
+else:
+	plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + house_sort + ".png")
 plt.show()
 
 

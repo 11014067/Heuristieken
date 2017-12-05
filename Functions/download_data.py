@@ -1,9 +1,10 @@
 import csv
-from neighborhood_classes import House, Battery
+import os
+from Classes.neighborhood_classes import House, Battery
 
 def download_data(x, battery_size):
-	house_file = 'Information/wijk' + x + '_huizen.csv'
-	battery_file = 'Information/wijk' + x + '_batterijen.txt'
+	house_file = os.path.normpath('Information/wijk' + x + '_huizen.csv')
+	battery_file = os.path.normpath('Information/wijk' + x + '_batterijen.txt')
 
 	# download the raw house data in a list	
 	xyvolt= []

@@ -3,9 +3,9 @@ import random
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
-from switcher import switching_algorithm
-from random import shuffle
-from ask_nicely import ask_nicely
+from Heuristieken.Functions.switcher import switching_algorithm
+from Heuristieken.Functions.random import shuffle
+from Heuristieken.Functions.ask_nicely import ask_nicely
 
 # start the cable length
 cable_length = 0
@@ -53,12 +53,8 @@ class Battery:
 # HOUSE PART
 # download the raw house data in a list			
 xyvolt= []
-<<<<<<< HEAD:SanneBatterijOriented.py
-with open('Wijk_informatie/wijk2_huizen.csv', 'rb') as csvfile:
-=======
+with open(os.path.normpath('../Informatie/wijk2_huizen.csv', 'rb')) as csvfile:
 
-with open('Wijk_informatie/wijk1_huizen.csv', 'rb') as csvfile:
->>>>>>> fd1b21510a6ebbb69e0353046c08e7968a5ef397:battery_oriented.py
 	reader = csv.reader(csvfile, delimiter = ',')
 	i = 0
 	for row in reader:
