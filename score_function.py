@@ -13,10 +13,10 @@ def score_function(houses, batteries):
 		else:
 			print("house {} is not connected".format(house.id))
 		
-	
+	cable_length = cost_of_neighborhood
 	cost_of_neighborhood *= 9
 	
 	for battery in batteries:
 		cost_of_neighborhood += int((math.log(battery.voltage, math.e)*649.21) - 3066.2)
 	
-	return (cost_of_neighborhood)
+	return [cable_length, cost_of_neighborhood]

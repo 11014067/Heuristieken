@@ -39,10 +39,12 @@ batteries = solution[0]
 houses = solution[1]
 
 # SCORE
-cost_of_neighborhood = score_function(houses, batteries)
+scores = score_function(houses, batteries)
+cable_length = scores[0]
+cost_of_neighborhood = scores[1]
 
 # PLOT
-plt = plot_grid(houses, batteries, cost_of_neighborhood)
+plt = plot_grid(houses, batteries, cable_length, cost_of_neighborhood)
 plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + house_sort + ".png")
 plt.show()
 

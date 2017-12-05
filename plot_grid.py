@@ -3,7 +3,7 @@ from matplotlib._png import read_png
 import matplotlib.pyplot as plt
 import math
 
-def plot_grid(houses, batteries, cost_of_neighborhood):
+def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 
 	# DRAWING PART
 	# get the house image
@@ -36,10 +36,10 @@ def plot_grid(houses, batteries, cost_of_neighborhood):
 
 		# the Y coordinate line (keeps its x coordinate)
 		plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
-		cable_length += abs(b_y - h_y)
+	
 		# the X coordinate line
 		plt.plot([h_x, b_x], [b_y, b_y], color = colors[house.battery_no], linestyle='-')
-		cable_length += abs(b_x - h_x)
+	
 	
 	# add the battery images
 	for battery in batteries:
@@ -49,8 +49,6 @@ def plot_grid(houses, batteries, cost_of_neighborhood):
 			boxcoords="offset points",
 			bboxprops = dict(ec=colors[battery.name]))                                  
 		ax.add_artist(ab)
-	
-	print (cable_length)
 	
 	# make the major and minor grid
 	plt.grid(b=True, which='major', color='k', linestyle='-')
