@@ -8,8 +8,8 @@ def download_data(x, battery_size):
 	# download the raw house data in a list	
 	xyvolt= []
 
-	with open(house_file, 'rb') as csvfile:
-		reader = csv.reader(csvfile, delimiter = ',')
+	with open(house_file, "rt", encoding="utf8") as csvfile:
+		reader = csv.reader(csvfile, delimiter = ",")
 		for row in reader:
 			if row[0] != "x":
 				xyvolt.append([int(row[0]), int(row[1]), float(row[2])])

@@ -1,6 +1,19 @@
 def switching_algorithm(batteries, houses):
 	print ("#############################")
 	
+	houses = sorted(houses, key=lambda house: house.id)
+	
+	unplaced_houses = 0
+	for house in houses:
+		if (house.battery_no >= 0):
+			print ("House {} is connected to battery {} voltage {}".format(house.id, house.battery_no, house.voltage))
+		else:
+			print ("House {} is not connected, voltage is {}".format(house.id, house.voltage))
+			unplaced_houses += 1
+	if (unplaced_houses == 0):
+		print ("HOORAY")
+		return [batteries, houses]
+	
 	makeroom = sorted(batteries, key=lambda battery: battery.spare_voltage)[4]
 	fill = sorted(batteries, key=lambda battery: battery.spare_voltage)[3]
 	print("Ruimte naar batterij {} spare voltage {}".format(makeroom.name, makeroom.spare_voltage))
