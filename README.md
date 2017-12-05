@@ -50,6 +50,7 @@ of all the folder and their containments:
 * Algorithms - The codes needed for the sorting, switching and greedy algorithms.
 * Classes - Classes and classes specific functions necessary for the algorithms.
 * Deprecated - Older files that aren't used anymore.
+* Functions - All assisting functions, like plotting, downloadling data and more.
 * Information - Information about the case and the neighborhoods: datasets with coordinates 
 				and computed upper and lower bounds for the solution.
 * Test - New versions of functions and algorithms, for research purposes only.
