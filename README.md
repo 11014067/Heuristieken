@@ -47,6 +47,8 @@ There are several sub folders containing functions, algorithms, visualizations a
 to increase conspectus and facilitate reusing certain aspects of the code. A quick summary 
 of all the folder and their containments:
 
+* Algorithms - The codes needed for the sorting, switching and greedy algorithms.
+* Classes - Classes and classes specific functions necessary for the algorithms.
 * Deprecated - Older files that aren't used anymore.
 * Information - Information about the case and the neighborhoods: datasets with coordinates 
 				and computed upper and lower bounds for the solution.
