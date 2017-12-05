@@ -44,12 +44,11 @@ cable_length = scores[0]
 cost_of_neighborhood = scores[1]
 
 # PLOT
-plt = plot_grid(houses, batteries, cost_of_neighborhood)
+plt = plot_grid(houses, batteries, cable_length, cost_of_neighborhood)
 if (method[1] == "distance"):
 	plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + ".png")
 else:
 	plt.savefig("Visual_solutions/fig" + neighborhood + battery_sort + house_sort + ".png")
-plt = plot_grid(houses, batteries, cable_length, cost_of_neighborhood)
 plt.show()
 
 
