@@ -1,10 +1,11 @@
 from Functions.switcher import switching_algorithm
+import random
 
 def distance_algorithm(batteries, houses, sort_battery):
 	# Sort the batteries
 	print ("Sorting...")
 	if (sort_battery == "random"):
-		batteries = random.shuffle(batteries)
+		batteries = random.sample(batteries, len(batteries))
 	elif (sort_battery != "voltage"):
 		batteries = sorted(batteries, key=lambda battery: getattr(battery, sort_battery))
 	else:
