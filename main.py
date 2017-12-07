@@ -6,6 +6,7 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
+import random
 
 # remember the method to use
 method = ask_nicely()
