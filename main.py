@@ -28,7 +28,8 @@ batteries = information[0]
 houses = information[1]
 	
 # TEST
-free_batteries(houses)	
+battery_coordinates = free_batteries(houses)
+print(battery_coordinates)	
 	
 # ALGORITHM
 if (method[1] == "distance"):

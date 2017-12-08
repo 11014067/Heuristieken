@@ -7,7 +7,6 @@ def free_batteries(houses) :
 	breakLoop = False
 	while (breakLoop == False):
 		houses_amount = 0
-		print(houses_amount)
 		for house in houses:
 			if (((house.x - coordinates[x]) >= 0 and (house.x - coordinates[x]) < 10) and ((house.y - coordinates[y]) >= 0 ) and ((house.y - coordinates[y]) < 10)):
 				houses_amount += 1
@@ -21,22 +20,20 @@ def free_batteries(houses) :
 			else:
 				x = 0
 				y += 1
+		
 	battery_coordinates = []
 	list_co = sorted(list_co, key=lambda listCo: -listCo[2])
-	print( len(list_co))
-	for i in range(0, 6):
-		print(list_co)
-		print("#################")
+
+	for i in range(0, 8):
 		xCoor = list_co[0][0]
 		yCoor = list_co[0][1]
 		battery_coordinates.append([xCoor, yCoor])
+		remove_list = []
 		for list_object in list_co:
-			if (abs(list_object[0] - xCoor) < 6 ):
-				list_co.remove(list_object)
-			elif (abs(list_object[1] - yCoor) < 6):
-				list_co.remove(list_object)
-	
-	print(len(list_co))
-	print(battery_coordinates, list_co)
+			if (abs(list_object[0] - xCoor) < 6 and abs(list_object[1] - yCoor) < 6):
+				remove_list.append(list_object)
+		for list_object in remove_list:
+			list_co.remove(list_object)
+	return battery_coordinates
 		
 		
