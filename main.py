@@ -21,6 +21,7 @@ battery_sort = method[2]
 house_sort = method[3]
 
 # choose the battery size, standaard bij wijk 1 1507, wijk 2 1508.25 en wijk 3 1506.75
+
 battery_size = [1000, 30, 1507, 1507, 1507]
 
 # DOWNLOAD AND ORDER DATA
