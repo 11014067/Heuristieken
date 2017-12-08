@@ -61,9 +61,9 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	plt.text(35, 55, "Price is " + str(cost_of_neighborhood))
 	
 	batteries = sorted(batteries, key=lambda battery: -battery.name)
-	a = 10
+	a = 5
 	for battery in batteries:
-		plt.text(52, a, str(battery.name) + " : " + str(battery.voltage))
+		plt.text(51, a, str(battery.name) + ": " + str(battery.voltage))
 		a += 10
 	
 	return plt
