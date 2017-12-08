@@ -17,7 +17,7 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	# make a subplot to allow for add_artist
 	ax = plt.subplot(111)
 	
-	colors = ['b', 'r', 'y', 'c', 'g']
+	colors = ['b', 'r', 'y', 'c', 'g', '#777777', '#000000', '#ef7700', '#8b00ef']
 	for house in houses:
 		h_x = house.x
 		h_y = house.y

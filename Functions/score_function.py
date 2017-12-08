@@ -2,6 +2,7 @@ import math
 
 def score_function(houses, batteries):
 	cost_of_neighborhood = 0
+
 	for house in houses:
 		if (int(house.battery_no) >= 0):
 			h_x = house.x
