@@ -6,6 +6,7 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
+from Test.free_batteries import free_batteries
 import random
 
 # remember the method to use
@@ -25,6 +26,9 @@ battery_size = [1507, 1507, 1507, 1507, 1507]
 information = download_data(neighborhood, battery_size)
 batteries = information[0]
 houses = information[1]
+	
+# TEST
+free_batteries(houses)	
 	
 # ALGORITHM
 if (method[1] == "distance"):
