@@ -58,10 +58,8 @@ cost_of_neighborhood = scores[1]
 
 # PLOT
 plt = plot_grid(houses, batteries, cable_length, cost_of_neighborhood)
-if (house_sort):
-	plt.savefig("Visual_solutions/fig_" + method [1] + neighborhood + battery_sort + house_sort + "_" + str(len(batteries)) + "batteries.png")
-else:
-	plt.savefig("Visual_solutions/fig_" + method[1] + neighborhood + battery_sort + "_" + str(len(batteries)) + "batteries.png")
+plt.savefig("Visual_solutions/fig_" + method[1] + str(neighborhood) + battery_sort + str(house_sort) + "_" + str(len(batteries)) + "batteries.png")
+
 plt.show()
 
 
