@@ -1,4 +1,5 @@
 from Test.classes2 import Neighborhood_class
+#from Test.classes2b import Neighborhood_class
 from Classes.neighborhood_classes import House, Battery
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Algorithms.distance_algorithm import distance_algorithm
