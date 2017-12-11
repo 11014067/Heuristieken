@@ -43,5 +43,5 @@ def download_data(x, battery_size):
 	for i in range(0, len(raw_battery)):
 		batteries.append(fillBatteries(raw_battery[i], i))
 		batteries[i].add_name(i)
-		print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
+		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
 	return [batteries, houses]

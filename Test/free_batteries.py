@@ -1,4 +1,4 @@
-def free_batteries(houses) :
+def free_batteries(houses): 
 	list_co = []
 	
 	coordinates = [0, 5, 10, 15, 20, 25, 30, 35, 40]

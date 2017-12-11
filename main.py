@@ -8,6 +8,7 @@ from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from Test.free_batteries import free_batteries
 from Test.new_batteries import new_batteries
+from Test.forlooptest import test_algorithm
 import random
 
 # remember the method to use
@@ -38,7 +39,8 @@ batteries = better_batteries
 	
 # ALGORITHM
 if (method[1] == "distance"):
-	information = distance_algorithm(batteries, houses, battery_sort)
+	information = test_algorithm(batteries, houses, battery_sort)
+	#information = distance_algorithm(batteries, houses, battery_sort)
 elif (method[1] == "sorting"):
 	information = sorting_algorithm(batteries, houses, battery_sort, house_sort)
 batteries = information[0]

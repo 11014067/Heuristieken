@@ -63,15 +63,16 @@ def test_algorithm(batteries, houses, sort_battery):
 			break
 			
 	for house in houses:
-		if (house.battery_no):
-			print("huis {} batterij {} voltage {}".format(house.id, house.battery_no, house.voltage))
+		if (self.battery_no > -1):
+			print("House number: {}, battery : {}".format(self.id, self.battery_no))
 		else:
-			print (house.voltage)
+			print("House {} is {} volt and not linked to a battery".format(self.id, self.voltage))
 			
 	for battery in batteries:
 		print("batterij over {}".format(battery.spare_voltage))
-		
+	
 	solution = switching_algorithm(batteries, houses)
 	batteries = solution[0]
 	houses = solution[1]
+	
 	return [batteries, houses]

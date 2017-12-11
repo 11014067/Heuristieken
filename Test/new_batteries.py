@@ -14,5 +14,5 @@ def new_batteries(battery_coordinates, battery_size):
 		batteries.append(fillBatteries(battery_coordinates[i], i))
 		batteries[i].add_name(i)
 		print("WOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOW")
-		print("Battery {} on index {} has x = {}".format(batteries[i].name, i, batteries[i].x))
+		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
 	return batteries

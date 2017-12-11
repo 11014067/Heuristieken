@@ -13,7 +13,7 @@ class House:
 
 	def add_battery(self, battery_no):
 		self.battery_no = battery_no
-		self.placed = True	
+		self.placed = True
 
 class Battery:
 
@@ -23,14 +23,14 @@ class Battery:
 		self.voltage = voltage
 		self.spare_voltage = voltage
 		
-	def add_name(self, name):
-		self.name = name
+	def add_name(self, id):
+		self.id = id
 	
 	# checks whether a house can be added and adds if possible
 	def add_house(self, house):
 	
 		if self.spare_voltage > house.voltage:
-			house.add_battery(self.name)
+			house.add_battery(self.id)
 			self.spare_voltage -= house.voltage
 			return True
 		else:
