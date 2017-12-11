@@ -16,8 +16,8 @@ def switching_algorithm(batteries, houses):
 	
 	makeroom = sorted(batteries, key=lambda battery: battery.spare_voltage)[4]
 	fill = sorted(batteries, key=lambda battery: battery.spare_voltage)[3]
-	print("Ruimte naar batterij {} spare voltage {}".format(makeroom.name, makeroom.spare_voltage))
-	print("Ruimte van batterij {} spare voltage {}".format(fill.name, fill.spare_voltage))
+	print("Ruimte naar batterij {} spare voltage {}".format(makeroom.id, makeroom.spare_voltage))
+	print("Ruimte van batterij {} spare voltage {}".format(fill.id, fill.spare_voltage))
 	
 	picked_houses = pick_a_house(houses, batteries, makeroom, fill, 99999999)
 	small_house = picked_houses[0]
