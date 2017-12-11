@@ -5,7 +5,6 @@ from Algorithms.sorting_algorithm import sorting_algorithm
 from Algorithms.distance_algorithm import distance_algorithm
 from Test.TESTdownload_data import TESTdownload_data as download_data
 from Functions.plot_grid import plot_grid as plot_grid
-from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from Test.free_batteries import free_batteries
