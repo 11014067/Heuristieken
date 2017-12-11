@@ -16,9 +16,6 @@ def TESTmain():
 	# remember the method to use
 	method = ["1", "s", True, "x", "x"]
 	
-	Neighborhood_class.House(10, 11, 12, 3)
-	print(Neighborhood_class.houses[0].id)
-	
 	# choose the neighborhood number
 	neighborhood = method[0]
 	
