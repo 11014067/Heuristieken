@@ -21,8 +21,8 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	for house in houses:
 		h_x = house.x
 		h_y = house.y
-		b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
-		b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
+		b_x = next(battery for battery in batteries if battery.id == house.battery_no).x
+		b_y = next(battery for battery in batteries if battery.id == house.battery_no).y
 		
 		# give them the img with colored border
 		ab = AnnotationBbox(house_img, [house.x, house.y],
@@ -45,7 +45,7 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 			xybox=(0, 0),
 			xycoords='data',
 			boxcoords="offset points",
-			bboxprops = dict(ec=colors[battery.name]))                                  
+			bboxprops = dict(ec=colors[battery.id]))                                  
 		ax.add_artist(ab)
 	
 	# make the major and minor grid
@@ -60,10 +60,10 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	plt.text(10, 55, "Cable length is " + str(cable_length))
 	plt.text(35, 55, "Price is " + str(cost_of_neighborhood))
 	
-	batteries = sorted(batteries, key=lambda battery: -battery.name)
+	batteries = sorted(batteries, key=lambda battery: -battery.id)
 	a = 5
 	for battery in batteries:
-		plt.text(51, a, str(battery.name) + ": " + str(battery.voltage))
+		plt.text(51, a, str(battery.id) + ": " + str(battery.voltage))
 		a += 10
 	
 	return plt

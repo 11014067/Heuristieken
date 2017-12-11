@@ -16,14 +16,14 @@ def test_algorithm(batteries, houses, sort_battery):
 	houses = sorted(houses, key=lambda house: house.id)
 	
 	dict_list = {}
-	for i in range(0, len(batteries) - 1):
+	for i in range(0, len(batteries)):
 		dict_list["distance" + str(i) + "list"] = []
 		
 	for house in houses:
-		for i in range(0, len(batteries) - 1):
+		for i in range(0, len(batteries)):
 			dict_list["distance" + str(i) + "list"].append([abs(house.x - batteries[i].x) + abs(house.y - batteries[i].y), house.id])
 
-	for i in range(0, len(batteries) - 1):
+	for i in range(0, len(batteries)):
 		dict_list["distance" + str(i) + "list"] = sorted(dict_list["distance" + str(i) + "list"], key=lambda x: x[0])
 		
 	# Save the indexes and how many houses are placed
@@ -35,7 +35,7 @@ def test_algorithm(batteries, houses, sort_battery):
 	
 	# place all the houses
 	while (houses_to_place > 0):
-		for j in range(0, len(batteries) -1):
+		for j in range(0, len(batteries)):
 			# only try to add if it has spare voltage
 			if (batteries[j].spare_voltage > 0):
 				# place the first posible house

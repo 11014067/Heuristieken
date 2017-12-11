@@ -7,8 +7,8 @@ def score_function(houses, batteries):
 		if (int(house.battery_no) >= 0):
 			h_x = house.x
 			h_y = house.y
-			b_x = next(battery for battery in batteries if battery.name == house.battery_no).x
-			b_y = next(battery for battery in batteries if battery.name == house.battery_no).y
+			b_x = next(battery for battery in batteries if battery.id == house.battery_no).x
+			b_y = next(battery for battery in batteries if battery.id == house.battery_no).y
 			cost_of_neighborhood += abs(b_y - h_y)
 			cost_of_neighborhood += abs(b_x - h_x)
 		else:
