@@ -1,14 +1,28 @@
 
 class Neighborhood_class:
-	
+
 	houses = []
-		
+	batteries = []
+	house_sort = ""
+	battery_sort = ""
+	neighborhood = ""
+	
 	def show_houses(self):
 		for house in self.houses:
-			print("House " + house.id + " on (" + house.x + "," + house.y + ") with voltage " + house.voltage + " connected to battery " + house.battery_no + ".")
-			
-	def get_houses(cls):
-		return(list(Neighborhood_class.houses))
+			print("House " + str(house.id) + " on (" + str(house.x) + "," + str(house.y) + ") with voltage " + str(house.voltage) + " connected to battery " + str(house.battery_no) + ".")
+	
+	def show_batteries(self):
+		for battery in self.batteries:
+			print("Battery " + str(battery.id) + " has a voltage of " + str(battery.voltage) + " and a spare voltage of " + str(battery.spare_voltage))
+		
+	def add_house_sort(sort):
+		Neighborhood_class.house_sort = sort
+		
+	def add_battery_sort(sort):
+		Neighborhood_class.battery_sort = sort	
+		
+	def add_neighborhood(neighborhood):
+		Neighborhood_class.neighborhood = str(neighborhood)
 		
 	class House:
 	
