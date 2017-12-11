@@ -34,7 +34,8 @@ def TESTmain():
 	all_info = information[0]
 	
 	
-	all_info.show_houses()
+	a = all_info.get_houses()
+	print(a)
 	
 	#if (information[2] == False):
 	#	print("This problem is not able to be solved do to to little battery voltage.")
