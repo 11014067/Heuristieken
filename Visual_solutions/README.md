@@ -14,9 +14,9 @@ Every visualization has the following characteristics:
 
 ### Finding the right file
 
-Names are created by "fig" + neighborhoodnumber + "x"/"y"/"voltage" the batteries where sorted on + "x"/"y"/"voltage" the houses are sorted on.
+Names are created by "fig_" + sorting method + neighborhoodnumber + "x"/"y"/"voltage"/"r" the batteries where sorted on + "x"/"y"/"voltage"/"r" the houses are sorted on ("None" if not used) + "_ " + the amount of batteries used.
 
-Or the names are "fig" + neigborhoodnumber + "x"/"y"/"voltage" for how the batteries are sorted, where r means random.
+If something is sorted "r" it means that it is sorted on random. 
 
 ### Marks
 

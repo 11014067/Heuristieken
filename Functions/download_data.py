@@ -44,4 +44,16 @@ def download_data(x, battery_size):
 		batteries.append(fillBatteries(raw_battery[i], i))
 		batteries[i].add_name(i)
 		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
-	return [batteries, houses]
+		
+	sum_houses = 0
+	for house in houses:
+		sum_houses += house.voltage
+	
+	sum_batteries = 0
+	for battery in batteries:
+		sum_batteries += battery.voltage
+	
+	solveable = False
+	if (sum_batteries > sum_houses):
+		solveable = True
+	return [batteries, houses, solveable]
