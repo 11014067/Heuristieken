@@ -24,10 +24,10 @@ def switching_algorithm(batteries, houses):
 	big_house = picked_houses[1]
 
 	for battery in batteries:
-		if battery.name == big_house.battery_no:
+		if battery.id == big_house.battery_no:
 			battery.spare_voltage += big_house.voltage - small_house.voltage
 		
-		if battery.name == small_house.battery_no:
+		if battery.id == small_house.battery_no:
 			battery.spare_voltage -= big_house.voltage - small_house.voltage
 	
 	temp = small_house.battery_no
@@ -52,7 +52,7 @@ def pick_a_house(houses, batteries, makeroom, fill, last_try):
 	
 	big_house = 0
 	for house in houses:
-		if house.battery_no == makeroom.name:
+		if house.battery_no == makeroom.id:
 			if big_house == 0 and house.voltage < last_try:
 				big_house = house
 			elif big_house.voltage < house.voltage and house.voltage < last_try:
@@ -66,7 +66,7 @@ def pick_a_house(houses, batteries, makeroom, fill, last_try):
 		#if house.battery_no == fill.name:
 		#	print house.voltage
 		
-		if house.battery_no == fill.name and house.voltage > big_house.voltage - fill.spare_voltage:
+		if house.battery_no == fill.id and house.voltage > big_house.voltage - fill.spare_voltage:
 			if small_house == 999999:
 				small_house = house
 			elif small_house.voltage > house.voltage:

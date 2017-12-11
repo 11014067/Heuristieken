@@ -23,7 +23,7 @@ house_sort = method[3]
 
 # choose the battery size, standaard bij wijk 1 1507, wijk 2 1508.25 en wijk 3 1506.75
 
-battery_size = [1000, 30, 1507, 1507, 1507]
+battery_size = [1507, 1507, 1507, 1507, 1507]
 
 # DOWNLOAD AND ORDER DATA
 information = download_data(neighborhood, battery_size)
@@ -35,7 +35,7 @@ battery_coordinates = free_batteries(houses)
 better_batteries = new_batteries(battery_coordinates, battery_size)
 print(battery_coordinates)	
 	
-batteries = better_batteries
+#batteries = better_batteries
 	
 # ALGORITHM
 if (method[1] == "distance"):
