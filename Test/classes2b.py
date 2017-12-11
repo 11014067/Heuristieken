@@ -6,10 +6,9 @@ class Neighborhood_class:
 	def show_houses(self):
 		for house in self.houses:
 			print("House " + house.id + " on (" + house.x + "," + house.y + ") with voltage " + house.voltage + " connected to battery " + house.battery_no + ".")
-
+			
 	def get_houses(cls):
 		return(list(Neighborhood_class.houses))
-		
 		
 	class House:
 	
