@@ -1,9 +1,9 @@
 #from Test.classes2 import Neighborhood_class
-from classes2b import Neighborhood_class
-from TESTsorting_algorithm import TESTsorting_algorithm as sorting_algorithm
-from TESTdownload_dataSanne import TESTdownload_data as download_data
-from TESTplot_grid import TESTplot_grid as plot_grid
-from TESTscore_function import TESTscore_function as score_function
+from Test.classes2b import Neighborhood_class
+from Test.TESTsorting_algorithm import TESTsorting_algorithm as sorting_algorithm
+from Test.TESTdownload_dataSanne import TESTdownload_data as download_data
+from Test.TESTplot_grid import TESTplot_grid as plot_grid
+from Test.TESTscore_function import TESTscore_function as score_function
 import random
 
 def TESTmain():

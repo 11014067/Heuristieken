@@ -1,7 +1,6 @@
 import csv
 import os
 
-from classes2b import Neighborhood_class
 
 def TESTdownload_data(battery_size, A):
 	house_file = os.path.normpath('Information/wijk' + A.neighborhood + '_huizen.csv')
@@ -45,11 +44,6 @@ def TESTdownload_data(battery_size, A):
 		batteries.append(fillBatteries(raw_battery[i], i))
 		batteries[i].add_name(i)
 		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
-		
-	all_info = Neighborhood_class()
-	
-	all_info.houses = houses
-	all_info.batteries = batteries
 	
 	sum_houses = 0
 	for house in houses:
