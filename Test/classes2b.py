@@ -3,12 +3,6 @@ class Neighborhood_class:
 	houses = []
 	batteries = []
 	
-	def get_houses():
-		return(self.houses)
-	
-	def get_batteries():
-		return(self.batteries)
-	
 	class House:
 	
 		def __init__(self, x, y, voltage, id):

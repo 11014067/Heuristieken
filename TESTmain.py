@@ -1,5 +1,5 @@
-from Test.classes2 import Neighborhood_class
-#from Test.classes2b import Neighborhood_class
+#from Test.classes2 import Neighborhood_class
+from Test.classes2b import Neighborhood_class
 from Classes.neighborhood_classes import House, Battery
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Algorithms.distance_algorithm import distance_algorithm
@@ -16,6 +16,9 @@ def TESTmain():
 	# remember the method to use
 	method = ["1", "s", True, "x", "x"]
 	
+	Neighborhood_class.House(10, 11, 12, 3)
+	print(Neighborhood_class.houses[0].id)
+	
 	# choose the neighborhood number
 	neighborhood = method[0]
 	
@@ -30,6 +33,8 @@ def TESTmain():
 	information = download_data(neighborhood, battery_size)
 	batteries = information[0]
 	houses = information[1]
+	
+	print(Neighborhood_class.houses[7].id)
 	
 	#if (information[2] == False):
 	#	print("This problem is not able to be solved do to to little battery voltage.")
