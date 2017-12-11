@@ -6,6 +6,9 @@ def TESTdownload_data(x, battery_size):
 	house_file = os.path.normpath('Information/wijk' + x + '_huizen.csv')
 	battery_file = os.path.normpath('Information/wijk' + x + '_batterijen.txt')
 
+	
+	all_info=Neighborhood_class
+	
 	# download the raw house data in a list	
 	xyvolt= []
 
@@ -18,7 +21,7 @@ def TESTdownload_data(x, battery_size):
 	
 	# stores the data into classes
 	def fillHouses(xy_house, i):
-		new_house = Neighborhood_class.House(xy_house[0], xy_house[1], xy_house[2], i)
+		new_house = all_info.House(xy_house[0], xy_house[1], xy_house[2], i)
 		return new_house
 	
 	houses = []
@@ -36,7 +39,7 @@ def TESTdownload_data(x, battery_size):
 	
 	# stores the data into classes
 	def fillBatteries(data_battery, i):
-		new_battery = Neighborhood_class.Battery(data_battery[0], data_battery[1], battery_size[i])
+		new_battery = all_info.Battery(data_battery[0], data_battery[1], battery_size[i])
 		return new_battery
 	
 	batteries = []
@@ -56,4 +59,4 @@ def TESTdownload_data(x, battery_size):
 	solveable = False
 	if (sum_batteries > sum_houses):
 		solveable = True
-	return [batteries, houses, solveable]
+	return [all_info, solveable]

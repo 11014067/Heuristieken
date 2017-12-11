@@ -31,10 +31,10 @@ def TESTmain():
 	
 	# DOWNLOAD AND ORDER DATA
 	information = download_data(neighborhood, battery_size)
-	batteries = information[0]
-	houses = information[1]
+	all_info = information[0]
 	
-	print(Neighborhood_class.houses[7].id)
+	
+	all_info.show_houses()
 	
 	#if (information[2] == False):
 	#	print("This problem is not able to be solved do to to little battery voltage.")

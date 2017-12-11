@@ -3,6 +3,10 @@ class Neighborhood_class:
 	houses = []
 	batteries = []
 	
+	def show_houses():
+		for house in self.houses:
+			print("House " + house.id + " on (" + house.x + "," + house.y + ") with voltage " + house.voltage + " connected to battery " + house.battery_no + ".")
+	
 	class House:
 	
 		def __init__(self, x, y, voltage, id):
@@ -18,7 +22,7 @@ class Neighborhood_class:
 		def add_battery(self, battery_no):
 			self.battery_no = battery_no
 			self.placed = True
-			
+		
 	class Battery:
 	
 		def __init__(self, x, y, voltage):	
