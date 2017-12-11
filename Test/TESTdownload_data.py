@@ -1,6 +1,7 @@
 import csv
 import os
-from Test.classes2 import Neighborhood_class
+from Classes.neighborhood_classes import House, Battery
+from Test.classes3alfa import Neighborhood_class
 
 def TESTdownload_data(x, battery_size):
 	house_file = os.path.normpath('Information/wijk' + x + '_huizen.csv')
@@ -21,7 +22,7 @@ def TESTdownload_data(x, battery_size):
 	
 	# stores the data into classes
 	def fillHouses(xy_house, i):
-		new_house = all_info.House(xy_house[0], xy_house[1], xy_house[2], i)
+		new_house = House(xy_house[0], xy_house[1], xy_house[2], i)
 		return new_house
 	
 	houses = []
@@ -39,7 +40,7 @@ def TESTdownload_data(x, battery_size):
 	
 	# stores the data into classes
 	def fillBatteries(data_battery, i):
-		new_battery = all_info.Battery(data_battery[0], data_battery[1], battery_size[i])
+		new_battery = Battery(data_battery[0], data_battery[1], battery_size[i])
 		return new_battery
 	
 	batteries = []
@@ -48,6 +49,11 @@ def TESTdownload_data(x, battery_size):
 		batteries[i].add_name(i)
 		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
 		
+	all_info = Neighborhood_class()
+	
+	all_info.houses = houses
+	all_info.batteries = batteries
+	
 	sum_houses = 0
 	for house in houses:
 		sum_houses += house.voltage

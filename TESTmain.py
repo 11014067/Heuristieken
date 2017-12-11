@@ -30,8 +30,10 @@ def TESTmain():
 	information = download_data(neighborhood, battery_size)
 	all_info = information[0]
 	
+	all_info.try_out()
 	
-	a = all_info.get_houses()
+	
+	a = all_info.show_houses()
 	print(a)
 	
 	#if (information[2] == False):
