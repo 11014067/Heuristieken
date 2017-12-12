@@ -2,7 +2,7 @@ from Functions.switcher import switching_algorithm
 import random
 import time
 
-def test_algorithm(all_info):
+def distance_algorithm(all_info):
 	# Sort the batteries
 	print ("Sorting...")
 	if (all_info.battery_sort == "random"):
