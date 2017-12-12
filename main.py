@@ -9,10 +9,11 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
+from Functions.free_batteries import free_batteries
+from Functions.new_batteries import new_batteries
 from Information.upper import upper
 from Information.lower import lower
-from Test.free_batteries import free_batteries
-from Test.new_batteries import new_batteries
+
 #from Test.forlooptest import test_algorithm
 import random
 
@@ -29,7 +30,7 @@ def main( a = None):
 		return 0
 		
 	# free batteries
-	if all_info.free:
+	if all_info.free == "yes":
 		all_info = free_batteries(all_info)
 		all_info = new_batteries(all_info)
 		

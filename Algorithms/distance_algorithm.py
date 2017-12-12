@@ -6,6 +6,7 @@ import time
 
 def distance_algorithm(all_info):
 	# sort the batteries
+	all_info.show_batteries()
 	print ("Sorting...")
 	if (all_info.battery_sort == "random"):
 		all_info.batteries = random.sample(all_info.batteries, len(all_info.batteries))
@@ -29,7 +30,7 @@ def distance_algorithm(all_info):
 	# sort the lists from shortest distance to longest		
 	for i in range(0, len(all_info.batteries)):
 		dict_list["distance" + str(i) + "list"] = sorted(dict_list["distance" + str(i) + "list"], key=lambda x: x[0])
-		
+	
 	# save the indexes and how many houses are placed
 	index_list = [0] * len(all_info.batteries)
 	houses_to_place = len(all_info.houses)
@@ -56,11 +57,12 @@ def distance_algorithm(all_info):
 		
 		# check if it is posible to link more houses, if not break			
 		sum_index_list = 0
-		for i in range(0, len(all_info.batteries)-1):
+		for i in range(0, len(all_info.batteries)):
 			sum_index_list += index_list[i]
+		print(sum_index_list)
 		if (sum_index_list == len(all_info.houses) * len(all_info.batteries)):
 			all_info.solution = False
 			print(" UNSUCCESFULL ")
-			break
+			return all_info
 
 	return all_info
