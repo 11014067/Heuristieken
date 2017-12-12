@@ -11,8 +11,8 @@ from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from Information.upper import upper
 from Information.lower import lower
-#from Test.free_batteries import free_batteries
-#from Test.new_batteries import new_batteries
+from Test.free_batteries import free_batteries
+from Test.new_batteries import new_batteries
 #from Test.forlooptest import test_algorithm
 import random
 
@@ -29,11 +29,8 @@ def main():
 		return 0
 		
 	# TEST 
-	battery_coordinates = free_batteries(all_info)
-	better_batteries = new_batteries(battery_coordinates, all_info)
-	print(battery_coordinates)	
-	
-	batteries = better_batteries
+	all_info = free_batteries(all_info)
+	all_info = new_batteries(all_info)
 		
 	# algorithm
 	if (all_info.sorting_method == "distance"):
