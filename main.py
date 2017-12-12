@@ -28,12 +28,12 @@ def main():
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
 		
-	## TEST 
-	#battery_coordinates = free_batteries(all_info)
-	#better_batteries = new_batteries(battery_coordinates, all_info)
-	#print(battery_coordinates)	
-		
-	#batteries = better_batteries
+	# TEST 
+	battery_coordinates = free_batteries(all_info)
+	better_batteries = new_batteries(battery_coordinates, all_info)
+	print(battery_coordinates)	
+	
+	batteries = better_batteries
 		
 	# algorithm
 	if (all_info.sorting_method == "distance"):

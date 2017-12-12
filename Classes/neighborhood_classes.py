@@ -6,6 +6,7 @@ class Neighborhood_class:
 	def __init__(self):
 		self.houses = []
 		self.batteries = []
+		self.battery_coordinates = []
 		self.battery_voltages = []
 		self.sorting_method = ""
 		self.house_sort = ""
