@@ -1,3 +1,6 @@
+# This function visualises a neighborhood where all the houses are linked to batteries.
+# It asks the user what kind of algorithm it wants to use, which neighborhood and how big and how many batteries.
+
 from Classes.neighborhood_classes import Neighborhood_class
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Algorithms.distance_algorithm import distance_algorithm
