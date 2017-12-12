@@ -1,3 +1,4 @@
+# This class holds all the information to a neighborhood.
 
 class Neighborhood_class:
 

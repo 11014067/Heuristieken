@@ -1,17 +1,10 @@
+# This function switches houses if the neighborhood was not solved.
+
 def switching_algorithm(all_info):
-	print ("#############################")
-	
+	# sort the houses on id
 	all_info.houses = sorted(all_info.houses, key=lambda house: house.id)
 	
-	unplaced_houses = 0
-	for house in all_info.houses:
-		if (house.battery_no >= 0):
-			print ("House {} is connected to battery {} voltage {}".format(house.id, house.battery_no, house.voltage))
-		else:
-			print ("House {} is not connected, voltage is {}".format(house.id, house.voltage))
-			unplaced_houses += 1
-	if (unplaced_houses == 0):
-		print ("HOORAY")
+	if all_info.solution == True
 		return all_info
 	
 	makeroom = sorted(all_info.batteries, key=lambda battery: -battery.spare_voltage)[0]
@@ -81,15 +74,3 @@ def pick_a_house(houses, batteries, makeroom, fill, last_try):
 	print("Small huis {} batterij {} voltage {} xy {}, {} ".format(small_house.id, small_house.battery_no, small_house.voltage, small_house.x, small_house.y))
 	
 	return [small_house, big_house]
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
