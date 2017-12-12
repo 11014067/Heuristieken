@@ -1,11 +1,9 @@
-# This function links the batteries one by one to a home that has the smallest distance to that battery.
-
 from Functions.switcher import switching_algorithm
 import random
 import time
 
 def distance_algorithm(all_info):
-	# sort the batteries
+	# Sort the batteries
 	print ("Sorting...")
 	if (all_info.battery_sort == "random"):
 		all_info.batteries = random.sample(all_info.batteries, len(all_info.batteries))
@@ -14,10 +12,9 @@ def distance_algorithm(all_info):
 	else:
 		all_info.batteries = sorted(all_info.batteries, key=lambda battery: -battery.voltage)
 	
-	# sort the houses on id
+	# Sort the houses on id
 	all_info.houses = sorted(all_info.houses, key=lambda house: house.id)
 	
-	# make a list for each battery with the distance to the houses and its id
 	dict_list = {}
 	for i in range(0, len(all_info.batteries)):
 		dict_list["distance" + str(i) + "list"] = []
@@ -26,11 +23,10 @@ def distance_algorithm(all_info):
 		for i in range(0, len(all_info.batteries)):
 			dict_list["distance" + str(i) + "list"].append([abs(house.x - all_info.batteries[i].x) + abs(house.y - all_info.batteries[i].y), house.id])
 
-	# sort the lists from shortest distance to longest		
 	for i in range(0, len(all_info.batteries)):
 		dict_list["distance" + str(i) + "list"] = sorted(dict_list["distance" + str(i) + "list"], key=lambda x: x[0])
 		
-	# save the indexes and how many houses are placed
+	# Save the indexes and how many houses are placed
 	index_list = [0] * len(all_info.batteries)
 	houses_to_place = len(all_info.houses)
 	
@@ -53,14 +49,25 @@ def distance_algorithm(all_info):
 							# go to the next battery
 							place_house = True
 					index_list[j] += 1
-		
-		# check if it is posible to link more houses, if not break			
 		sum_index_list = 0
+		if (index_list[(len(all_info.batteries) - 2)] == 150):
+			print(" UNSUCCESFULL ")
+			break
 		for i in range(0, len(all_info.batteries)-1):
 			sum_index_list += index_list[i]
 		if (sum_index_list == len(all_info.houses) * len(all_info.batteries)):
-			all_info.solution = False
 			print(" UNSUCCESFULL ")
 			break
-
+			
+	for house in all_info.houses:
+		if (house.battery_no > -1):
+			print("House number: {}, battery : {}".format(house.id, house.battery_no))
+		else:
+			print("House {} is {} volt and not linked to a battery".format(house.id, house.voltage))
+			
+	for battery in all_info.batteries:
+		print("batterij over {}".format(battery.spare_voltage))
+	
+	all_info = switching_algorithm(all_info)
+	
 	return all_info

@@ -1,29 +1,19 @@
-# This class holds all the information to a neighborhood.
 
 class Neighborhood_class:
-	
-	# save all the necassery information
+
 	def __init__(self):
 		self.houses = []
 		self.batteries = []
-		self.battery_voltages = []
-		self.sorting_method = ""
 		self.house_sort = ""
 		self.battery_sort = ""
 		self.neighborhood = ""
-		self.solveable = False
-		self.solution = True
-		self.cost = ""
-		self.cable_length = ""
 	
-	# print the information about the houses
 	def show_houses(self):
 		very_long_string = ""
 		for house in self.houses:
 			very_long_string += "House " + str(house.id) + " on (" + str(house.x) + "," + str(house.y) + ") with voltage " + str(house.voltage) + " connected to battery " + str(house.battery_no) + ". \n" 
 		print(very_long_string)
-	
-	# print the information about the batteries
+		
 	def show_batteries(self):
 		very_long_string = ""
 		for battery in self.batteries:
@@ -33,10 +23,8 @@ class Neighborhood_class:
 			very_long_string += "\n"
 		print(very_long_string)
 		
-	# class with house information
 	class House:
-		
-		# save all the necassery information
+	
 		def __init__(self, x, y, voltage, id):
 			self.x = x
 			self.y = y
@@ -49,17 +37,14 @@ class Neighborhood_class:
 		def add_battery(self, battery_no):
 			self.battery_no = battery_no
 			self.placed = True
-			
-	# class with battery information	
+		
 	class Battery:
 	
-		# save all the necassery information
 		def __init__(self, x, y, voltage):	
 			self.x = x
 			self.y = y
 			self.voltage = voltage
 			self.spare_voltage = voltage
-			self.houses_list = []
 			
 		def add_name(self, id):
 			self.id = id
@@ -69,7 +54,6 @@ class Neighborhood_class:
 		
 			if self.spare_voltage > house.voltage:
 				house.add_battery(self.id)
-				self.houses_list.append(house)
 				self.spare_voltage -= house.voltage
 				return True
 			else:
