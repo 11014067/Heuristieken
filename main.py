@@ -28,7 +28,7 @@ def main( a = None):
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
 		
-	# TEST 
+	# free batteries
 	if all_info.free:
 		all_info = free_batteries(all_info)
 		all_info = new_batteries(all_info)
