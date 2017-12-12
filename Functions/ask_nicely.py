@@ -1,4 +1,4 @@
-# This function asks the user what data and which functions they want to use
+# This function asks the user what data and which functions they want to use.
 
 from Classes.neighborhood_classes import Neighborhood_class
 
