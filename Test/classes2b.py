@@ -1,28 +1,27 @@
 
 class Neighborhood_class:
 
-	houses = []
-	batteries = []
-	house_sort = ""
-	battery_sort = ""
-	neighborhood = ""
+	def __init__(self):
+		self.houses = []
+		self.batteries = []
+		self.house_sort = ""
+		self.battery_sort = ""
+		self.neighborhood = ""
 	
 	def show_houses(self):
+		very_long_string = ""
 		for house in self.houses:
-			print("House " + str(house.id) + " on (" + str(house.x) + "," + str(house.y) + ") with voltage " + str(house.voltage) + " connected to battery " + str(house.battery_no) + ".")
-	
+			very_long_string += "House " + str(house.id) + " on (" + str(house.x) + "," + str(house.y) + ") with voltage " + str(house.voltage) + " connected to battery " + str(house.battery_no) + ". \n" 
+		print(very_long_string)
+		
 	def show_batteries(self):
+		very_long_string = ""
 		for battery in self.batteries:
-			print("Battery " + str(battery.id) + " has a voltage of " + str(battery.voltage) + " and a spare voltage of " + str(battery.spare_voltage))
-		
-	def add_house_sort(sort):
-		Neighborhood_class.house_sort = sort
-		
-	def add_battery_sort(sort):
-		Neighborhood_class.battery_sort = sort	
-		
-	def add_neighborhood(neighborhood):
-		Neighborhood_class.neighborhood = str(neighborhood)
+			very_long_string += "Battery " + str(battery.id) + " on (" + str(battery.x) + "," + str(battery.y) + ") with voltage " + str(battery.spare_voltage) + "/" + str(battery.voltage) + ", connected to houses" 
+			for house in battery.houses_list:
+				very_long_string += str(house.id) + ", "
+			very_long_string += "\n"
+		print(very_long_string)
 		
 	class House:
 	
@@ -34,7 +33,6 @@ class Neighborhood_class:
 			self.battery_no = -1
 			self.placed = False
 			self.id = id
-			Neighborhood_class.houses.append(self)
 	
 		def add_battery(self, battery_no):
 			self.battery_no = battery_no
@@ -47,7 +45,6 @@ class Neighborhood_class:
 			self.y = y
 			self.voltage = voltage
 			self.spare_voltage = voltage
-			Neighborhood_class.batteries.append(self)
 			
 		def add_name(self, id):
 			self.id = id

@@ -1,10 +1,10 @@
 import csv
 import os
-from Classes.neighborhood_classes import House, Battery
+from Classes.neighborhood_classes import Neighborhood_class
 
-def download_data(x, battery_size):
-	house_file = os.path.normpath('Information/wijk' + x + '_huizen.csv')
-	battery_file = os.path.normpath('Information/wijk' + x + '_batterijen.txt')
+def download_data(all_info):
+	house_file = os.path.normpath('Information/wijk' + all_info.neighborhood + '_huizen.csv')
+	battery_file = os.path.normpath('Information/wijk' + all_info.neighborhood + '_batterijen.txt')
 
 	# download the raw house data in a list	
 	xyvolt= []
@@ -18,12 +18,11 @@ def download_data(x, battery_size):
 	
 	# stores the data into classes
 	def fillHouses(xy_house, i):
-		new_house = House(xy_house[0], xy_house[1], xy_house[2], i)
+		new_house = Neighborhood_class.House(xy_house[0], xy_house[1], xy_house[2], i)
 		return new_house
 	
-	houses = []
 	for i in range(0, len(xyvolt)):
-		houses.append(fillHouses(xyvolt[i], i))
+		all_info.houses.append(fillHouses(xyvolt[i], i))
 		
 	# download the raw battery data in a list		
 	raw_battery = []
@@ -36,24 +35,23 @@ def download_data(x, battery_size):
 	
 	# stores the data into classes
 	def fillBatteries(data_battery, i):
-		new_battery = Battery(data_battery[0], data_battery[1], battery_size[i])
+		new_battery = Neighborhood_class.Battery(data_battery[0], data_battery[1], all_info.battery_voltages[i])
 		return new_battery
 	
-	batteries = []
 	for i in range(0, len(raw_battery)):
-		batteries.append(fillBatteries(raw_battery[i], i))
-		batteries[i].add_name(i)
-		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
+		all_info.batteries.append(fillBatteries(raw_battery[i], i))
+		all_info.batteries[i].add_name(i)
+		print("Battery {} on index {} has x = {}".format(all_info.batteries[i].id, i, all_info.batteries[i].x))
 		
 	sum_houses = 0
-	for house in houses:
+	for house in all_info.houses:
 		sum_houses += house.voltage
 	
 	sum_batteries = 0
-	for battery in batteries:
+	for battery in all_info.batteries:
 		sum_batteries += battery.voltage
 	
-	solveable = False
+	print(sum_houses, sum_batteries)
 	if (sum_batteries > sum_houses):
-		solveable = True
-	return [batteries, houses, solveable]
+		all_info.solveable = True
+	return all_info

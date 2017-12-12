@@ -4,6 +4,7 @@ def TESTsorting_algorithm(A):
 	
 	#Algorithm
 	print ("Sorting...")
+	print(A.batteries)
 	A.batteries = sorted(A.batteries, key=lambda battery: getattr(battery, A.battery_sort))
 	
 	A.houses = sorted(A.houses, key=lambda house: getattr(house, A.house_sort))

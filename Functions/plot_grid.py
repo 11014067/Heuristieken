@@ -3,7 +3,7 @@ from matplotlib._png import read_png
 import matplotlib.pyplot as plt
 import math
 
-def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
+def plot_grid(all_info):
 
 	# DRAWING PART
 	# get the house image
@@ -18,11 +18,11 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	ax = plt.subplot(111)
 	
 	colors = ['b', 'r', 'y', 'c', 'g', '#777777', '#000000', '#ef7700', '#8b00ef']
-	for house in houses:
+	for house in all_info.houses:
 		h_x = house.x
 		h_y = house.y
-		b_x = next(battery for battery in batteries if battery.id == house.battery_no).x
-		b_y = next(battery for battery in batteries if battery.id == house.battery_no).y
+		b_x = next(battery for battery in all_info.batteries if battery.id == house.battery_no).x
+		b_y = next(battery for battery in all_info.batteries if battery.id == house.battery_no).y
 		
 		# give them the img with colored border
 		ab = AnnotationBbox(house_img, [house.x, house.y],
@@ -40,7 +40,7 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	
 	
 	# add the battery images
-	for battery in batteries:
+	for battery in all_info.batteries:
 		ab = AnnotationBbox(battery_img, [battery.x, battery.y],
 			xybox=(0, 0),
 			xycoords='data',
@@ -57,12 +57,12 @@ def plot_grid(houses, batteries, cable_length, cost_of_neighborhood):
 	plt.axis([0, 50, 0, 50])
 	plt.xticks([0, 10, 20, 30, 40, 50])
 	plt.yticks([0, 10, 20, 30, 40, 50])
-	plt.text(10, 55, "Cable length is " + str(cable_length))
-	plt.text(35, 55, "Price is " + str(cost_of_neighborhood))
+	plt.text(10, 55, "Cable length is " + str(all_info.cable_length))
+	plt.text(35, 55, "Price is " + str(all_info.cost))
 	
-	batteries = sorted(batteries, key=lambda battery: -battery.id)
+	all_info.batteries = sorted(all_info.batteries, key=lambda battery: -battery.id)
 	a = 5
-	for battery in batteries:
+	for battery in all_info.batteries:
 		plt.text(51, a, str(battery.id) + ": " + str(battery.voltage))
 		a += 10
 	

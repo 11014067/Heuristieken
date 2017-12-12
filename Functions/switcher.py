@@ -1,10 +1,10 @@
-def switching_algorithm(batteries, houses):
+def switching_algorithm(all_info):
 	print ("#############################")
 	
-	houses = sorted(houses, key=lambda house: house.id)
+	all_info.houses = sorted(all_info.houses, key=lambda house: house.id)
 	
 	unplaced_houses = 0
-	for house in houses:
+	for house in all_info.houses:
 		if (house.battery_no >= 0):
 			print ("House {} is connected to battery {} voltage {}".format(house.id, house.battery_no, house.voltage))
 		else:
@@ -12,18 +12,18 @@ def switching_algorithm(batteries, houses):
 			unplaced_houses += 1
 	if (unplaced_houses == 0):
 		print ("HOORAY")
-		return [batteries, houses]
+		return all_info
 	
-	makeroom = sorted(batteries, key=lambda battery: battery.spare_voltage)[4]
-	fill = sorted(batteries, key=lambda battery: battery.spare_voltage)[3]
+	makeroom = sorted(all_info.batteries, key=lambda battery: -battery.spare_voltage)[0]
+	fill = sorted(all_info.batteries, key=lambda battery: -battery.spare_voltage)[1]
 	print("Ruimte naar batterij {} spare voltage {}".format(makeroom.id, makeroom.spare_voltage))
 	print("Ruimte van batterij {} spare voltage {}".format(fill.id, fill.spare_voltage))
 	
-	picked_houses = pick_a_house(houses, batteries, makeroom, fill, 99999999)
+	picked_houses = pick_a_house(all_info.houses, all_info.batteries, makeroom, fill, 99999999)
 	small_house = picked_houses[0]
 	big_house = picked_houses[1]
 
-	for battery in batteries:
+	for battery in all_info.batteries:
 		if battery.id == big_house.battery_no:
 			battery.spare_voltage += big_house.voltage - small_house.voltage
 		
@@ -34,7 +34,7 @@ def switching_algorithm(batteries, houses):
 	small_house.battery_no = big_house.battery_no
 	big_house.battery_no = temp
 	
-	for house in houses:
+	for house in all_info.houses:
 		if house.placed == False:
 			print (house.voltage)
 			print (makeroom.spare_voltage)
@@ -42,10 +42,10 @@ def switching_algorithm(batteries, houses):
 				print ("HOORAY!")
 			else:
 				print ("Stop me if I go crazy!")
-				switching_algorithm(batteries, houses)
+				switching_algorithm(all_info)
 				
 				
-	return [batteries, houses]
+	return all_info
 	
 def pick_a_house(houses, batteries, makeroom, fill, last_try):
 	print (last_try)
