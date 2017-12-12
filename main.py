@@ -16,7 +16,7 @@ from Test.new_batteries import new_batteries
 #from Test.forlooptest import test_algorithm
 import random
 
-def main():
+def main( a = None):
 	# fill all_info with information
 	all_info = ask_nicely()
 	
@@ -52,8 +52,11 @@ def main():
 	# save the visualisation
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "batteries.png")
 	
-	plt.show()
-	return 0
+	# if there is no argument given, show the plot
+	if a == None :
+		plt.show()
+		
+	return all_info
 
 if __name__ == "__main__":
     main()
