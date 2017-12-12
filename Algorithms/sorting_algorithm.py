@@ -1,8 +1,10 @@
+# This function links the houses to the batteries, both sorted in wanted order.
+
 import random
 
 def sorting_algorithm(all_info):
 	
-	#Algorithm
+	# sort the lists as wanted
 	print ("Sorting...")
 	if (all_info.battery_sort == "random"):
 		all_info.batteries = random.sample(all_info.batteries, len(all_info.batteries))
@@ -26,11 +28,9 @@ def sorting_algorithm(all_info):
 			if (all_info.batteries[i].add_house(house)):
 				house_placed = True
 			i+=1
+			# if imposible to solve, break
 			if (i > len(all_info.batteries) - 1 and house_placed == False):
 				all_info.solution = False
 				break
 	
-	for i in range(0, len(all_info.batteries) - 1):
-		print (all_info.batteries[i].spare_voltage)
-
 	return all_info
