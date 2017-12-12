@@ -8,7 +8,7 @@ def new_batteries(all_info):
 
 	# stores the data into classes
 	def fillBatteries(data_battery, i):
-		new_battery = Neighborhood_class.Battery(data_battery[0], data_battery[1], battery_size[0])
+		new_battery = Neighborhood_class.Battery(data_battery[0], data_battery[1], all_info.battery_voltages[i])
 		return new_battery
 	
 	# create the battery list again
