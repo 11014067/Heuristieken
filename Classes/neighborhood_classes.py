@@ -51,6 +51,7 @@ class Neighborhood_class:
 			self.y = y
 			self.voltage = voltage
 			self.spare_voltage = voltage
+			self.houses_list = []
 			
 		def add_name(self, id):
 			self.id = id
@@ -60,6 +61,7 @@ class Neighborhood_class:
 		
 			if self.spare_voltage > house.voltage:
 				house.add_battery(self.id)
+				self.houses_list.append(house)
 				self.spare_voltage -= house.voltage
 				return True
 			else:
