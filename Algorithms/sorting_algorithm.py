@@ -1,4 +1,3 @@
-# It's a me! Jasper!
 # This function links the houses to the batteries, both sorted in wanted order.
 
 import random
