@@ -9,10 +9,11 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
+from Function.free_batteries import free_batteries
+from Function.new_batteries import new_batteries
 from Information.upper import upper
 from Information.lower import lower
-from Test.free_batteries import free_batteries
-from Test.new_batteries import new_batteries
+
 #from Test.forlooptest import test_algorithm
 import random
 

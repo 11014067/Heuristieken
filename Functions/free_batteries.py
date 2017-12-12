@@ -31,9 +31,34 @@ def free_batteries(all_info):
 
 	# get the best coordinates dont put new battery coordinates near that
 	for i in range(0, len(all_info.batteries)):
-		xCoor = list_co[0][0]
-		yCoor = list_co[0][1]
-		all_info.battery_coordinates.append([xCoor, yCoor])
+		x_coor = list_co[0][0]
+		y_coor = list_co[0][1]
+		fix_coor = False
+		while (fix_coor == False):
+			fix_coor2 = False
+			while (fix_coor2 == False):
+				for house in all_info.houses :
+					if house.x == x_coor :
+						if x_coor == 50 :
+							x_coor = 49
+						elif x_coor == 0 :
+							x_coor = 1
+						else :
+							x = sample.random([-1, 1], 1)[0]
+							xCoor += x
+						fix_coor2 = True
+					elif house.y == y_coor :
+						if y_coor == 50 :
+							y_coor = 49
+						elif y_coor == 0 :
+							y_coor = 1
+						else :
+							x = sample.random([-1, 1], 1)[0]
+							y_coor += x
+						fix_coor2 = True
+				fix_coor = True
+		
+		all_info.battery_coordinates.append([x_coor, y_coor])
 		remove_list = []
 		
 		# if there are more then 9 batteries wanted, lessen the border to always have a solution
