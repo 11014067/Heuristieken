@@ -1,7 +1,8 @@
 # This class holds all the information to a neighborhood.
 
 class Neighborhood_class:
-
+	
+	# save all the necassery information
 	def __init__(self):
 		self.houses = []
 		self.batteries = []
@@ -15,12 +16,14 @@ class Neighborhood_class:
 		self.cost = ""
 		self.cable_length = ""
 	
+	# print the information about the houses
 	def show_houses(self):
 		very_long_string = ""
 		for house in self.houses:
 			very_long_string += "House " + str(house.id) + " on (" + str(house.x) + "," + str(house.y) + ") with voltage " + str(house.voltage) + " connected to battery " + str(house.battery_no) + ". \n" 
 		print(very_long_string)
-		
+	
+	# print the information about the batteries
 	def show_batteries(self):
 		very_long_string = ""
 		for battery in self.batteries:
@@ -30,8 +33,9 @@ class Neighborhood_class:
 			very_long_string += "\n"
 		print(very_long_string)
 		
+	# class with house information
 	class House:
-	
+		
 		def __init__(self, x, y, voltage, id):
 			self.x = x
 			self.y = y
@@ -44,7 +48,8 @@ class Neighborhood_class:
 		def add_battery(self, battery_no):
 			self.battery_no = battery_no
 			self.placed = True
-		
+			
+	# class with battery information	
 	class Battery:
 	
 		def __init__(self, x, y, voltage):	
