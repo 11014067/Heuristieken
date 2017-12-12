@@ -1,6 +1,6 @@
 # calculate densly packed areas of houses to put batteries.
 
-def free_batteries(houses): 
+def free_batteries(all_info): 
 	
 	# maak een lijst met coordinaten
 	list_co = []
@@ -12,7 +12,7 @@ def free_batteries(houses):
 	breakLoop = False
 	while (breakLoop == False):
 		houses_amount = 0
-		for house in houses:
+		for house in all_info.houses:
 			if (((house.x - coordinates[x]) >= 0 and (house.x - coordinates[x]) < 10) and ((house.y - coordinates[y]) >= 0 ) and ((house.y - coordinates[y]) < 10)):
 				houses_amount += 1
 		list_co.append([coordinates[x], coordinates[y], houses_amount])
@@ -49,4 +49,4 @@ def free_batteries(houses):
 		for list_object in remove_list:
 			list_co.remove(list_object)
 			
-	return battery_coordinates
+	return all_info
