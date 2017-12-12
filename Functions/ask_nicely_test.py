@@ -51,8 +51,9 @@ def ask_nicely():
 		while check2b:
 			print ("How many batteries do you want?")
 			number_of_batteries = input("")
-			if(int(number_of_batteries) in range(1, 31)):
-				check2b = False
+			if number_of_batteries.isdigit():
+				if (int(number_of_batteries) in range(1, 31)):
+					check2b = False
 		for i in range(0, int(number_of_batteries)):
 			new_entry = True
 			while new_entry:
