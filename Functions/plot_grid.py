@@ -1,3 +1,5 @@
+# Plots a grid as visualisation for the neighborhood.
+
 from matplotlib.offsetbox import AnnotationBbox, OffsetImage
 from matplotlib._png import read_png
 import matplotlib.pyplot as plt
@@ -5,7 +7,6 @@ import math
 
 def plot_grid(all_info):
 
-	# DRAWING PART
 	# get the house image
 	house = read_png('Information/house.png')
 	house_img = OffsetImage(house, zoom = .05)
@@ -17,6 +18,7 @@ def plot_grid(all_info):
 	# make a subplot to allow for add_artist
 	ax = plt.subplot(111)
 	
+	# draw the cables
 	colors = ['b', 'r', 'y', 'c', 'g', '#777777', '#000000', '#ef7700', '#8b00ef']
 	for house in all_info.houses:
 		h_x = house.x
@@ -60,6 +62,7 @@ def plot_grid(all_info):
 	plt.text(10, 55, "Cable length is " + str(all_info.cable_length))
 	plt.text(35, 55, "Price is " + str(all_info.cost))
 	
+	# print the size of the batteries
 	all_info.batteries = sorted(all_info.batteries, key=lambda battery: -battery.id)
 	a = 5
 	for battery in all_info.batteries:

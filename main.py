@@ -9,12 +9,14 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
-#from Test.free_batteries import free_batteries
-#from Test.new_batteries import new_batteries
+from Information.upper import upper
+from Information.lower import lower
+from Test.free_batteries import free_batteries
+from Test.new_batteries import new_batteries
 #from Test.forlooptest import test_algorithm
 import random
 
-def main():
+def main( a = None):
 	# fill all_info with information
 	all_info = ask_nicely()
 	
@@ -26,12 +28,10 @@ def main():
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
 		
-	## TEST 
-	#battery_coordinates = free_batteries(all_info)
-	#better_batteries = new_batteries(battery_coordinates, all_info)
-	#print(battery_coordinates)	
-		
-	#batteries = better_batteries
+	# free batteries
+	if all_info.free:
+		all_info = free_batteries(all_info)
+		all_info = new_batteries(all_info)
 		
 	# algorithm
 	if (all_info.sorting_method == "distance"):
@@ -43,6 +43,7 @@ def main():
 	# switch if nessecairy
 	all_info = switching_algorithm(all_info)
 	
+	upper(all_info.houses, all_info.batteries)
 	# score the outcome
 	all_info = score_function(all_info)
 	
@@ -52,8 +53,11 @@ def main():
 	# save the visualisation
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "batteries.png")
 	
-	plt.show()
-	return 0
+	# if there is no argument given, show the plot
+	if a == None :
+		plt.show()
+		
+	return all_info
 
 if __name__ == "__main__":
     main()

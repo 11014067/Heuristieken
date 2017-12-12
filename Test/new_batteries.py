@@ -1,18 +1,20 @@
+# Remake the batteries on the new coordinates.
+
 import csv
 import os
-from Classes.neighborhood_classes import House, Battery
+from Classes.neighborhood_classes import Neighborhood_class
 
-def new_batteries(battery_coordinates, battery_size):
+def new_batteries(all_info):
 
 	# stores the data into classes
 	def fillBatteries(data_battery, i):
-		new_battery = Battery(data_battery[0], data_battery[1], battery_size[0])
+		new_battery = Neighborhood_class.Battery(data_battery[0], data_battery[1], all_info.battery_voltages[i])
 		return new_battery
 	
-	batteries = []
-	for i in range(0, len(battery_coordinates)):
-		batteries.append(fillBatteries(battery_coordinates[i], i))
-		batteries[i].add_name(i)
-		print("WOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOW")
-		print("Battery {} on index {} has x = {}".format(batteries[i].id, i, batteries[i].x))
-	return batteries
+	# create the battery list again
+	all_info.batteries = []
+	for i in range(0, len(all_info.battery_coordinates)):
+		all_info.batteries.append(fillBatteries(all_info.battery_coordinates[i], i))
+		all_info.batteries[i].add_name(i)
+	
+	return all_info

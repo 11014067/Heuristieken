@@ -3,7 +3,7 @@
 def switching_algorithm(all_info):
 	
 	# check if there is a solution already
-	if all_info.solution == True
+	if all_info.solution == True:
 		return all_info
 	
 	# sort the houses on id
