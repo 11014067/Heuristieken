@@ -1,7 +1,9 @@
 # calculate densly packed areas of houses to put batteries.
 
+import random
+
 def free_batteries(all_info): 
-	
+
 	# maak een lijst met coordinaten
 	list_co = []
 	coordinates = [0, 5, 10, 15, 20, 25, 30, 35, 40]
@@ -44,8 +46,8 @@ def free_batteries(all_info):
 						elif x_coor == 0 :
 							x_coor = 1
 						else :
-							x = sample.random([-1, 1], 1)[0]
-							xCoor += x
+							x = random.sample([-1, 1], 1)[0]
+							x_coor += x
 						fix_coor2 = True
 					elif house.y == y_coor :
 						if y_coor == 50 :
@@ -53,7 +55,7 @@ def free_batteries(all_info):
 						elif y_coor == 0 :
 							y_coor = 1
 						else :
-							x = sample.random([-1, 1], 1)[0]
+							x = random.sample([-1, 1], 1)[0]
 							y_coor += x
 						fix_coor2 = True
 				fix_coor = True
@@ -69,9 +71,9 @@ def free_batteries(all_info):
 		
 		# delete other battery coordinates within the list that are to close to the chosen one
 		for list_object in list_co:
-			if (abs(list_object[0] - xCoor) < border and abs(list_object[1] - yCoor) < border):
+			if (abs(list_object[0] - x_coor) < border and abs(list_object[1] - y_coor) < border):
 				remove_list.append(list_object)
 		for list_object in remove_list:
 			list_co.remove(list_object)
-			
+	
 	return all_info

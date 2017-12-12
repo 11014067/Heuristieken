@@ -8,13 +8,14 @@ def ask_nicely():
 	check1 = True
 	check2a = True
 	check2b = True
+	check2c = True
 	check3 = True
 	check4a = True
 	check4b = True
 
 	# create possible correct answers for the questions
 	neighborhood_list = ["1", "2", "3"]
-	variable_batteries_list = ["y", "n", "yes", "no"]
+	yes_no_list = ["y", "n", "yes", "no"]
 	sorting_method_list = ["s", "d", "sorting", "distance"]
 	sorting_options = ["x", "y", "voltage", "random", "v", "r"]
 	variable_batteries_voltages = []
@@ -31,26 +32,39 @@ def ask_nicely():
 			check1 = False
 		else:
 			print ("Please choose 1, 2 or 3")
-	
-	# ask for the algorithm
-	print ("Do you want to make batteries variable? Yes/no:")
+			
+	# ask about the battaries
+	print ("Do you want the batteries to get a get placed in the spot with the highest house density?")
 	while check2a:
-		variable_batteries = input("")
-		if variable_batteries in variable_batteries_list:
-			if variable_batteries_list.index(variable_batteries) < 2:
-				variable_batteries = variable_batteries_list[variable_batteries_list.index(variable_batteries) + 2]
-			print ("You entered", variable_batteries)
+		free_choice = input("")
+		if free_choice in yes_no_list:
+			if yes_no_list.index(free_choice) < 2:
+				free_choice = yes_no_list[yes_no_list.index(free_choice) + 2]
+			all_info.free = free_choice
+			print ("You entered", free_choice)
 			check2a = False
 		else:
 			print ("Please answer with yes or no:")
 			
+	
+	print ("Do you want to make batteries variable? Yes/no:")
+	while check2b:
+		variable_batteries = input("")
+		if variable_batteries in yes_no_list:
+			if yes_no_list.index(variable_batteries) < 2:
+				variable_batteries = yes_no_list[yes_no_list.index(variable_batteries) + 2]
+			print ("You entered", variable_batteries)
+			check2b = False
+		else:
+			print ("Please answer with yes or no:")
+			
 	if variable_batteries == "yes":
-		while check2b:
+		while check2c:
 			print ("How many batteries do you want?")
 			number_of_batteries = input("")
 			if number_of_batteries.isdigit():
 				if (int(number_of_batteries) in range(1, 31)):
-					check2b = False
+					check2c = False
 		for i in range(0, int(number_of_batteries)):
 			new_entry = True
 			while new_entry:
