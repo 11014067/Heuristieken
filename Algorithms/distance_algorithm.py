@@ -59,6 +59,7 @@ def distance_algorithm(all_info):
 		for i in range(0, len(all_info.batteries)-1):
 			sum_index_list += index_list[i]
 		if (sum_index_list == len(all_info.houses) * len(all_info.batteries)):
+			all_info.solution = False
 			print(" UNSUCCESFULL ")
 			break
 
