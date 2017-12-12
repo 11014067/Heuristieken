@@ -1,6 +1,6 @@
 # This function asks the user what data and which functions they want to use.
 
-from Classes.neighborhood_classes import Neighborhood_class
+from Classes.neighborhood_classes_test import Neighborhood_class
 
 def ask_nicely():
 

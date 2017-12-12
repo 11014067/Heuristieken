@@ -1,5 +1,5 @@
 from Functions.switcher import switching_algorithm
-from Classes.neighborhood_classes import Neighborhood_class
+from Classes.neighborhood_classes_test import Neighborhood_class
 from Functions.download_data import download_data
 from Functions.score_function import score_function
 import random
@@ -9,17 +9,17 @@ def hill_climber(all_info):
 	for i in range(range_loops):
 
 		# random selection of two batteries
-		select_battery = random.sample(Neighborhood_class.Battery, 2)
-		print(select_battery)
-
-		# random selection of a house out of the first sampled battery
-		select_house = random.sample(select_battery[0].houses_list, 1)
-		print(select_house)
-
+		select_battery = random.sample(all_info.batteries , 2)
+		house_list_battery_0 = select_battery[0].houses_list
+		
+		# random selection of a house out of the first sampled battery 
+		# [0] behind it to get the first item out of the list (eventhough there is only 1 item, still need to do this)
+		select_house = random.sample(house_list_battery_0, 1)[0]
+		
 		# loop through all houses connected to the second battery 
-		for house in select_battery.houses_list:
+		for house in select_battery[1].houses_list:
 			# Check if current selected house has a voltage bigger + battery.spare_voltage bigger than other selected house and if random selected house + battery.spare_voltage is bigger than the other selected house
-			if (Neighborhood_class.House.voltage + select_battery.spare_voltage) >= select_house and (select_house + select_battery[1].spare_voltage) >= house:
+			if (select_house.voltage + select_battery[0].spare_voltage) >= house.voltage and (house.voltage + select_battery[1].spare_voltage) >= select_house.voltage:
 				# calculate cable length current and option
 				cable_length = 0
 				current_houses = [select_house, house]

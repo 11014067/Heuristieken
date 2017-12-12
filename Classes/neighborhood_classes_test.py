@@ -14,7 +14,7 @@ class Neighborhood_class:
 		self.battery_sort = ""
 		self.neighborhood = ""
 		self.hill_climber = ""
-		self.iterations
+		self.iterations = 0
 		self.solveable = False
 		self.solution = True
 		self.cost = ""
