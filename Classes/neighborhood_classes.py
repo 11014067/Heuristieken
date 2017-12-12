@@ -1,6 +1,7 @@
 
 class Neighborhood_class:
 
+	# all variables concerning this neighboorhood are stored here
 	def __init__(self):
 		self.houses = []
 		self.batteries = []
@@ -14,6 +15,7 @@ class Neighborhood_class:
 		self.cost = ""
 		self.cable_length = ""
 	
+	# these show functions print information clearly
 	def show_houses(self):
 		very_long_string = ""
 		for house in self.houses:

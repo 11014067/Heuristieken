@@ -6,6 +6,7 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
+from Information.up import upper
 #from Test.free_batteries import free_batteries
 #from Test.new_batteries import new_batteries
 #from Test.forlooptest import test_algorithm
@@ -40,6 +41,7 @@ def main():
 	# switch if nessecairy
 	all_info = switching_algorithm(all_info)
 	
+	upper(all_info.houses, all_info.batteries)
 	# score the outcome
 	all_info = score_function(all_info)
 	
