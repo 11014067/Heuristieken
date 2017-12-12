@@ -7,7 +7,7 @@ from Algorithms.distance_algorithm import distance_algorithm
 from Functions.download_data import download_data
 from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely_test import ask_nicely
-from Functions.score_function import score_function
+from Functions.score_function_test import score_function
 from Functions.switcher import switching_algorithm
 from Functions.hill_climber import hill_climber
 from Information.upper import upper
@@ -48,22 +48,25 @@ def main( a = None):
 	# score the outcome
 	all_info = score_function(all_info)
 	
-	# make a visualisation
-	plt = plot_grid(all_info)
+	# # make a visualisation
+	# plt = plot_grid(all_info)
 	
-	# save the visualisation
-	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "batteries.png")
+	# # save the visualisation
+	# plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "batteries.png")
 	
 	# start hill climber when wished
 	if(all_info.hill_climber == "yes"):
 		all_info = hill_climber(all_info)
 
-		# make a visualisation after hillclimbing
-		plt = plot_grid(all_info)
-		
-		# save the visualisation
-		plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "hill_climbing_batteries.png")
-		
+	# score the outcome
+	all_info = score_function(all_info)
+
+	# make a visualisation after hillclimbing
+	plt = plot_grid(all_info)
+	
+	# save the visualisation
+	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "hill_climbing_batteries.png")
+	
 
 	# if there is no argument given, show the plot
 	if a == None :
