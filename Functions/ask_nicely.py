@@ -69,8 +69,6 @@ def ask_nicely():
 			all_info.battery_voltages = [1508.25] * 5
 		elif all_info.neighborhood == "3" :
 			all_info.battery_voltages = [1506.75] * 5
-		else :
-			all_info.battery_voltages = [1510] * 5
 		
 	# ask for the algorithm
 	print ("You can currently use 2 algorithms: sorting or distance")
