@@ -12,13 +12,13 @@ from Test.forlooptest import test_algorithm
 import random
 
 def main():
-	# remember the method to use
+	# fill all_info with information
 	all_info = ask_nicely()
 	
-	# DOWNLOAD AND ORDER DATA
+	# download and order the data
 	all_info = download_data(all_info)
 	
-	
+	# check if it is solvable
 	if (all_info.solveable == False):
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
@@ -30,22 +30,24 @@ def main():
 		
 	#batteries = better_batteries
 		
-	# ALGORITHM
+	# algorithm
 	if (all_info.sorting_method == "distance"):
 		all_info = test_algorithm(all_info)
 		#information = distance_algorithm(batteries, houses, battery_sort)
 	elif (all_info.sorting_method == "sorting"):
 		all_info = sorting_algorithm(all_info)
 	
-	# SWITCH (and print cables)
+	# switch if nessecairy
 	all_info = switching_algorithm(all_info)
 	
-	# SCORE
+	# score the outcome
 	all_info = score_function(all_info)
 	
-	# PLOT
+	# make a visualisation
 	plt = plot_grid(all_info)
-	# plt.savefig("Visual_solutions/fig_" + method[1] + str(neighborhood) + battery_sort + str(house_sort) + "_" + str(len(batteries)) + "batteries.png")
+	
+	# save the visualisation
+	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "batteries.png")
 	
 	plt.show()
 	return 0
