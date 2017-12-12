@@ -36,6 +36,7 @@ class Neighborhood_class:
 	# class with house information
 	class House:
 		
+		# save all the necassery information
 		def __init__(self, x, y, voltage, id):
 			self.x = x
 			self.y = y
@@ -52,6 +53,7 @@ class Neighborhood_class:
 	# class with battery information	
 	class Battery:
 	
+		# save all the necassery information
 		def __init__(self, x, y, voltage):	
 			self.x = x
 			self.y = y
