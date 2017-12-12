@@ -7,6 +7,7 @@ class Neighborhood_class:
 		self.houses = []
 		self.batteries = []
 		self.battery_coordinates = []
+		self.free = ""
 		self.battery_voltages = []
 		self.sorting_method = ""
 		self.house_sort = ""

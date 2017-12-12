@@ -29,8 +29,9 @@ def main( a = None):
 		return 0
 		
 	# TEST 
-	all_info = free_batteries(all_info)
-	all_info = new_batteries(all_info)
+	if all_info.free:
+		all_info = free_batteries(all_info)
+		all_info = new_batteries(all_info)
 		
 	# algorithm
 	if (all_info.sorting_method == "distance"):
