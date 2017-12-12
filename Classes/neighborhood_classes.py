@@ -15,6 +15,8 @@ class Neighborhood_class:
 		self.solution = True
 		self.cost = ""
 		self.cable_length = ""
+		self.lower_bounds = 0
+		self.upper_bounds = 9999999
 	
 	# print the information about the houses
 	def show_houses(self):
@@ -74,3 +76,7 @@ class Neighborhood_class:
 				return True
 			else:
 				return False
+				
+		def bounds(self):
+			self.lowerbounds = lower(self.houses, self.batteries)
+			self.upperbounds = upper(self.houses, self.batteries)
