@@ -1,5 +1,7 @@
+# This function asks the user what data and which functions they want to use
 
 from Classes.neighborhood_classes import Neighborhood_class
+
 def ask_nicely():
 
 	# create boolians 
@@ -17,6 +19,7 @@ def ask_nicely():
 	sorting_options = ["x", "y", "voltage", "random", "v", "r"]
 	variable_batteries_voltages = []
 	
+	# create a new neighborhood class
 	all_info = Neighborhood_class()
 	
 	# ask for the neighborhood
