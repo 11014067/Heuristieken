@@ -50,7 +50,7 @@ def main( a = None):
 	# score the outcome
 	all_info = score_function(all_info)
 	
-	hill_climber(all_info)
+	#hill_climber(all_info)
 	
 	# make a visualisation
 	plt = plot_grid(all_info)
