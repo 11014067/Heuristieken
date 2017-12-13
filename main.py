@@ -11,6 +11,7 @@ from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from Functions.free_batteries import free_batteries
 from Functions.new_batteries import new_batteries
+from Functions.hill_climber import hill_climber
 from Information.upper import upper
 from Information.lower import lower
 
@@ -44,9 +45,10 @@ def main( a = None):
 	# switch if nessecairy
 	all_info = switching_algorithm(all_info)
 	
-	upper(all_info.houses, all_info.batteries)
 	# score the outcome
 	all_info = score_function(all_info)
+	
+	hill_climber(all_info)
 	
 	# make a visualisation
 	plt = plot_grid(all_info)
