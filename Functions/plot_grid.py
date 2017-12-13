@@ -11,10 +11,6 @@ def plot_grid(all_info):
 	house = read_png('Information/house.png')
 	house_img = OffsetImage(house, zoom = .05)
 	
-	# get the battery image
-	battery = read_png('Information/battery.png')
-	battery_img = OffsetImage(battery, zoom = .05)
-	
 	# make a subplot to allow for add_artist
 	ax = plt.subplot(111)
 	
@@ -43,13 +39,8 @@ def plot_grid(all_info):
 	
 	# add the battery images
 	for battery in all_info.batteries:
-		ab = AnnotationBbox(battery_img, [battery.x, battery.y],
-			xybox=(0, 0),
-			xycoords='data',
-			boxcoords="offset points",
-			bboxprops = dict(ec=colors[battery.id]))                                  
-		ax.add_artist(ab)
-	
+		ax.plot(battery.x, battery.y, 's', color=colors[battery.id], markersize=10)                             
+		
 	# make the major and minor grid
 	plt.grid(b=True, which='major', color='k', linestyle='-')
 	plt.grid(b=True, which='minor', color='k', linestyle='-', alpha=0.2)
