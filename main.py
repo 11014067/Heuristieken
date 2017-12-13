@@ -30,7 +30,9 @@ def main( a = None):
 		return 0
 		
 	# free batteries
+	save_free = ""
 	if all_info.free == "yes":
+		save_free = "Free"
 		all_info = free_batteries(all_info)
 		all_info = new_batteries(all_info)
 		
@@ -52,7 +54,7 @@ def main( a = None):
 	plt = plot_grid(all_info)
 	
 	# save the visualisation
-	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "batteries.png")
+	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "batteries.png")
 	
 	# if there is no argument given, show the plot
 	if (a == None) :
