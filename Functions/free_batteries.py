@@ -40,7 +40,7 @@ def free_batteries(all_info):
 			fix_coor2 = False
 			while (fix_coor2 == False):
 				for house in all_info.houses :
-					if (house.x == x_coor) && (house.y == y_coor):
+					if (house.x == x_coor) and (house.y == y_coor):
 						a = random.sample([1, 2], 1)[0]
 						if (a == 1):
 							if x_coor == 50 :
@@ -60,6 +60,7 @@ def free_batteries(all_info):
 								y_coor += x
 						fix_coor2 = True
 				fix_coor = True
+				fix_coor2 = True
 		
 		all_info.battery_coordinates.append([x_coor, y_coor])
 		remove_list = []
