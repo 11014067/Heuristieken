@@ -1,6 +1,10 @@
 # This function switches houses if the neighborhood was not solved.
 
-def switching_algorithm(all_info):
+def switching_algorithm(all_info, n):
+
+	if n > 40:
+		all_info.cable_length = 9999999
+		return all_info
 	
 	# check if there is a solution already
 	if all_info.solution == True:
@@ -36,8 +40,7 @@ def switching_algorithm(all_info):
 				print ("HOORAY!")
 			else:
 				print ("Stop me if I go crazy!")
-				switching_algorithm(all_info)
-				
+				switching_algorithm(all_info, n + 1)
 				
 	return all_info
 	
