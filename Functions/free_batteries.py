@@ -40,23 +40,24 @@ def free_batteries(all_info):
 			fix_coor2 = False
 			while (fix_coor2 == False):
 				for house in all_info.houses :
-					if house.x == x_coor :
-						if x_coor == 50 :
-							x_coor = 49
-						elif x_coor == 0 :
-							x_coor = 1
+					if (house.x == x_coor) && (house.y == y_coor):
+						a = random.sample([1, 2], 1)[0]
+						if (a == 1):
+							if x_coor == 50 :
+								x_coor = 49
+							elif x_coor == 0 :
+								x_coor = 1
+							else :
+								x = random.sample([-1, 1], 1)[0]
+								x_coor += x
 						else :
-							x = random.sample([-1, 1], 1)[0]
-							x_coor += x
-						fix_coor2 = True
-					elif house.y == y_coor :
-						if y_coor == 50 :
-							y_coor = 49
-						elif y_coor == 0 :
-							y_coor = 1
-						else :
-							x = random.sample([-1, 1], 1)[0]
-							y_coor += x
+							if y_coor == 50 :
+								y_coor = 49
+							elif y_coor == 0 :
+								y_coor = 1
+							else :
+								x = random.sample([-1, 1], 1)[0]
+								y_coor += x
 						fix_coor2 = True
 				fix_coor = True
 		
