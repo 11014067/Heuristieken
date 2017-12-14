@@ -45,7 +45,8 @@ def main( a = None):
 		
 	# algorithm
 	if (all_info.sorting_method == "distance"):
-		#all_info = distance_algorithm(all_info)
+		all_info = distance_algorithm(all_info)
+	elif (all_info.sorting_method == "non-itterative"):
 		all_info = non_itterative_distance(all_info)
 	elif (all_info.sorting_method == "sorting"):
 		all_info = sorting_algorithm(all_info)

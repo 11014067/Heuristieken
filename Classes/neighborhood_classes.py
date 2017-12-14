@@ -77,7 +77,7 @@ class Neighborhood_class:
 		# checks whether a house can be added and adds if possible
 		def add_house(self, house):
 		
-			if self.spare_voltage > house.voltage:
+			if self.spare_voltage > house.voltage and house.placed == False:
 				house.add_battery(self.id)
 				self.houses_list.append(house)
 				self.spare_voltage -= house.voltage

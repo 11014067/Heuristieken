@@ -20,6 +20,7 @@ def non_itterative_distance(all_info):
 
 	# sort the lists from shortest distance to longest		
 	dict_list = sorted(dict_list, key=lambda x: x[0])
+	print(dict_list)
 	
 	# place all the houses
 	for j in range(len(dict_list)):
