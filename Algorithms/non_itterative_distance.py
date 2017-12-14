@@ -25,4 +25,10 @@ def non_itterative_distance(all_info):
 	for j in range(len(dict_list)):
 		all_info.batteries[dict_list[j][2]].add_house(all_info.houses[dict_list[j][1]])
 
+	# check if all the houses are placed
+	for house in all_info.houses:
+		if house.placed == False:
+			all_info.solution = False
+			break
+		
 	return all_info
