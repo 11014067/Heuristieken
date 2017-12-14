@@ -7,11 +7,14 @@ from Algorithms.distance_algorithm import distance_algorithm
 from Functions.download_data import download_data
 from Functions.plot_grid import plot_grid as plot_grid
 from Functions.ask_nicely import ask_nicely
+from Functions.ask_nicely_short import ask_nicely_short
+from Functions.ask_nicely_long import ask_nicely_long
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from Functions.free_batteries import free_batteries
 from Functions.new_batteries import new_batteries
 from Functions.hill_climber import hill_climber
+from Functions.bounds import bounds
 from Information.upper import upper
 from Information.lower import lower
 
@@ -30,17 +33,18 @@ def main( a = None):
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
 		
-	# free batteries
+	# calculate the bounds and free batteries
 	save_free = ""
-	if all_info.free == "yes":
-		save_free = "Free"
-		all_info = free_batteries(all_info)
-		all_info = new_batteries(all_info)
+	if all_info.choice == "long":
+		if all_info.free == "yes":
+			save_free = "Free"
+			all_info = free_batteries(all_info)
+			all_info = new_batteries(all_info)
+		all_info = bounds(all_info)
 		
 	# algorithm
 	if (all_info.sorting_method == "distance"):
 		all_info = distance_algorithm(all_info)
-		#information = distance_algorithm(batteries, houses, battery_sort)
 	elif (all_info.sorting_method == "sorting"):
 		all_info = sorting_algorithm(all_info)
 	
@@ -50,7 +54,9 @@ def main( a = None):
 	# score the outcome
 	all_info = score_function(all_info)
 	
-	#hill_climber(all_info)
+	if all_info.choice == "long":
+		if all_info.hill_climber == "yes":
+			hill_climber(all_info)
 	
 	# make a visualisation
 	plt = plot_grid(all_info)

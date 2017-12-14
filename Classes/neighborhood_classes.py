@@ -3,22 +3,26 @@
 class Neighborhood_class:
 	
 	# save all the necassery information
-	def __init__(self):
+	def __init__(self, choice):
 		self.houses = []
 		self.batteries = []
-		self.battery_coordinates = []
-		self.free = ""
-		self.battery_voltages = []
+		self.cost = ""
+		self.cable_length = ""
 		self.sorting_method = ""
 		self.house_sort = ""
 		self.battery_sort = ""
+		self.battery_voltages = []
 		self.neighborhood = ""
 		self.solveable = False
 		self.solution = True
-		self.cost = ""
-		self.cable_length = ""
-		self.lower_bounds = 0
-		self.upper_bounds = 9999999
+		self.choice = choice
+		if (choice == "long"):
+			self.battery_coordinates = []
+			self.free = ""
+			self.hill_climber = ""
+			self.iterations = 0
+			self.lower_bounds = 0
+			self.upper_bounds = 9999999
 	
 	# print the information about the houses
 	def show_houses(self):
