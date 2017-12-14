@@ -4,18 +4,18 @@ class Neighborhood_class:
 	
 	# save all the necassery information
 	def __init__(self, choice):
-		self.houses = []
 		self.batteries = []
-		self.cost = ""
-		self.cable_length = ""
-		self.sorting_method = ""
-		self.house_sort = ""
 		self.battery_sort = ""
 		self.battery_voltages = []
+		self.choice = choice
+		self.cost = ""
+		self.cable_length = ""
+		self.houses = []
+		self.house_sort = ""
 		self.neighborhood = ""
 		self.solveable = False
 		self.solution = True
-		self.choice = choice
+		self.sorting_method = ""
 		
 		# get more variables with the long version
 		if (choice == "long"):
