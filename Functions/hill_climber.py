@@ -1,3 +1,6 @@
+# This function is a hillclimber that does the wanted amount of itterations.
+# With each itteration it try's to find a better solution by switching two random houses from two of the batteries.
+
 from Functions.switcher import switching_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
 from Functions.download_data import download_data

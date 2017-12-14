@@ -44,7 +44,7 @@ def switching_algorithm(all_info, n):
 				
 	return all_info
 	
-# pick houses to switch	
+# This function picks houses to switch.	
 	
 def pick_a_house(all_info, makeroom, fill, last_try):
 	
