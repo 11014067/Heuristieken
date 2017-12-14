@@ -16,6 +16,8 @@ class Neighborhood_class:
 		self.solveable = False
 		self.solution = True
 		self.choice = choice
+		
+		# get more variables with the long version
 		if (choice == "long"):
 			self.battery_coordinates = []
 			self.free = ""

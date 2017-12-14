@@ -49,7 +49,7 @@ def main( a = None):
 		all_info = sorting_algorithm(all_info)
 	
 	# switch if nessecairy
-	all_info = switching_algorithm(all_info)
+	all_info = switching_algorithm(all_info, 0)
 	
 	# score the outcome
 	all_info = score_function(all_info)

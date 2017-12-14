@@ -5,6 +5,7 @@ import os
 from Classes.neighborhood_classes import Neighborhood_class
 
 def download_data(all_info):
+	
 	# download the files
 	house_file = os.path.normpath('Information/wijk' + all_info.neighborhood + '_huizen.csv')
 	battery_file = os.path.normpath('Information/wijk' + all_info.neighborhood + '_batterijen.txt')
@@ -29,7 +30,7 @@ def download_data(all_info):
 	raw_battery = []
 	file =  open(battery_file, 'r')
 	for line in file: 
-		if(line.split("\t")[0] != "pos"):
+		if (line.split("\t")[0] != "pos"):
 			list_string = line.split("\t")[0]
 			list_string = list_string[1:len(list_string) - 1]
 			raw_battery.append([int(list_string.split(",")[0]), int(list_string.split(",")[1])])

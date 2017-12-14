@@ -1,5 +1,5 @@
 from Functions.switcher import switching_algorithm
-from Classes.neighborhood_classes_test import Neighborhood_class
+from Classes.neighborhood_classes import Neighborhood_class
 from Functions.download_data import download_data
 from Functions.score_function import score_function
 import random

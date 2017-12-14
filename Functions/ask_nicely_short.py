@@ -19,11 +19,11 @@ def ask_nicely_short():
 	check3b = True
 
 	# ask for the neighborhood
-	print ("You can pick neighborhood 1, 2 or 3")
+	print("You can pick neighborhood 1, 2 or 3")
 	while check1:
 		all_info.neighborhood = input("Please enter neighborhood: ")
 		if all_info.neighborhood in neighborhood_list:
-			print ("You entered", all_info.neighborhood)
+			print("You entered", all_info.neighborhood)
 			check1 = False
 			if all_info.neighborhood == "1" :
 				all_info.battery_voltages = [1507] * 5
@@ -32,45 +32,46 @@ def ask_nicely_short():
 			elif all_info.neighborhood == "3" :
 				all_info.battery_voltages = [1506.75] * 5
 		else:
-			print ("Please choose 1, 2 or 3")
+			print("Please choose 1, 2 or 3")
 			
 	# ask for the algorithm
-	print ("You can currently use 2 algorithms: sorting or distance")
+	print("You can currently use 2 algorithms: sorting or distance")
 	while check2:
 		all_info.sorting_method = input("Please enter sorting algorithm: ")
 		if all_info.sorting_method in sorting_method_list:
 			if sorting_method_list.index(all_info.sorting_method) < 2:
 				all_info.sorting_method = sorting_method_list[sorting_method_list.index(all_info.sorting_method) + 2]
-			print ("You entered", all_info.sorting_method)
+			print("You entered", all_info.sorting_method)
 			check2 = False
 		else:
-			print ("Please choose sorting or distance")
+			print("Please choose sorting or distance")
 	
 	# ask for the batteries sorting method
-	print ("You can sort the batteries on voltage, x, y or random.")
+	print("You can sort the batteries on voltage, x, y or random.")
 	while check3a:
 		all_info.battery_sort = input("Please enter a sorting method for the batteries: ")
 		if all_info.battery_sort in sorting_options_list:
 			if sorting_options_list.index(all_info.battery_sort) > 3:
 				all_info.battery_sort = sorting_options_list[sorting_options_list.index(all_info.battery_sort) - 2]
-			print ("You entered", all_info.battery_sort)
+			print("You entered", all_info.battery_sort)
 			check3a = False
 		else:
-			print ("Please choose x, y, voltage or random")
+			print("Please choose x, y, voltage or random")
 	
 	
 	if all_info.sorting_method != "distance":
+		
 		# ask for the houses sorting method
-		print ("You can sort the houses on voltage, x, y or random.")
+		print("You can sort the houses on voltage, x, y or random.")
 		while check3b:
 			all_info.house_sort = input("Please enter a sorting method for the houses: ")
 			if all_info.house_sort in sorting_options_list:
 				if sorting_options_list.index(all_info.house_sort) > 3:
 					all_info.house_sort = sorting_options_list[sorting_options_list.index(all_info.house_sort) - 2]
-				print ("You entered", all_info.house_sort)
+				print("You entered", all_info.house_sort)
 				check3b = False
 			else:
-				print ("Please choose x, y, voltage or random")
+				print("Please choose x, y, voltage or random")
 	else:
 		all_info.house_sort = None
 		
