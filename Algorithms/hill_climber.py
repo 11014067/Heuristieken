@@ -6,16 +6,20 @@ from Classes.neighborhood_classes import Neighborhood_class
 from Functions.download_data import download_data
 from Functions.score_function import score_function
 import random
+import csv
+import datetime
 
 def hill_climber(all_info):
-	range_loops = all_info.iterations 
+	range_loops = all_info.iterations
+	info_iterations = [] 
+	info_cable_length = []
 	# print("start hill_climber")
 	for i in range(range_loops):
-		print(i)
+		# print(i)
 		# random selection of two batteries
 		select_battery = random.sample(all_info.batteries , 2)
 		house_list_battery_0 = select_battery[0].houses_list
-		# print(select_battery)
+		# print(select_battery[0].x, select_battery[0].y, select_battery[1].x, select_battery[1].y)
 		
 		# random selection of a house out of the first sampled battery 
 		# [0] behind it to get the first item out of the list (eventhough there is only 1 item, still need to do this)
@@ -27,6 +31,7 @@ def hill_climber(all_info):
 			# Check if current selected house has a voltage bigger + battery.spare_voltage bigger than other selected house and if random selected house + battery.spare_voltage is bigger than the other selected house
 			if (select_house.voltage + select_battery[0].spare_voltage) >= house.voltage and (house.voltage + select_battery[1].spare_voltage) >= select_house.voltage:
 				# print("first obstacle won")
+				# print(select_battery[0].x, select_battery[0].y, select_battery[1].x, select_battery[1].y)
 				# print(select_house.x, select_house.y)
 				# print(house.x, house.y)
 				# calculate cable length current and option
@@ -45,6 +50,7 @@ def hill_climber(all_info):
 					cable_length += abs(b_y - h_y)
 					cable_length += abs(b_x - h_x)
 					cable_length_overview.append(cable_length)
+					cable_length = 0
 					add = add + 2
 				# print(cable_length_overview)
 
@@ -57,16 +63,30 @@ def hill_climber(all_info):
 
 				# If that is the case check the cable lenghts of houses to other battery if sum cable length of new situation is shorter than original cable length 
 				if cable_length_current > cable_length_future:
-					print("second won!!")
+					# print("second won!!")
 					# If that is the case execute the switch of battery
 					# change the information in the batteries list
-					select_battery[0].spare_voltage += select_house - house
-					select_battery[1] += select_house - house
+					select_battery[0].spare_voltage += select_house.voltage - house.voltage
+					select_battery[1].spare_voltage += select_house.voltage - house.voltage
 
 					# change the information of the changed houses
-					temp = select_house.select_battery[0]
-					select_house.select_battery[0] = house.select_battery[1]
-					house.select_battery[1] = temp
+					temp = select_house.battery_no
+					select_house.battery_no = house.battery_no
+					house.battery_no = temp
 					
-					print("switch")
+					# print("switch")
+		# save info
+		info_iterations.append(i)
+		print(info_iterations)
+
+		info_cable_length.append(score_function(all_info).cable_length)
+		print(info_cable_length)
+
+	with open(("hillclimber.csv"), "w") as csvfile:
+		fieldnames = ["iterations", "cable_length"]
+		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+		writer.writeheader()
+		for j in range(len(info_iterations)):
+			writer.writerow({fieldnames[0]: info_iterations[j], fieldnames[1]: info_cable_length[j]})
+
 	return all_info
