@@ -9,7 +9,6 @@ from Functions.ask_nicely_long import ask_nicely_long
 from Functions.ask_nicely_short import ask_nicely_short
 from Functions.bounds import bounds
 from Functions.download_data import download_data
-from Functions.new_batteries import new_batteries
 from Functions.plot_grid import plot_grid as plot_grid
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
