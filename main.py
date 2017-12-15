@@ -12,11 +12,10 @@ from Functions.ask_nicely_long import ask_nicely_long
 from Functions.ask_nicely_short import ask_nicely_short
 from Functions.bounds import bounds
 from Functions.download_data import download_data
-from Functions.new_batteries import new_batteries
 from Functions.plot_grid import plot_grid as plot_grid
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
-from replace_batteries import replace
+#from replace_batteries import replace
 from Information.upper import upper
 from Information.lower import lower
 
@@ -41,7 +40,6 @@ def main( a = None):
 		if all_info.free == "yes":
 			save_free = "Free"
 			all_info = free_batteries(all_info)
-			all_info = new_batteries(all_info)
 		all_info = bounds(all_info)
 		
 	# algorithm
