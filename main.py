@@ -17,6 +17,8 @@ from Functions.plot_grid import plot_grid as plot_grid
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from replace_batteries import replace
+from relocate_battery import relocate
+from empty import empty
 from Information.upper import upper
 from Information.lower import lower
 
@@ -71,7 +73,11 @@ def main( a = None):
 	# if there is no argument given, show the plot
 	if (a == None) :
 		plt.show()
-		
+	
+	if all_info.choice == "long":
+		if all_info.free == "yes":
+			relocate(all_info)
+			
 	return all_info
 
 if __name__ == "__main__":
