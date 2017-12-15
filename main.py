@@ -2,6 +2,7 @@
 # It asks the user what kind of algorithm it wants to use, which neighborhood and how big and how many batteries.
 
 from Algorithms.distance_algorithm import distance_algorithm
+from Algorithms.free_batteries import free_batteries
 from Algorithms.hill_climber import hill_climber
 from Algorithms.non_itterative_distance import non_itterative_distance
 from Algorithms.sorting_algorithm import sorting_algorithm
@@ -11,11 +12,11 @@ from Functions.ask_nicely_long import ask_nicely_long
 from Functions.ask_nicely_short import ask_nicely_short
 from Functions.bounds import bounds
 from Functions.download_data import download_data
-from Functions.free_batteries import free_batteries
 from Functions.new_batteries import new_batteries
 from Functions.plot_grid import plot_grid as plot_grid
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
+from replace_batteries import replace
 from Information.upper import upper
 from Information.lower import lower
 
