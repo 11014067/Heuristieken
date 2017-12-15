@@ -3,7 +3,7 @@
 ## Sorting
 
 The sorting algotithm sorts the houses and batteries on x-coordinate, y-coordinate, voltage or random.
-After sorting it go and try to link the houses to the first battery they fit on.
+After sorting it goes and try to link the houses to the first battery they fit on.
 
 ## Distance
 
@@ -22,3 +22,10 @@ This way, unlike the distance algorithm, a battery in an area with a lot of hous
 
 The hillclimber gets a solved list of connected houses and batteries but tries to switch two houses between two batteries to see if that lowers the cost of the neighborhood.
 It switches two houses as many times as wanted.
+
+
+## Free batteries
+
+This function makes 10 by 10 matrices and looks at which one have the most houses inside of them. 
+It makes sure it does not put two batteries in matrices that overlap a lot if posible.
+The wanted amount of batteries will be placed in the middle of the most house densly matrices.
