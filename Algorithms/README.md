@@ -7,7 +7,7 @@ This folder contains our algorithms:
 - Non-itterative
 - Sorting
 
-* Free batteries, Hillclimber and Non-itterative are only callable from the long version of ask nicely.
+Free batteries, Hillclimber and Non-itterative are only callable from the long version of ask nicely.
 
 ## Distance
 
