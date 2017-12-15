@@ -1,4 +1,13 @@
-# Algorithms folder
+# Algorithms
+
+This folder contains our algorithms:
+- Distance
+- Free batteries
+- Hillclimber
+- Non-itterative
+- Sorting
+
+* Free batteries, Hillclimber and Non-itterative are only callable from the long version of ask nicely.
 
 ## Distance
 
