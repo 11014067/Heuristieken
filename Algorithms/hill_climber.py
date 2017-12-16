@@ -91,8 +91,15 @@ def hill_climber(all_info):
 					# print("second won!!")
 					# If that is the case execute the switch of battery
 					# change the information in the batteries list
-					select_battery[0].spare_voltage += select_house.voltage - house.voltage
-					select_battery[1].spare_voltage += select_house.voltage - house.voltage
+					for battery in all_info.batteries:
+						if select_battery[0].id == battery.id:
+							battery.spare_voltage += select_house.voltage - house.voltage
+							battery.houses_list.remove(select_house)
+							battery.houses_list.append(house)
+						if select_battery[1].id == battery.id:
+							battery.spare_voltage += select_house.voltage - house.voltage
+							battery.houses_list.remove(house)
+							battery.houses_list.append(select_house)
 
 					# change the information of the changed houses
 					temp = select_house.battery_no
