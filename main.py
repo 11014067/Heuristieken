@@ -30,7 +30,7 @@ def main( a = None):
 	all_info = download_data(all_info)
 	
 	# check if it is solvable
-	if (all_info.solveable == False):
+	if all_info.solveable == False:
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
 		
@@ -71,7 +71,7 @@ def main( a = None):
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
 	
 	# if there is no argument given, show the plot
-	if (a == None) :
+	if a == None :
 		plt.show()
 	
 	if all_info.choice == "long":

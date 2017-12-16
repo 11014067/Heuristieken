@@ -7,7 +7,7 @@ def score_function(all_info):
 	# calculate the cable length for each house and save the sum
 	cost_of_neighborhood = 0
 	for house in all_info.houses:
-		if (int(house.battery_no) >= 0):
+		if int(house.battery_no) >= 0:
 			h_x = house.x
 			h_y = house.y
 			b_x = next(battery for battery in all_info.batteries if battery.id == house.battery_no).x
