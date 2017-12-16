@@ -1,8 +1,5 @@
 # calculate densly packed areas of houses to put batteries.
 
-from Classes.neighborhood_classes import Neighborhood_class
-import csv
-import os
 import random
 
 def free_batteries(all_info): 
@@ -86,15 +83,5 @@ def free_batteries(all_info):
 				remove_list.append(list_object)
 		for list_object in remove_list:
 			list_co.remove(list_object)
-	
-	# store the new batteries
-	def fillBatteries(data_battery, i):
-		new_battery = Neighborhood_class.Battery(data_battery[0], data_battery[1], all_info.battery_voltages[i])
-		return new_battery
-	
-	all_info.batteries = []
-	for i in range(0, len(all_info.battery_coordinates)):
-		all_info.batteries.append(fillBatteries(all_info.battery_coordinates[i], i))
-		all_info.batteries[i].add_name(i)
 	
 	return all_info

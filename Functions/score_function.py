@@ -24,6 +24,4 @@ def score_function(all_info):
 		cost_of_neighborhood += int((math.log(battery.voltage, math.e)*649.21) - 3066.2)
 	all_info.cost = cost_of_neighborhood
 	
-	print(cost_of_neighborhood)
-
 	return all_info

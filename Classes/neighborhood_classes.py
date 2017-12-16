@@ -21,6 +21,7 @@ class Neighborhood_class:
 		if (choice == "long"):
 			self.battery_coordinates = []
 			self.free = ""
+			self.improve = "no"
 			self.hill_climber = ""
 			self.iterations = 0
 			self.lower_bounds = 0
