@@ -56,15 +56,19 @@ def main( a = None):
 	# score the outcome
 	all_info = score_function(all_info)
 	
+	# start hillclimber when wished
 	if all_info.choice == "long":
 		if all_info.hill_climber == "yes":
 			hill_climber(all_info)
+
+	# score the outcome
+	all_info = score_function(all_info)
 	
 	# make a visualisation
 	plt = plot_grid(all_info)
 	
 	# save the visualisation
-	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "batteries.png")
+	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
 	
 	# if there is no argument given, show the plot
 	if (a == None) :
