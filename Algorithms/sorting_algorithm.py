@@ -28,6 +28,7 @@ def sorting_algorithm(all_info):
 			if all_info.batteries[i].add_house(house):
 				house_placed = True
 			i+=1
+			
 			# if imposible to solve, break
 			if i > len(all_info.batteries) - 1 and house_placed == False:
 				all_info.solution = False

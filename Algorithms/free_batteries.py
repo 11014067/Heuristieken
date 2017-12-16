@@ -6,7 +6,7 @@ import random
 
 def free_batteries(all_info): 
 
-	# maak een lijst met coordinaten
+	# make a list with coordinates
 	list_co = []
 	coordinates = [0, 5, 10, 15, 20, 25, 30, 35, 40]
 	x = 0
@@ -15,8 +15,6 @@ def free_batteries(all_info):
 	# calculate the house density for the coordinates
 	breakLoop = False
 	while breakLoop == False:
-		
-		# calculate the density per 10x10 "matrix"
 		houses_amount = 0
 		for house in all_info.houses:
 			if (house.x - coordinates[x]) >= 0 and (house.x - coordinates[x]) < 10 and 
@@ -38,8 +36,8 @@ def free_batteries(all_info):
 
 	# make sure the battery is not on a house and they arent to close to eachother
 	for i in range(0, len(all_info.batteries)):
-		x_coor = list_co[0][0]
-		y_coor = list_co[0][1]
+		x_coor = list_co[i][0]
+		y_coor = list_co[i][1]
 		fix_coor = False
 		while fix_coor == False:
 			fix_coor2 = False
@@ -47,7 +45,7 @@ def free_batteries(all_info):
 				for house in all_info.houses :
 					
 					# if the battery is on a house, randomly change it one position.
-					if (house.x == x_coor) and (house.y == y_coor):
+					if house.x == x_coor and house.y == y_coor:
 						a = random.sample([1, 2], 1)[0]
 						if a == 1:
 							if x_coor == 50:
