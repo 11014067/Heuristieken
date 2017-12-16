@@ -3,7 +3,7 @@
 
 from Algorithms.distance_algorithm import distance_algorithm
 from Algorithms.free_batteries import free_batteries
-from Algorithms.hill_climber import hill_climber
+from Test.hill_climber_Jas import hill_climber
 from Algorithms.non_itterative_distance import non_itterative_distance
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Classes.neighborhood_classes import Neighborhood_class

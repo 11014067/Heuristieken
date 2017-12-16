@@ -1,0 +1,141 @@
+# This function is a hillclimber that does the wanted amount of itterations.
+# With each itteration it try's to find a better solution by switching two random houses from two of the batteries.
+
+from Functions.switcher import switching_algorithm
+from Classes.neighborhood_classes import Neighborhood_class
+from Functions.download_data import download_data
+from Functions.score_function import score_function
+import csv
+import random
+
+def hill_climber(all_info):
+
+	print("$$$$$$$$$$$$$$$$$$$$$")
+	range_loops = all_info.iterations 
+	info_iterations = []
+	info_cable_length = []
+	# print("start hill_climber")
+	for i in range(range_loops):
+		print(i)
+		# random selection of two batteries
+		select_battery = random.sample(all_info.batteries , 2)
+		house_list_battery_0 = select_battery[0].houses_list
+		# print(select_battery)
+		
+		# random selection of a house out of the first sampled battery 
+		# [0] behind it to get the first item out of the list (eventhough there is only 1 item, still need to do this)
+		select_house = random.sample(house_list_battery_0, 1)[0]
+		# print(select_house)
+		
+		# loop through all houses connected to the second battery 
+		for house in select_battery[1].houses_list:
+			# Check if current selected house has a voltage bigger + battery.spare_voltage bigger than other selected house and if random selected house + battery.spare_voltage is bigger than the other selected house
+			if (select_house.voltage + select_battery[0].spare_voltage) >= house.voltage and (house.voltage + select_battery[1].spare_voltage) >= select_house.voltage:
+				# print("first obstacle won")
+				# print(select_house.x, select_house.y)
+				# print(house.x, house.y)
+				# calculate cable length current and option
+				cable_length = 0
+				current_houses = [select_house, house]
+				print("id selected battery {}".format(select_battery[1].id))
+				# print(select_battery[1].y)
+				print("id selected battery {}".format(select_battery[0].id))
+				# print(select_battery[0].y)
+				# print(house.x)
+				# print(house.y)
+				# print(select_house.x)
+				# print(select_house.y)
+				cable_length_overview = []
+				# compare options between selected house in first battery, current house in second battery, selected house to seconde battery, current house to first battery  
+				options = [0, 0, 1, 1, 0, 1, 1, 0]
+				add = 0
+
+				for j in range(4):
+					h_x = current_houses[options[add]].x
+					h_y = current_houses[options[add]].y
+					b_x = select_battery[options[add + 1]].x
+					b_y = select_battery[options[add + 1]].y
+					# print(cable_length)
+					cable_length += abs(b_y - h_y)
+					cable_length += abs(b_x - h_x)
+					# print(cable_length)
+					cable_length_overview.append(cable_length)
+
+					cable_length = 0
+					# print(cable_length)
+					
+					add = add + 2
+				# print(cable_length_overview)
+
+				# make current and new sum
+				cable_length_current = cable_length_overview[0] + cable_length_overview[1]
+				cable_length_future = cable_length_overview[2] + cable_length_overview[3]
+
+				print("current {}".format(cable_length_current))
+				print("future {}".format(cable_length_future))
+
+				# If that is the case check the cable lenghts of houses to other battery if sum cable length of new situation is shorter than original cable length 
+				if cable_length_current > cable_length_future:
+					print("second won!!")
+					# If that is the case execute the switch of battery
+					# first, update the spare_voltage
+					print(select_battery[0].spare_voltage, select_battery[1].spare_voltage)
+					select_battery[0].spare_voltage += select_house.voltage 
+					select_battery[1].spare_voltage += house.voltage
+					print(select_battery[0].spare_voltage, select_battery[1].spare_voltage)
+
+					# remove the house form the battery
+					print("Deze is weg:", select_house.id)
+					#for home in select_battery[0].houses_list:
+					#	print(home.id)
+					j = 0
+					for home in select_battery[0].houses_list:
+						if home.id == select_house.id:
+							index = i
+						j += 1
+					print(index)
+					
+					del select_battery[0].houses_list[index]
+					#for home in select_battery[0].houses_list:
+					#	print(home.id)
+					
+					# remove the second house form the battery
+					print("Deze is weg:", house.id)
+
+					j = 0
+					for home in select_battery[1].houses_list:
+						if home.id == house.id:
+							index = i
+						j += 1
+					print(index)
+					
+					del select_battery[1].houses_list[index]
+					#for home in select_battery[0].houses_list:
+					#	print(home.id)
+					
+					if(select_battery[1].add_house(house)):
+						print("WOOT!")
+					select_battery[0].add_house(select_house)
+
+					print("switch")
+		# save info
+		info_iterations.append(i)
+		# print(info_iterations)
+
+		info_cable_length.append(score_function(all_info).cable_length)
+		# print(info_cable_length)
+		
+		
+	print("Dit:", info_iterations, "en dit:", info_cable_length)
+
+	with open(("hillclimber.csv"), "w") as csvfile:
+		fieldnames = ["iterations", "cable_length"]
+		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+		writer.writeheader()
+		for j in range(len(info_iterations)):
+			writer.writerow({fieldnames[0]: info_iterations[j], fieldnames[1]: info_cable_length[j]})
+
+
+			print("switch")
+
+	return all_info
