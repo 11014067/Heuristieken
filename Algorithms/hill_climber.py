@@ -4,7 +4,7 @@
 from Functions.switcher import switching_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
 from Functions.download_data import download_data
-from Functions.score_function import score_function
+from Functions.score_function_test import score_function
 import random
 
 def hill_climber(all_info):
@@ -32,6 +32,14 @@ def hill_climber(all_info):
 				# calculate cable length current and option
 				cable_length = 0
 				current_houses = [select_house, house]
+				print("id selected battery {}".format(select_battery[1].id))
+				# print(select_battery[1].y)
+				print("id selected battery {}".format(select_battery[0].id))
+				# print(select_battery[0].y)
+				# print(house.x)
+				# print(house.y)
+				# print(select_house.x)
+				# print(select_house.y)
 				cable_length_overview = []
 				# compare options between selected house in first battery, current house in second battery, selected house to seconde battery, current house to first battery  
 				options = [0, 0, 1, 1, 0, 1, 1, 0]
@@ -42,9 +50,16 @@ def hill_climber(all_info):
 					h_y = current_houses[options[add]].y
 					b_x = select_battery[options[add + 1]].x
 					b_y = select_battery[options[add + 1]].y
+					# print(cable_length)
 					cable_length += abs(b_y - h_y)
 					cable_length += abs(b_x - h_x)
+					# print(cable_length)
 					cable_length_overview.append(cable_length)
+<<<<<<< HEAD
+					cable_length = 0
+					# print(cable_length)
+=======
+>>>>>>> 4595e35f9825aae8657c112fd87d28ef80af1cc8
 					add = add + 2
 				# print(cable_length_overview)
 
@@ -52,8 +67,8 @@ def hill_climber(all_info):
 				cable_length_current = cable_length_overview[0] + cable_length_overview[1]
 				cable_length_future = cable_length_overview[2] + cable_length_overview[3]
 
-				# print(cable_length_current)
-				# print(cable_length_future)
+				print("current {}".format(cable_length_current))
+				print("future {}".format(cable_length_future))
 
 				# If that is the case check the cable lenghts of houses to other battery if sum cable length of new situation is shorter than original cable length 
 				if cable_length_current > cable_length_future:
@@ -68,5 +83,23 @@ def hill_climber(all_info):
 					select_house.select_battery[0] = house.select_battery[1]
 					house.select_battery[1] = temp
 					
+<<<<<<< HEAD
+					# print("switch")
+		# save info
+		info_iterations.append(i)
+		# print(info_iterations)
+
+		info_cable_length.append(score_function(all_info).cable_length)
+		# print(info_cable_length)
+
+	with open(("hillclimber.csv"), "w") as csvfile:
+		fieldnames = ["iterations", "cable_length"]
+		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
+		writer.writeheader()
+		for j in range(len(info_iterations)):
+			writer.writerow({fieldnames[0]: info_iterations[j], fieldnames[1]: info_cable_length[j]})
+
+=======
 					print("switch")
+>>>>>>> 4595e35f9825aae8657c112fd87d28ef80af1cc8
 	return all_info
