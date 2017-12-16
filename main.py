@@ -20,8 +20,6 @@ from Test.relocate_battery import relocate
 from Test.empty import empty
 from Information.upper import upper
 from Information.lower import lower
-
-#from Test.forlooptest import test_algorithm
 import random
 
 def main( a = None):
