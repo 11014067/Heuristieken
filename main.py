@@ -3,7 +3,7 @@
 
 from Algorithms.distance_algorithm import distance_algorithm
 from Algorithms.free_batteries import free_batteries
-from Test.hill_climber_Jas import hill_climber
+from Algorithms.hill_climber import hill_climber
 from Algorithms.non_itterative_distance import non_itterative_distance
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
@@ -21,6 +21,7 @@ from Test.empty import empty
 from Information.upper import upper
 from Information.lower import lower
 import random
+import winsound
 
 def main( a = None):
 	
@@ -65,9 +66,18 @@ def main( a = None):
 	# score the outcome
 	all_info = score_function(all_info)
 	
-	# make and save a visualisation
-	plt = plot_grid(all_info)
-	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
+	winsound.Beep(2500, 10000)
+	
+	if (all_info.choice == "long"):
+
+		# make and save a visualisation
+		plt = plot_grid(all_info)
+		plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
+	
+	else:
+		# make and save a visualisation
+		plt = plot_grid(all_info)
+		plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "batteries.png")
 	
 	# if there is no argument given, show the plot
 	if a == None :

@@ -161,7 +161,8 @@ def ask_nicely_long():
 		while check5b:
 			print("How many iterations do you want?")
 			number_of_iterations = input("")
-			check5b = False
+			if (number_of_iterations.isdigit()):
+				check5b = False
 		all_info.iterations = int(number_of_iterations)
 		print(all_info.iterations)
 
