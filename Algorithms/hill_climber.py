@@ -4,7 +4,7 @@
 from Functions.switcher import switching_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
 from Functions.download_data import download_data
-from Functions.score_function_test import score_function
+from Functions.score_function import score_function
 import random
 
 def hill_climber(all_info):
@@ -55,11 +55,10 @@ def hill_climber(all_info):
 					cable_length += abs(b_x - h_x)
 					# print(cable_length)
 					cable_length_overview.append(cable_length)
-<<<<<<< HEAD
+
 					cable_length = 0
 					# print(cable_length)
-=======
->>>>>>> 4595e35f9825aae8657c112fd87d28ef80af1cc8
+					
 					add = add + 2
 				# print(cable_length_overview)
 
@@ -83,7 +82,6 @@ def hill_climber(all_info):
 					select_house.select_battery[0] = house.select_battery[1]
 					house.select_battery[1] = temp
 					
-<<<<<<< HEAD
 					# print("switch")
 		# save info
 		info_iterations.append(i)
@@ -99,7 +97,7 @@ def hill_climber(all_info):
 		for j in range(len(info_iterations)):
 			writer.writerow({fieldnames[0]: info_iterations[j], fieldnames[1]: info_cable_length[j]})
 
-=======
-					print("switch")
->>>>>>> 4595e35f9825aae8657c112fd87d28ef80af1cc8
+
+			print("switch")
+
 	return all_info
