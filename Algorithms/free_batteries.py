@@ -17,8 +17,7 @@ def free_batteries(all_info):
 	while breakLoop == False:
 		houses_amount = 0
 		for house in all_info.houses:
-			if (house.x - coordinates[x]) >= 0 and (house.x - coordinates[x]) < 10 and 
-				(house.y - coordinates[y]) >= 0  and (house.y - coordinates[y]) < 10:
+			if house.x - coordinates[x] >= 0 and house.x - coordinates[x] < 10 and house.y - coordinates[y] >= 0  and house.y - coordinates[y] < 10:
 				houses_amount += 1
 		list_co.append([coordinates[x], coordinates[y], houses_amount])
 		x += 1
