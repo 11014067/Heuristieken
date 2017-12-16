@@ -7,7 +7,7 @@ import time
 def non_itterative_distance(all_info):
 	
 	# sort the batteries and houses
-	print ("Sorting...")
+	print("Sorting...")
 	all_info.batteries = sorted(all_info.batteries, key=lambda battery: battery.id)
 	all_info.houses = sorted(all_info.houses, key=lambda house: house.id)
 	

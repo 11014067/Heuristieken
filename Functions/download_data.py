@@ -55,7 +55,7 @@ def download_data(all_info):
 	
 	# see if the problem is solveable
 	print(sum_houses, sum_batteries)
-	if (sum_batteries > sum_houses):
+	if sum_batteries > sum_houses:
 		all_info.solveable = True
 		
 	return all_info

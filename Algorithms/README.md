@@ -11,6 +11,10 @@ The distance algorithm looks at the distance from each house to each battery.
 It sorts the batteries on x-coordinate, y-coordinate, voltage or random after which each battery gets the first house of there list that fits and is not linked yet.
 In this way all the batteries will have one house linked to them before the first battery in the list gets linked to a second house.
 
+## Free batteries
+
+This algorithm looks at the grid of houses as if it has a lot of overlapping matrices. It puts the batteries in (if posible non-overlaying) matrices with the most houses insite of them.
+
 ## Non-itterative
 
 The non-itterative algorithm also looks at the difference between each house and each battery.

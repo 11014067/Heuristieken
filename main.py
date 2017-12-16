@@ -3,7 +3,7 @@
 
 from Algorithms.distance_algorithm import distance_algorithm
 from Algorithms.free_batteries import free_batteries
-from Algorithms.hill_climber import hill_climber
+from Test.hill_climber_Jas import hill_climber
 from Algorithms.non_itterative_distance import non_itterative_distance
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
@@ -20,11 +20,10 @@ from Test.relocate_battery import relocate
 from Test.empty import empty
 from Information.upper import upper
 from Information.lower import lower
-
-#from Test.forlooptest import test_algorithm
 import random
 
 def main( a = None):
+	
 	# fill all_info with information
 	all_info = ask_nicely()
 	
@@ -32,7 +31,7 @@ def main( a = None):
 	all_info = download_data(all_info)
 	
 	# check if it is solvable
-	if (all_info.solveable == False):
+	if all_info.solveable == False:
 		print("This problem is not able to be solved do to to little battery voltage.")
 		return 0
 		
@@ -66,16 +65,15 @@ def main( a = None):
 	# score the outcome
 	all_info = score_function(all_info)
 	
-	# make a visualisation
+	# make and save a visualisation
 	plt = plot_grid(all_info)
-	
-	# save the visualisation
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
 	
 	# if there is no argument given, show the plot
-	if (a == None) :
+	if a == None :
 		plt.show()
 	
+	# starting trying to get improvements if wanted
 	if all_info.choice == "long":
 		if all_info.improve == "yes":
 			relocate(all_info)

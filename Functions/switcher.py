@@ -69,7 +69,7 @@ def pick_a_house(all_info, makeroom, fill, last_try):
 	
 	# if failed, try again
 	if small_house == 999999:
-		print ("Let's do this again!")
+		print("Let's do this again!")
 		picked_houses = pick_a_house(all_info, makeroom, fill, big_house.voltage)
 		small_house = picked_houses[0]
 		big_house = picked_houses[1]

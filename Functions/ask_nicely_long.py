@@ -77,12 +77,12 @@ def ask_nicely_long():
 			print("How many batteries do you want?")
 			number_of_batteries = input("")
 			if number_of_batteries.isdigit():
-				if (all_info.free == "no"):
-					if (int(number_of_batteries) == 5):
+				if all_info.free == "no":
+					if int(number_of_batteries) == 5:
 						check2c = False
 					else :
 						print("When chosing not to place batteries in house dense areas, you have to use 5 batteries.")
-				elif (int(number_of_batteries) in range(1, 31)):
+				elif int(number_of_batteries) in range(1, 31):
 					check2c = False
 		for i in range(0, int(number_of_batteries)):
 			new_entry = True

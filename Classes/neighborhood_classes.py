@@ -55,12 +55,11 @@ class Neighborhood_class:
 			self.id = id
 			self.battery_no = -1
 			self.placed = False
-			self.id = id
 	
 		def add_battery(self, battery_no):
 			self.battery_no = battery_no
 			self.placed = True
-			
+		
 	# class with battery information	
 	class Battery:
 	
