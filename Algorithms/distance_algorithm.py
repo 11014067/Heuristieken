@@ -7,10 +7,10 @@ import time
 def distance_algorithm(all_info):
 	# sort the batteries
 	all_info.show_batteries()
-	print ("Sorting...")
-	if (all_info.battery_sort == "random"):
+	print("Sorting...")
+	if all_info.battery_sort == "random":
 		all_info.batteries = random.sample(all_info.batteries, len(all_info.batteries))
-	elif (all_info.battery_sort != "voltage"):
+	elif all_info.battery_sort != "voltage":
 		all_info.batteries = sorted(all_info.batteries, key=lambda battery: getattr(battery, all_info.battery_sort))
 	else:
 		all_info.batteries = sorted(all_info.batteries, key=lambda battery: -battery.voltage)
@@ -36,19 +36,19 @@ def distance_algorithm(all_info):
 	houses_to_place = len(all_info.houses)
 	
 	# place all the houses
-	while (houses_to_place > 0):
+	while houses_to_place > 0:
 		for j in range(0, len(all_info.batteries)):
 			# only try to add if it has spare voltage
-			if (all_info.batteries[j].spare_voltage > 0):
+			if all_info.batteries[j].spare_voltage > 0:
 				# place the first posible house
 				place_house = False
-				while (place_house == False):
-					if (index_list[j] == len(all_info.houses)):
+				while place_house == False:
+					if index_list[j] == len(all_info.houses):
 						index_list[j] = len(all_info.houses) - 1
 						# if there are no houses left to place, go to the next battery
 						place_house = True
-					elif (all_info.houses[dict_list["distance" + str(j) + "list"][index_list[j]][1]].placed == False):
-						if (all_info.batteries[j].add_house(all_info.houses[dict_list["distance" + str(j) + "list"][index_list[j]][1]])):
+					elif all_info.houses[dict_list["distance" + str(j) + "list"][index_list[j]][1]].placed == False:
+						if all_info.batteries[j].add_house(all_info.houses[dict_list["distance" + str(j) + "list"][index_list[j]][1]]):
 							# house placed op true
 							houses_to_place -= 1
 							# go to the next battery
@@ -59,7 +59,7 @@ def distance_algorithm(all_info):
 		sum_index_list = 0
 		for i in range(0, len(all_info.batteries)):
 			sum_index_list += index_list[i]
-		if (sum_index_list == len(all_info.houses) * len(all_info.batteries)):
+		if sum_index_list == len(all_info.houses) * len(all_info.batteries):
 			all_info.solution = False
 			print(" UNSUCCESFULL ")
 			return all_info
