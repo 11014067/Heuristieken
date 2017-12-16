@@ -15,7 +15,7 @@ def sorting_algorithm(all_info):
 	
 	if all_info.house_sort == "random":
 		all_info.houses = random.sample(all_info.houses, len(all_info.houses))
-	elif ll_info.house_sort != "voltage":
+	elif all_info.house_sort != "voltage":
 		all_info.houses = sorted(all_info.houses, key=lambda house: getattr(house, all_info.house_sort))
 	else:
 		all_info.houses = sorted(all_info.houses, key=lambda house: -house.voltage)
