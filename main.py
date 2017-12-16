@@ -15,9 +15,9 @@ from Functions.download_data import download_data
 from Functions.plot_grid import plot_grid as plot_grid
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
-from replace_batteries import replace
-from relocate_battery import relocate
-from empty import empty
+from Test.replace_batteries import replace
+from Test.relocate_battery import relocate
+from Test.empty import empty
 from Information.upper import upper
 from Information.lower import lower
 
@@ -73,7 +73,7 @@ def main( a = None):
 		plt.show()
 	
 	if all_info.choice == "long":
-		if all_info.free == "yes":
+		if all_info.improve == "yes":
 			relocate(all_info)
 			
 	return all_info

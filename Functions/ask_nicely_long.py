@@ -17,6 +17,7 @@ def ask_nicely_long():
 	# create boolians 
 	check1 = True
 	check2a = True
+	check2ab = True
 	check2b = True
 	check2c = True
 	check3 = True
@@ -44,6 +45,18 @@ def ask_nicely_long():
 				free_choice = yes_no_list[yes_no_list.index(free_choice) + 2]
 			all_info.free = free_choice
 			print("You entered", free_choice)
+			if all_info.free == "yes":
+				print("Do you want us to try and improve your free batteries?")
+				while check2ab:
+					improve = input("")
+					if improve in yes_no_list:
+						if yes_no_list.index(improve) < 2:
+							improve = yes_no_list[yes_no_list.index(improve) + 2]
+						all_info.improve = improve
+						print("You entered", improve)
+						check2ab = False
+					else:
+						print("Please answer with yes or no:")
 			check2a = False
 		else:
 			print("Please answer with yes or no:")
