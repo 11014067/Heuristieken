@@ -56,6 +56,7 @@ def main( a = None):
 	
 	# score the outcome
 	all_info = score_function(all_info)
+	print("Before hillclimber cable_length is: {}".format(all_info.cable_length))
 	
 	## make and save a visualisation
 	#plt = plot_grid(all_info)

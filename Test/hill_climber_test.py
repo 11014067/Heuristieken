@@ -1,5 +1,6 @@
 # This function is a hillclimber that does the wanted amount of itterations.
 # With each itteration it try's to find a better solution by switching two random houses from two of the batteries.
+from pathlib import Path
 from Functions.switcher import switching_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
 from Functions.download_data import download_data
@@ -8,7 +9,7 @@ import random
 import csv
 import datetime
 
-def hill_climber(all_info):
+def hill_climber(all_info, repeat):
 	info_iterations = []
 	info_cable_length = []
 	range_loops = all_info.iterations 
@@ -130,7 +131,7 @@ def hill_climber(all_info):
 		print("house id: {}".format(house.id))
 		print("house is coupled to battery: {}".format(house.battery_no))
 
-	with open(("hillclimber" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + str(len(all_info.batteries)) + str((all_info.iterations)) + ".csv"), "w") as csvfile:
+	with open(("hillclimber" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + str(len(all_info.batteries)) + str((all_info.iterations)) + str(repeat) +".csv"), "w") as csvfile:
 		fieldnames = ["iterations", "cable_length"]
 		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
 		writer.writeheader()
