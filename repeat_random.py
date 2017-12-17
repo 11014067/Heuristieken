@@ -5,9 +5,9 @@ import time
 
 t0 = time.time()
 
-# best_solution = Neighborhood_class()
-# best_solution.cable_length = 9999999999
-# print(best_solution.cable_length)
+best_solution = Neighborhood_class()
+best_solution.cable_length = 9999999999
+print(best_solution.cable_length)
 
 improvement_rate = []
 
@@ -18,17 +18,12 @@ for i in range (0, 150000):
 	f = open('input.txt','r')
 	sys.stdin = f
 	solution = main(a = "a")
-	best_solution = Neighborhood_class()
-	best_solution.cable_length = 9999999999
-	print(best_solution.cable_length)
 	f.close()
 		
 	if solution.cable_length < best_solution.cable_length:
 		best_solution = solution
 
 		improvement_rate.append([i, best_solution.cable_length])
-
-	return i
 		
 sys.stdin = f1	
 

@@ -7,6 +7,7 @@ from Functions.download_data import download_data
 from Functions.score_function import score_function
 import random
 import csv
+import datetime
 
 def hill_climber(all_info):
 	info_iterations = []
@@ -130,7 +131,7 @@ def hill_climber(all_info):
 		print("house id: {}".format(house.id))
 		print("house is coupled to battery: {}".format(house.battery_no))
 
-	with open(("hillclimber.csv"), "w") as csvfile:
+	with open(("hillclimber" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + str(len(all_info.batteries)) + str((all_info.iterations)) +".csv"), "w") as csvfile:
 		fieldnames = ["iterations", "cable_length"]
 		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
 		writer.writeheader()
