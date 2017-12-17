@@ -23,9 +23,18 @@ import matplotlib.pyplot as plt
 import time
 
 def relocate(all_info):
+
+	plt = plot_grid(all_info)
+	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
+	plt.ion();
+	plt.pause(2)
+	plt.close();
 	
 	# store the solution
-	old_all_info = Neighborhood_class("short")
+	old_all_info = Neighborhood_class("long")
+	old_all_info.iterations = all_info.iterations
+	old_all_info.choice = all_info.choice
+	old_all_info.hill_climber = all_info.hill_climber
 	old_all_info.houses = all_info.houses
 	old_all_info.cable_length = all_info.cable_length
 	old_all_info.cost = all_info.cost
@@ -40,10 +49,11 @@ def relocate(all_info):
 	# check whether the new solution is better
 	print("!!!!", all_info.cable_length, old_all_info.cable_length)
 	if all_info.cable_length < old_all_info.cable_length:
-		print("HIER!")
 		old_all_info.houses = all_info.houses
 		old_all_info.cable_length = all_info.cable_length
 		old_all_info.cost = all_info.cost
+		print("Improved!", old_all_info.cable_length)
+
 		
 	# version to stop when new one is worse then old one
 	#
@@ -87,13 +97,14 @@ def relocate(all_info):
 		all_info = score_function(all_info)	
 		
 		# check op verbeteringen
-		print("!!!!" + str(all_info.cable_length) + ",  " + str(old_all_info.cable_length) + " itteration: " + str(i))
+		# print("!!!!" + str(all_info.cable_length) + ",  " + str(old_all_info.cable_length) + " itteration: " + str(i))
 		if all_info.cable_length < old_all_info.cable_length:
 			old_all_info.houses = all_info.houses
 			old_all_info.cable_length = all_info.cable_length
 			old_all_info.cost = all_info.cost
 			old_all_info.batteries = all_info.batteries
-			print("Hier!")
+			print("Improved!", old_all_info.cable_length)
+		
 		
 		# version to stop when new one is worse then old one
 		#
@@ -106,11 +117,14 @@ def relocate(all_info):
 		plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
 		plt.pause(1)
 		plt.gcf().clear()
+		
+		print(old_all_info.cable_length, "is nu nog de beste lengte!")
 	
 	# print the best version
-	print("This is the best version found!")
+	print("This is the best version found!", old_all_info.cable_length)
 	plt = plot_grid(old_all_info)
 	plt.pause(10)
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
-		
+	plt.gcf().clear()
+	
 	return old_all_info

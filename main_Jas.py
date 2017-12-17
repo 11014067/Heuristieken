@@ -79,11 +79,11 @@ def main( a = None):
 			all_info = hill_climber(all_info)
 			
 	# make and save a visualisation
-	#plt = plot_grid(all_info)
-	#plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
-	#
-	#if a == None :
-	#	plt.pause(10)
+	plt = plot_grid(all_info)
+	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
+	
+	if a == None :
+		plt.pause(10)
 		
 	return all_info
 
