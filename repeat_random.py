@@ -13,7 +13,7 @@ improvement_rate = []
 all_solutions = []
 
 f1 = sys.stdin
-for i in range (0, 30):
+for i in range (0, 2):
 	print("Dit is het " + str(i) + "e couplet.")
 	    
 	f = open('input.txt','r')
