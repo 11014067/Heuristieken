@@ -5,14 +5,22 @@ import time
 
 t0 = time.time()
 
+<<<<<<< HEAD
 best_solution = Neighborhood_class()
+=======
+best_solution = Neighborhood_class("long")
+>>>>>>> 71e242fc8b2dcdb3897af8083481782afd869ce5
 best_solution.cable_length = 9999999999
 print(best_solution.cable_length)
 
 improvement_rate = []
 
 f1 = sys.stdin
+<<<<<<< HEAD
 for i in range (0, 150000):
+=======
+for i in range (0, 100):
+>>>>>>> 71e242fc8b2dcdb3897af8083481782afd869ce5
 	print("Dit is het " + str(i) + "e couplet.")
 	    
 	f = open('input.txt','r')

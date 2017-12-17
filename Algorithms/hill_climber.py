@@ -19,8 +19,8 @@ def hill_climber(all_info):
 		# random selection of two batteries
 		select_battery = random.sample(all_info.batteries , 2)
 		house_list_battery_0 = select_battery[0].houses_list
-		print(select_battery[0].id)
-		print(select_battery[1].id)
+		# print(select_battery[0].id)
+		# print(select_battery[1].id)
 		
 		# random selection of a house out of the first sampled battery 
 		# [0] behind it to get the first item out of the list (eventhough there is only 1 item, still need to do this)
