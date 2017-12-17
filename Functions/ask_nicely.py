@@ -13,7 +13,7 @@ def ask_nicely():
 	# shortcut option
 	print("Do you want to take a shortcut with less options?")
 	while check:
-		shortcut = input("shortcut: ")
+		shortcut = input("Shortcut: ")
 		if shortcut in yes_list:
 			all_info = ask_nicely_short()
 			check = False
@@ -21,7 +21,7 @@ def ask_nicely():
 			all_info = ask_nicely_long()
 			check = False
 		else:
-			print ("Please choose yes or no")
+			print ("Please choose yes or no:")
 		
 	return all_info
 	

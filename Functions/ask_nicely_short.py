@@ -58,7 +58,7 @@ def ask_nicely_short():
 				print("You entered", all_info.battery_sort)
 				check3a = False
 			else:
-				print("Please choose x, y, voltage or random")
+				print("Please choose x, y, voltage or random:")
 	
 	
 	if all_info.sorting_method == "sorting":
@@ -73,7 +73,7 @@ def ask_nicely_short():
 				print("You entered", all_info.house_sort)
 				check3b = False
 			else:
-				print("Please choose x, y, voltage or random")
+				print("Please choose x, y, voltage or random:")
 	else:
 		all_info.house_sort = None
 		
