@@ -104,7 +104,7 @@ def ask_nicely_long():
 			all_info.battery_voltages = [1506.75] * 5
 		
 	# ask for the algorithm
-	print("You can currently use 2 algorithms: sorting, distance or non-itterative")
+	print("You can currently use 2 algorithms: sorting, distance or non-itterative.")
 	while check3:
 		all_info.sorting_method = input("Please enter sorting algorithm: ")
 		if all_info.sorting_method in sorting_method_list:
@@ -127,7 +127,7 @@ def ask_nicely_long():
 				print("You entered", all_info.battery_sort)
 				check4a = False
 			else:
-				print("Please choose x, y, voltage or random")
+				print("Please choose x, y, voltage or random:")
 	
 	if all_info.sorting_method == "sorting":
 		
@@ -141,7 +141,7 @@ def ask_nicely_long():
 				print("You entered", all_info.house_sort)
 				check4b = False
 			else:
-				print("Please choose x, y, voltage or random")
+				print("Please choose x, y, voltage or random:")
 	else:
 		all_info.house_sort = None
 		
