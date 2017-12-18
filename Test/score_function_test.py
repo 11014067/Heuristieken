@@ -4,6 +4,7 @@ import math
 
 def score_function(all_info):
 	
+	print(all_info.cable_length, "Eerst")
 	# calculate the cable length for each house and save the sum
 	cost_of_neighborhood = 0
 	for house in all_info.houses:
@@ -24,5 +25,6 @@ def score_function(all_info):
 		cost_of_neighborhood += int((math.log(battery.voltage, math.e)*649.21) - 3066.2)
 	all_info.cost = cost_of_neighborhood
 	print(all_info.cost)
+	print(all_info.cable_length, "Last")
 	
 	return all_info

@@ -63,29 +63,22 @@ def relocate(all_info):
 	plt.close();
 	
 	# now repeat the following steps
-	for i in range(0, 10):
+	for i in range(10):
 		
-		#disconnect the houses
-		all_info = empty(all_info)
-	
-		# reconnect the batteries
-		all_info.battery_sort = "random"
-		all_info = distance_algorithm(all_info)
+		if (i % 2 == 0):
+			#disconnect the houses
+			all_info = empty(all_info)
 		
-		# switch if nessecairy
-		all_info = switching_algorithm(all_info, 0)
+			# reconnect the batteries
+			all_info.battery_sort = "random"
+			all_info = distance_algorithm(all_info)
+			
+			# switch if nessecairy
+			all_info = switching_algorithm(all_info, 0)
 		
-		# score the outcome
-		all_info = score_function(all_info)			
-		
-		# make a visualisation
-		plt = plot_grid(all_info)
-		plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
-		plt.pause(1)
-		plt.gcf().clear()
-		
-		# replace the batteries to the middle	
-		all_info = replace(all_info)
+		else:
+			# replace the batteries to the middle	
+			all_info = replace(all_info)
 		
 		# score the outcome
 		all_info = score_function(all_info)	
@@ -99,17 +92,10 @@ def relocate(all_info):
 			old_all_info.batteries = all_info.batteries
 			print("Improved!", old_all_info.cable_length)
 		
-		
-		# version to stop when new one is worse then old one
-		#
-		#elif all_info.cable_length > old_all_info.cable_length:
-		#	print("Dit is mijn uitspraak en daar zal u het mee moeten doen.")
-		#	return old_all_info
-		
 		# make a visualisation
 		plt = plot_grid(all_info)
 		plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
-		plt.pause(1)
+		plt.pause(0.5)
 		plt.gcf().clear()
 		
 		print(old_all_info.cable_length, "is nu nog de beste lengte!")
@@ -117,7 +103,7 @@ def relocate(all_info):
 	# print the best version
 	print("This is the best version found!", old_all_info.cable_length)
 	plt = plot_grid(old_all_info)
-	plt.pause(10)
+	plt.pause(4)
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
 	plt.gcf().clear()
 	
