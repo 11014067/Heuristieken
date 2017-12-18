@@ -1,5 +1,5 @@
-# This function is a hillclimber that does the wanted amount of itterations.
-# With each itteration it try's to find a better solution by switching two random houses from two of the batteries.
+# This function is a hillclimber that does the wanted amount of iterations.
+# With each iteration it tries to find a better solution by switching two random houses from two of the batteries.
 
 from Functions.switcher import switching_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
@@ -11,6 +11,7 @@ import datetime
 
 def hill_climber(all_info):
 
+	# print the before
 	print("Before hillclimber cable_length is: {}".format(all_info.cable_length))
 
 	info_iterations = []
@@ -69,15 +70,10 @@ def hill_climber(all_info):
 							battery.houses_list.append(select_house)
 
 					# change the information of the changed houses
-					temp = select_house.battery_no
-					select_house.battery_no = house.battery_no
-					house.battery_no = temp
-					break
-
 					temp = select_house.select_battery[0]
 					select_house.select_battery[0] = house.select_battery[1]
 					house.select_battery[1] = temp
-					print("switch")
+					break
 		
 		# save info
 		info_iterations.append(i)
@@ -88,13 +84,15 @@ def hill_climber(all_info):
 		print("house id: {}".format(house.id))
 		print("house is coupled to battery: {}".format(house.battery_no))
 
-	# save the hillclimber information in a csv
-	with open(("hillclimber" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + str(len(all_info.batteries)) + str((all_info.iterations)) + ".csv"), "w") as csvfile:
+	# save the hill climber information in a csv
+	with open(("hill climber" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + str(len(all_info.batteries)) + str((all_info.iterations)) + ".csv"), "w") as csvfile:
 		fieldnames = ["iterations", "cable_length"]
 		writer = csv.DictWriter(csvfile, fieldnames = fieldnames)
 		writer.writeheader()
 		for j in range(len(info_iterations)):
 			writer.writerow({fieldnames[0]: info_iterations[j], fieldnames[1]: info_cable_length[j]})
 
-	print("After hillclimber cable_length is: {}".format(all_info.cable_length))
+	# print the after
+	print("After hill climber cable_length is: {}".format(all_info.cable_length))
+	
 	return all_info

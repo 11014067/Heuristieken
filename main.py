@@ -4,7 +4,7 @@
 from Algorithms.distance_algorithm import distance_algorithm
 from Algorithms.free_batteries import free_batteries
 from Algorithms.hill_climber import hill_climber
-from Algorithms.non_itterative_distance import non_itterative_distance
+from Algorithms.non_iterative import non_iterative
 from Algorithms.sorting_algorithm import sorting_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
 from Functions.ask_nicely import ask_nicely
@@ -44,8 +44,8 @@ def main( a = None):
 	# algorithm
 	if (all_info.sorting_method == "distance"):
 		all_info = distance_algorithm(all_info)
-	elif (all_info.sorting_method == "non-itterative"):
-		all_info = non_itterative_distance(all_info)
+	elif (all_info.sorting_method == "non-iterative"):
+		all_info = non_iterative(all_info)
 	elif (all_info.sorting_method == "sorting"):
 		all_info = sorting_algorithm(all_info)
 	

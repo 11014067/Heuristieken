@@ -2,7 +2,7 @@
 
 class Neighborhood_class:
 	
-	# save all the necassery information
+	# save all the necessary information
 	def __init__(self, choice):
 		self.batteries = []
 		self.battery_sort = ""
@@ -18,7 +18,7 @@ class Neighborhood_class:
 		self.sorting_method = ""
 		
 		# get more variables with the long version
-		if (choice == "long"):
+		if choice == "long":
 			self.battery_coordinates = []
 			self.free = ""
 			self.improve = "no"
@@ -56,6 +56,7 @@ class Neighborhood_class:
 			self.battery_no = -1
 			self.placed = False
 	
+		# link a battery to the house
 		def add_battery(self, battery_no):
 			self.battery_no = battery_no
 			self.placed = True
@@ -63,7 +64,7 @@ class Neighborhood_class:
 	# class with battery information	
 	class Battery:
 	
-		# save all the necassery information
+		# save all the necessary information
 		def __init__(self, x, y, voltage):	
 			self.x = x
 			self.y = y
@@ -71,12 +72,12 @@ class Neighborhood_class:
 			self.spare_voltage = voltage
 			self.houses_list = []
 			
+		# add an id 
 		def add_name(self, id):
 			self.id = id
 		
-		# checks whether a house can be added and adds if possible
+		# check whether a house can be added and add if possible
 		def add_house(self, house):
-		
 			if self.spare_voltage > house.voltage and house.placed == False:
 				house.add_battery(self.id)
 				self.houses_list.append(house)

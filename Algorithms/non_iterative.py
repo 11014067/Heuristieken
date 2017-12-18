@@ -4,16 +4,14 @@ from Functions.switcher import switching_algorithm
 import random
 import time
 
-def non_itterative_distance(all_info):
+def non_iterative_distance(all_info):
 	
 	# sort the batteries and houses
-	print("Sorting...")
 	all_info.batteries = sorted(all_info.batteries, key=lambda battery: battery.id)
 	all_info.houses = sorted(all_info.houses, key=lambda house: house.id)
 	
 	# make a list for each battery with the distance to the houses and its id
 	dict_list = []
-		
 	for house in all_info.houses:
 		for i in range(0, len(all_info.batteries)):
 			dict_list.append([(abs(house.x - all_info.batteries[i].x) + abs(house.y - all_info.batteries[i].y)), house.id, i])
@@ -29,6 +27,6 @@ def non_itterative_distance(all_info):
 	for house in all_info.houses:
 		if house.placed == False:
 			all_info.solution = False
-			break
+			return all_info
 		
 	return all_info

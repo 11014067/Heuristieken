@@ -23,7 +23,7 @@ def score_function(all_info):
 	# calculate the price with battery price and save it
 	cost_of_neighborhood *= 9
 	for battery in all_info.batteries:
-		cost_of_neighborhood += int((math.log(battery.voltage, math.e)*649.21) - 3066.2)
+		cost_of_neighborhood += int((math.log(battery.voltage, math.e) * 649.21) - 3066.2)
 	all_info.cost = cost_of_neighborhood
 	
 	return all_info

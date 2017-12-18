@@ -41,6 +41,24 @@ py -3 main.py
 
 Now follow the instructions on the screen.
 
+
+You can also run multiple random samples with random repeat, which will be explained further down this page with:
+```
+python repeat_random.py
+```
+
+or
+
+```
+py -3 repeat_random.py
+```
+
+### Random repeat
+
+This commando makes it possible to run a solution multiple times. To run this function, please open the file "input.txt". 
+In this file you type the answers you normally give in the to the regular main.py.
+The program will now automatically run this command 150000 times and stores every iteration that grands a imporvement.
+
 ## Infrastructure
 
 There are several sub folders containing functions, algorithms, visualizations and datasets, 

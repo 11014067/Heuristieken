@@ -7,7 +7,7 @@ def ask_nicely_long():
 	# create possible correct answers for the questions
 	neighborhood_list = ["1", "2", "3"]
 	yes_no_list = ["y", "n", "yes", "no"]
-	sorting_method_list = ["s", "d", "n", "sorting", "distance", "non-itterative"]
+	sorting_method_list = ["s", "d", "n", "sorting", "distance", "non-iterative"]
 	sorting_options_list = ["x", "y", "voltage", "random", "v", "r"]
 	variable_batteries_voltages = []
 	
@@ -31,7 +31,7 @@ def ask_nicely_long():
 	while check1:
 		all_info.neighborhood = input("Please enter neighborhood: ")
 		if all_info.neighborhood in neighborhood_list:
-			print("You entered", all_info.neighborhood)
+			print("You entered ", all_info.neighborhood)
 			check1 = False
 		else:
 			print("Please choose 1, 2 or 3")
@@ -44,7 +44,7 @@ def ask_nicely_long():
 			if yes_no_list.index(free_choice) < 2:
 				free_choice = yes_no_list[yes_no_list.index(free_choice) + 2]
 			all_info.free = free_choice
-			print("You entered", free_choice)
+			print("You entered ", free_choice)
 			if all_info.free == "yes":
 				print("Do you want us to try and improve your free batteries?")
 				while check2ab:
@@ -53,13 +53,13 @@ def ask_nicely_long():
 						if yes_no_list.index(improve) < 2:
 							improve = yes_no_list[yes_no_list.index(improve) + 2]
 						all_info.improve = improve
-						print("You entered", improve)
+						print("You entered ", improve)
 						check2ab = False
 					else:
 						print("Please answer with yes or no:")
 			check2a = False
 		else:
-			print("Please answer with yes or no:")
+			print("Please answer with yes or no.")
 			
 	print("Do you want to make batteries variable? Yes/no:")
 	while check2b:
@@ -67,10 +67,10 @@ def ask_nicely_long():
 		if variable_batteries in yes_no_list:
 			if yes_no_list.index(variable_batteries) < 2:
 				variable_batteries = yes_no_list[yes_no_list.index(variable_batteries) + 2]
-			print("You entered", variable_batteries)
+			print("You entered ", variable_batteries)
 			check2b = False
 		else:
-			print("Please answer with yes or no:")
+			print("Please answer with yes or no.")
 			
 	if variable_batteries == "yes":
 		while check2c:
@@ -92,19 +92,19 @@ def ask_nicely_long():
 					variable_batteries_voltages.append(int(voltage_battery))
 					new_entry = False
 				else:
-					print("Please enter a number between 0 and 1800")
+					print("Please enter a number between 0 and 1800.")
 		all_info.battery_voltages = variable_batteries_voltages
 		print(variable_batteries_voltages)
 	else:
-		if all_info.neighborhood == "1" :
+		if all_info.neighborhood == "1":
 			all_info.battery_voltages = [1507] * 5
-		elif all_info.neighborhood == "2" :
+		elif all_info.neighborhood == "2":
 			all_info.battery_voltages = [1508.25] * 5
-		elif all_info.neighborhood == "3" :
+		elif all_info.neighborhood == "3":
 			all_info.battery_voltages = [1506.75] * 5
 		
 	# ask for the algorithm
-	print("You can currently use 2 algorithms: sorting, distance or non-itterative.")
+	print("You can currently use 2 algorithms: sorting, distance or non-iterative.")
 	while check3:
 		all_info.sorting_method = input("Please enter sorting algorithm: ")
 		if all_info.sorting_method in sorting_method_list:
@@ -113,9 +113,9 @@ def ask_nicely_long():
 			print("You entered", all_info.sorting_method)
 			check3 = False
 		else:
-			print("Please choose sorting, distance or non-itterative")
+			print("Please choose sorting, distance or non-iterative")
 	
-	if all_info.sorting_method != "non-itterative":
+	if all_info.sorting_method != "non-iterative":
 	
 		# ask for the batteries sorting method
 		print("You can sort the batteries on voltage, x, y or random.")
@@ -127,7 +127,7 @@ def ask_nicely_long():
 				print("You entered", all_info.battery_sort)
 				check4a = False
 			else:
-				print("Please choose x, y, voltage or random:")
+				print("Please choose x, y, voltage or random.")
 	
 	if all_info.sorting_method == "sorting":
 		
@@ -138,24 +138,24 @@ def ask_nicely_long():
 			if all_info.house_sort in sorting_options_list:
 				if sorting_options_list.index(all_info.house_sort) > 3:
 					all_info.house_sort = sorting_options_list[sorting_options_list.index(all_info.house_sort) - 2]
-				print("You entered", all_info.house_sort)
+				print("You entered ", all_info.house_sort)
 				check4b = False
 			else:
-				print("Please choose x, y, voltage or random:")
+				print("Please choose x, y, voltage or random.")
 	else:
 		all_info.house_sort = None
 		
 	# ask for hill climbing
-	print("Would you like to proceed with a hill climber after connecting all houses? Yes/no")
+	print("Would you like to proceed with a hill climber after connecting all houses? Yes/no ")
 	while check5a:
 			all_info.hill_climber = input("")
 			if all_info.hill_climber in yes_no_list:
 				if yes_no_list.index(all_info.hill_climber) < 2:
 					all_info.hill_climber = yes_no_list[yes_no_list.index(all_info.hill_climber) + 2] 
-				print("You entered", all_info.hill_climber)
+				print("You entered ", all_info.hill_climber)
 				check5a = False
 			else:
-				print("Please answer with yes or no:")
+				print("Please answer with yes or no.")
 
 	if all_info.hill_climber == "yes":
 		while check5b:

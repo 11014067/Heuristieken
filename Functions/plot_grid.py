@@ -30,10 +30,8 @@ def plot_grid(all_info):
 			bboxprops = dict(ec=colors[house.battery_no]))                                  
 		ax.add_artist(ab)
 
-		# the Y coordinate line (keeps its x coordinate)
+		# draw the lines
 		plt.plot([h_x, h_x], [h_y, b_y], color=colors[house.battery_no], linestyle='-')
-	
-		# the X coordinate line
 		plt.plot([h_x, b_x], [b_y, b_y], color = colors[house.battery_no], linestyle='-')
 	
 	
@@ -50,10 +48,12 @@ def plot_grid(all_info):
 	plt.axis([0, 50, 0, 50])
 	plt.xticks([0, 10, 20, 30, 40, 50])
 	plt.yticks([0, 10, 20, 30, 40, 50])
+	
+	# add the text
 	plt.text(10, 55, "Cable length is " + str(all_info.cable_length))
 	plt.text(35, 55, "Price is " + str(all_info.cost))
 	
-	# print the size of the batteries
+	# add the size of the batteries
 	all_info.batteries = sorted(all_info.batteries, key=lambda battery: -battery.id)
 	a = 5
 	for battery in all_info.batteries:

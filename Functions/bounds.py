@@ -24,8 +24,8 @@ def bounds (all_info):
 	
 	# save and print the information
 	all_info.upper_bound = maximum
-	print("The maximum is: " + str(maximum))
+	print("The upper bound is: " + str(maximum))
 	all_info.lower_bound = minimum
-	print("The minimum is: " + str(minimum))
+	print("The lower bound is: " + str(minimum))
 	
 	return all_info
