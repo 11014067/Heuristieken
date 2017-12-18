@@ -50,17 +50,11 @@ def relocate(all_info):
 	print("!!!!", all_info.cable_length, old_all_info.cable_length)
 	if all_info.cable_length < old_all_info.cable_length:
 		old_all_info.houses = all_info.houses
+		old_all_info.batteries = all_info.batteries
 		old_all_info.cable_length = all_info.cable_length
 		old_all_info.cost = all_info.cost
 		print("Improved!", old_all_info.cable_length)
 
-		
-	# version to stop when new one is worse then old one
-	#
-	#elif all_info.cable_length > old_all_info.cable_length:
-	#	print("Dit is mijn uitspraak en daar zal u het mee moeten doen.")
-	#	return old_all_info
-	
 	# make the visualisation
 	plt = plot_grid(all_info)
 	plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + "replacebatteriesandreplace.png")
@@ -69,7 +63,7 @@ def relocate(all_info):
 	plt.close();
 	
 	# now repeat the following steps
-	for i in range(0, 20):
+	for i in range(0, 10):
 		
 		#disconnect the houses
 		all_info = empty(all_info)

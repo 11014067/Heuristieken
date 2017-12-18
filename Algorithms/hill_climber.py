@@ -10,6 +10,9 @@ import csv
 import datetime
 
 def hill_climber(all_info):
+
+	print("Before hillclimber cable_length is: {}".format(all_info.cable_length))
+
 	info_iterations = []
 	info_cable_length = []
 	range_loops = all_info.iterations 
@@ -93,4 +96,5 @@ def hill_climber(all_info):
 		for j in range(len(info_iterations)):
 			writer.writerow({fieldnames[0]: info_iterations[j], fieldnames[1]: info_cable_length[j]})
 
+	print("After hillclimber cable_length is: {}".format(all_info.cable_length))
 	return all_info
