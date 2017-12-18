@@ -70,9 +70,9 @@ def hill_climber(all_info):
 							battery.houses_list.append(select_house)
 
 					# change the information of the changed houses
-					temp = select_house.select_battery[0]
-					select_house.select_battery[0] = house.select_battery[1]
-					house.select_battery[1] = temp
+					temp = select_house.battery_no
+					select_house.battery_no = house.battery_no
+					house.battery_no = temp
 					break
 		
 		# save info
