@@ -1,6 +1,7 @@
 # Visual solutions folder
 
 In this folder you can see all the visualisations from the solutions we have found, and new visualizations are automatically saved in this folder.
+For easy access the visualisations are placed in neighborhood folders.
 
 ### Visualizations
 
