@@ -4,7 +4,7 @@ from Algorithms.distance_algorithm import distance_algorithm
 from Classes.neighborhood_classes import Neighborhood_class
 from Functions.plot_grid import plot_grid
 from Functions.score_function import score_function
-from Functions.switcher import switcher
+from Functions.switcher import switching_algorithm
 from Test.replace_batteries import replace
 from Test.empty import empty
 import time
