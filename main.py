@@ -12,14 +12,12 @@ from Functions.ask_nicely_long import ask_nicely_long
 from Functions.ask_nicely_short import ask_nicely_short
 from Functions.bounds import bounds
 from Functions.download_data import download_data
-from Functions.plot_grid import plot_grid as plot_grid
+from Functions.plot_grid import plot_grid
 from Functions.score_function import score_function
 from Functions.switcher import switching_algorithm
 from Test.replace_batteries import replace
 from Test.relocate_battery import relocate
 from Test.empty import empty
-from Information.upper import upper
-from Information.lower import lower
 import random
 
 def main( a = None):
@@ -61,24 +59,16 @@ def main( a = None):
 	if all_info.choice == "long":
 		if all_info.improve == "yes":
 			all_info = relocate(all_info)
-	
-	print("In main is het: ", all_info.cable_length)
-	
-	# score the outcome
-	all_info = score_function(all_info)
-	
-	# start hillclimber when wished
-	if all_info.choice == "long":
+		
+		# start hillclimber when wished
 		if all_info.hill_climber == "yes":
 			all_info = hill_climber(all_info)
 			
 	# make and save a visualisation
-
 	if a == None :
 		plt = plot_grid(all_info)
 		if all_info.choice == "short":
 			plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + ".png")
-			
 		else:
 			plt.savefig("Visual_solutions/fig_" + str(all_info.sorting_method) + str(all_info.neighborhood) + str(all_info.battery_sort) + str(all_info.house_sort) + "_" + str(len(all_info.batteries)) + save_free + "_" + str((all_info.iterations)) + "batteries.png")
 		plt.pause(10)
