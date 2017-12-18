@@ -7,8 +7,6 @@ import time
 def distance_algorithm(all_info):
 
 	# sort the houses and batteries
-	all_info.show_batteries()
-	print("Sorting...")
 	if all_info.battery_sort == "random":
 		all_info.batteries = random.sample(all_info.batteries, len(all_info.batteries))
 	elif all_info.battery_sort != "voltage":
@@ -64,7 +62,6 @@ def distance_algorithm(all_info):
 			sum_index_list += index_list[i]
 		if sum_index_list == len(all_info.houses) * len(all_info.batteries):
 			all_info.solution = False
-			print(" UNSUCCESFULL ")
 			return all_info
 
 	return all_info

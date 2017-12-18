@@ -38,7 +38,7 @@ class Neighborhood_class:
 	def show_batteries(self):
 		very_long_string = ""
 		for battery in self.batteries:
-			very_long_string += "Battery " + str(battery.id) + " on (" + str(battery.x) + "," + str(battery.y) + ") with voltage " + str(battery.spare_voltage) + "/" + str(battery.voltage) + ", connected to houses" 
+			very_long_string += "Battery " + str(battery.id) + " on (" + str(battery.x) + "," + str(battery.y) + ") with voltage " + str(battery.spare_voltage) + "/" + str(battery.voltage) + ", connected to houses" + battery.houses_list 
 			for house in battery.houses_list:
 				very_long_string += str(house.id) + ", "
 			very_long_string += "\n"

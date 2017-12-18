@@ -5,7 +5,6 @@ import random
 def sorting_algorithm(all_info):
 	
 	# sort the lists as wanted
-	print("Sorting...")
 	if all_info.battery_sort == "random":
 		all_info.batteries = random.sample(all_info.batteries, len(all_info.batteries))
 	elif all_info.battery_sort != "voltage":
