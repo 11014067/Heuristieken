@@ -15,6 +15,8 @@ def score_function(all_info):
 			cost_of_neighborhood += abs(b_y - h_y)
 			cost_of_neighborhood += abs(b_x - h_x)
 		else:
+			
+			# print if a house is not connected
 			print("house {} is not connected".format(house.id))
 	all_info.cable_length = cost_of_neighborhood
 	

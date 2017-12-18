@@ -84,7 +84,4 @@ class Neighborhood_class:
 				return True
 			else:
 				return False
-				
-		def bounds(self):
-			self.lowerbounds = lower(self.houses, self.batteries)
-			self.upperbounds = upper(self.houses, self.batteries)
+

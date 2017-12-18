@@ -1,24 +1,6 @@
 # This function relocates batteries and saves the best result from 20 relocations.
 
-from Algorithms.distance_algorithm import distance_algorithm
-from Algorithms.free_batteries import free_batteries
-from Algorithms.hill_climber import hill_climber
-from Algorithms.non_itterative_distance import non_itterative_distance
-from Algorithms.sorting_algorithm import sorting_algorithm
-from Classes.neighborhood_classes import Neighborhood_class
-from Functions.ask_nicely import ask_nicely
-from Functions.ask_nicely_long import ask_nicely_long
-from Functions.ask_nicely_short import ask_nicely_short
-from Functions.bounds import bounds
-from Functions.download_data import download_data
-from Functions.plot_grid import plot_grid as plot_grid
-from Functions.score_function import score_function
-from Functions.switcher import switching_algorithm
-from Test.replace_batteries import replace
-from Test.empty import empty
-from Information.upper import upper
-from Information.lower import lower
-import matplotlib.pyplot as plt
+from Functions.plot_grid import plot_grid
 
 import time
 
