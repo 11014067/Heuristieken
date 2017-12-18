@@ -4,7 +4,7 @@ from Functions.switcher import switching_algorithm
 import random
 import time
 
-def non_iterative_distance(all_info):
+def non_iterative(all_info):
 	
 	# sort the batteries and houses
 	all_info.batteries = sorted(all_info.batteries, key=lambda battery: battery.id)
