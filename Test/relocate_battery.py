@@ -1,7 +1,6 @@
 # This function relocates batteries and saves the best result from 20 relocations.
 
 from Functions.plot_grid import plot_grid
-
 import time
 
 def relocate(all_info):
